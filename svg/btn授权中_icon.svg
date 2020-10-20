@@ -1,0 +1,20 @@
+<svg id="loading1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #daad55;
+      }
+
+      .cls-1, .cls-2 {
+        fill-rule: evenodd;
+        opacity: 0.8;
+      }
+
+      .cls-2 {
+        fill: #473209;
+      }
+    </style>
+  </defs>
+  <path id="椭圆_1" data-name="椭圆 1" class="cls-1" d="M282,254a8,8,0,1,1,8-8A8,8,0,0,1,282,254Zm0-14a6,6,0,1,0,6,6A6,6,0,0,0,282,240Z" transform="translate(-274 -238)"/>
+  <path id="椭圆_1-2" data-name="椭圆 1" class="cls-2" d="M282,238a8,8,0,1,0,8,8h-2a6,6,0,1,1-6-6v-2Z" transform="translate(-274 -238)"/>
+</svg>

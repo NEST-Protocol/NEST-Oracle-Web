@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="6" height="16" viewBox="0 0 6 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ff4d4d;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="tip_icon" class="cls-1" d="M539,213h-4v-3h4v3Zm0-5h-4l-1-6.922V197h6v4.079Z" transform="translate(-534 -197)"/>
+</svg>

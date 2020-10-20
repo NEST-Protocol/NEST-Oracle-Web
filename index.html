@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" type="image/x-icon" href="./svg/nest.ico" />
+    <title>Nest Oracle Dapp - Nest Protocol Interface</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="google" content="notranslate" />
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" />
+    <!-- <script src="js/echarts.min.js"></script> -->
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        html,
+        body {
+            font-family: '微软雅黑';
+        }
+
+        #app {
+            background: url(./svg/bj.jpg) repeat;
+            background-position: 0 0;
+        }
+
+        body {
+            margin: 0rem;
+            padding: 0rem;
+        }
+
+        .head {
+            width: 100%;
+            height: 3.125rem;
+            background-image: linear-gradient(#232323, #2c2c2c);
+        }
+
+        .flex_justcont {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .head_line {
+            line-height: 3.125rem;
+        }
+
+        .boxs {
+            width: 100%;
+            /* height: 62.5rem; */
+            min-height: 100vh;
+            /* background-color: #1a1a1a; */
+        }
+
+        .btn {
+            color: #ffffff;
+            background-color: #666666;
+            border: none;
+        }
+
+        .hides {
+            width: 100%;
+            opacity: 0;
+        }
+
+        .address {
+            border: solid 0.0625rem #2c2c2c;
+            border-radius: 0.25rem;
+            background-color: rgb(44, 44, 44);
+        }
+
+        .addressHeader {
+            width: 100%;
+            background-color: rgb(35, 35, 35);
+            height: 1.875rem;
+            line-height: 1.875rem;
+        }
+
+        .addressHeader_top {
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        .addressHeader_top div:nth-child(1) {
+            color: #e6e6e6;
+        }
+
+        .addressHeader_top div:nth-child(2) {
+            color: #4dc3ff;
+        }
+
+        .mains {
+            /* display: flex; */
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        .inputs {
+            width: 100%;
+            border-radius: 1.25rem;
+            border: solid 0.0625rem rgba(154, 154, 154, 1);
+            background-color: rgb(31, 31, 31);
+            color: rgb(230, 230, 230);
+        }
+
+        .ptext {
+            text-align: right;
+            color: rgb(153, 153, 153);
+            font-size: 0.625rem;
+        }
+
+        .staking_assets {
+            width: 45%;
+            display: flex;
+            background-color: rgb(66, 66, 66);
+            text-align: center;
+        }
+
+        .fee {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .ax {
+            width: 100%;
+            background-color: rgb(31, 31, 31);
+            color: #ffffff;
+            padding: 0.9375rem 0rem;
+        }
+
+        .btnss {
+            display: block;
+            margin: 1.25rem auto;
+            background-color: #ffc44d;
+            width: 12.5rem;
+            border: none;
+        }
+
+        .lists {
+            width: 100%;
+            border-radius: 0.25rem;
+            background-color: #2c2c2c;
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 1.25rem;
+        }
+
+        .lists_p {
+            margin-bottom: 0rem;
+            margin-top: 1.25rem;
+        }
+
+        .switchover {
+            width: 100%;
+            background-color: rgb(21, 21, 21);
+            color: rgba(153, 153, 153, 1);
+            display: flex;
+            justify-content: space-between;
+            border-radius: 10rem;
+            margin: 0.625rem 0rem;
+        }
+
+        .switchover div {
+            width: 50%;
+            text-align: center;
+            border-radius: 10rem;
+            padding: 0.3125rem 0rem;
+        }
+
+        .active {
+            background-color: rgb(43, 43, 43);
+            color: #ffffff;
+        }
+
+        .map {
+            /* width: 50%; */
+            height: 14.5rem;
+        }
+
+        .tops {
+            background-color: rgb(34, 34, 34);
+            border-radius: 0.3125rem 0.3125rem 0rem 0rem;
+            color: rgba(230, 230, 230, 1);
+            font-size: 0.75rem;
+        }
+
+        .tops p {
+            margin: 0.3125rem 0rem;
+        }
+
+        .image_text {
+            width: 45%;
+            background-color: rgb(31, 31, 31);
+            display: flex;
+            justify-content: space-around;
+            padding: 0.75rem 0rem;
+            border-radius: 0.3125rem;
+        }
+
+        .image_text p {
+            text-align: center;
+            margin: 0rem;
+        }
+
+        .el-dialog {
+            background-color: rgb(44, 44, 44);
+            color: rgba(154, 154, 154, 1);
+        }
+
+        .el-dialog__title {
+            color: #ffffff !important;
+        }
+
+        .activebtn {
+            background-color: rgb(66, 66, 66);
+        }
+
+        .searchs {
+            display: flex;
+        }
+
+        .searchs .el-input__inner {
+            border: none;
+            border-radius: 6.25rem 0rem 0rem 6.25rem;
+            background-color: rgb(21, 21, 21);
+        }
+
+        .searchs .el-input-group__append {
+            background-color: rgb(21, 21, 21);
+            border: none;
+            border-radius: 0rem 6.25rem 6.25rem 0rem;
+        }
+
+        .loginin {
+            display: none;
+        }
+
+        .wallet_address {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .pp {
+            width: 165px;
+            color: #fff;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-style: oblique;
+            text-align: right;
+            margin-right: 10px;
+            font-size: 0.825rem;
+            margin: 0;
+            padding-right: 0.3rem;
+        }
+
+        .iconActives {
+            color: rgba(255, 196, 77, 1);
+        }
+
+        .language {
+            width: 1.5rem;
+            position: absolute;
+            right: 0;
+            top: 1.2rem;
+        }
+
+        .language_cnimg {
+            display: none;
+        }
+
+        .language_img {
+            width: 1.5rem;
+            position: absolute;
+            right: 0;
+            top: 1.2rem;
+        }
+
+        .el-button:active {
+            color: #fff;
+            background: unset;
+        }
+
+        .el-button:focus,
+        .el-button:hover {
+            color: #fff;
+            background: unset;
+        }
+
+        .btn {
+            background: unset;
+            color: #666666;
+        }
+
+        .actives {
+            border-image: linear-gradient(180deg, #000000, #666666) 1 1;
+            box-shadow: 1px 4px 4px 0px #000000;
+            border-radius: 30px;
+            background: unset;
+            color: #fff;
+        }
+
+        .spans:hover {
+            background-color: #333333 !important;
+        }
+
+        .icon {
+            display: block;
+            width: 2.5rem;
+            margin-right: 1rem;
+        }
+
+        html,
+        body {
+            background: #2C2C2C
+        }
+
+        @media screen and (max-width: 500px) {
+            .spans {
+                font-size: .625rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="head">
+            <el-row>
+                <el-col :xs="1" :sm="3" :md="3" :lg="3" :xl="3">
+                    <div class="hides">1</div>
+                </el-col>
+                <el-col :xs="22" :sm="18" :md="18" :lg="18" :xl="18">
+                    <div class="flex_justcont head_line">
+                        <div style="display: flex">
+                            <img src="./svg/logo.svg" style="width: 4.75rem" alt="" />
+                        </div>
+                        <div class="flex_justcont head_line" style="position: relative">
+                            <div class="wallet_address">
+                                <span class="pp">{{$t('message1.connect')}}</span>
+                                <div class="loginin">
+                                    <img src="svg/metamask_icon_高亮.svg" style="
+                        width: 1.5625rem;
+                        height: 0.725rem;
+                        margin-top: 1.25rem;
+                      " />
+                                </div>
+                                <div class="loginout">
+                                    <img src="svg/metamask_icon_置灰.svg" style="
+                        width: 1.5625rem;
+                        height: 0.725rem;
+                        margin-top: 1.25rem;
+                      " />
+                                </div>
+                            </div>
+                            <el-select v-model="value" @change="changeSelection(value)" size="small" :value="0"
+                                style="width: 3.25rem; opacity: 0; z-index: 99">
+                                <el-option v-for="item in directionOption" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                    <img :src="item.src" style="width: 1.5625rem; height: 0.725rem" />
+                                </el-option>
+                            </el-select>
+                            <img src="./svg/语言切换_美国icon.svg" alt="" class="language_enimg language_img" />
+                            <img src="./svg/语言切换_中国icon.svg" alt="" class="language_cnimg language_img" />
+                        </div>
+                    </div>
+                </el-col>
+                <el-col :xs="1" :sm="3" :md="3" :lg="3" :xl="3">
+                    <div class="hides">1</div>
+                </el-col>
+            </el-row>
+        </div>
+        <div class="boxs" style="clear: both">
+            <el-row>
+                <el-col :xs="1" :sm="3" :md="3" :lg="3" :xl="3">
+                    <div class="hides">1</div>
+                </el-col>
+                <el-col :xs="22" :sm="18" :md="18" :lg="18" :xl="18">
+                    <!-- <div style="margin: 0.625rem 0rem;" class="flex_justcont">
+						<div>
+							<el-button onclick="window.location.href = 'index4.html'" round class="btn" size="small">
+								{{ $t("message1.Auctions") }}</el-button>
+						</div>
+						<el-button onclick="window.location.href = 'index3.html'" icon="el-icon-plus" round class="btn"
+							size="small">{{ $t("message3.auction") }}</el-button>
+					</div> -->
+                    <div>
+                        <div style="margin: 0.925rem 0rem" class="flex_justcont">
+                            <div style="display: flex">
+                                <el-button round size="small" class="btn" style="font-size:.925rem"
+                                    :class="{actives:1==activeStatus}" @click="actives(1)">
+                                    {{ $t("message1.AllOracle") }}</el-button>
+                                <el-button round size="small" class="btn" style="font-size: .925rem;"
+                                    :class="{actives:2==activeStatus}" @click="actives(2)">
+                                    {{ $t("message1.Favorites") }}</el-button>
+                            </div>
+                            <div class="searchs">
+                                <el-input v-show="!show" @blur="blurshow" placeholder="" v-model="inputvalue">
+                                    <el-button @click="selectList" slot="append" icon="el-icon-search"></el-button>
+                                </el-input>
+                                <el-button v-show="show" @click="show = !show" icon="el-icon-search" round class="btn"
+                                    size="small"></el-button>
+                            </div>
+                        </div>
+                        <div v-show="activeStatus==1">
+                            <div class="spans" v-for="(item,index) in shuju" :key="index" style="
+                    width: 100%;
+                    border-radius: 0.25rem;
+                    background-color: #2c2c2c;
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 1rem 0rem;
+                    margin-bottom: 1.25rem;
+                    color: rgba(229, 229, 229, 1);
+                  ">
+                                <div style="
+                      line-height: 1.9375rem;
+                      display: inline-flex;
+                      align-items: center;
+                    ">
+                                    <span @click="Favorites(item.address)" :class="{iconActives:1==item.spans}"
+                                        style="padding: 0px 0.625rem; font-size: 1.5rem" class="el-icon-star-on"></span>
+                                    <img :src="item.url" alt="" class="icon">
+                                    <span>ETH/<span>{{item.symbol}}</span></span>
+                                </div>
+                                <div class="mouse_btn" style="    display: flex;
+    align-items: center;">
+                                    <span @click="axx(item,1)" style="
+                        display: inline-block;
+                        padding: 0.3125rem 1rem;
+                        border-radius: 3.125rem;
+                        margin: 0px 0.75rem;
+                        cursor: pointer;
+                      ">{{$t('message1.Quote')}}</span>
+                                    <span @click="axx(item,2)" style="
+                        display: inline-block;
+                        padding: 0.3125rem 1rem;
+                        border-radius: 3.125rem;
+                        margin: 0px 0.75rem;
+                        cursor: pointer;
+                      ">{{$t('message1.Income')}}</span>
+                                </div>
+                            </div>
+                            <div v-show="Oraclenull" class="spans" style="
+                    width: 100%;
+                    border-radius: 0.25rem;
+                    background-color: #2c2c2c;
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 1rem 0rem;
+                    margin-bottom: 1.25rem;
+                    color: rgba(229, 229, 229, 1);
+                  ">
+                                <div style="
+                      line-height: 1.9375rem;
+                      display: inline-flex;
+                      align-items: center;
+                    ">
+                                    <span style="padding: 0px 0.625rem; font-size: 1.5rem"
+                                        class="el-icon-s-help"></span>
+                                    <span>{{$t('message1.Nomessage')}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-show="activeStatus==2">
+                            <div class="spans" v-for="(itemss,indexss) in collectData.slice().reverse()"
+                                :key="itemss.symbol" style="
+                    width: 100%;
+                    border-radius: 0.25rem;
+                    background-color: #2c2c2c;
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 1rem 0rem;
+                    margin-bottom: 1.25rem;
+                    color: rgba(229, 229, 229, 1);
+                  ">
+                                <div style="
+                      line-height: 1.9375rem;
+                      display: inline-flex;
+                      align-items: center;
+                    ">
+                                    <span @click="Favorites(itemss.address)"
+                                        style="padding: 0px 0.625rem; font-size: 1.5rem"
+                                        class="el-icon-star-on iconActives"></span>
+                                    <img :src="itemss.url" alt="" class="icon">
+                                    <span>ETH/<span>{{itemss.symbol}}</span></span>
+                                </div>
+                                <div class="mouse_btn" style="    display: flex;
+    align-items: center;">
+                                    <span @click="axx(itemss,1)" style="
+                        display: inline-block;
+                        padding: 0.3125rem 1rem;
+                        border-radius: 3.125rem;
+                        margin: 0px 0.75rem;
+                        cursor: pointer;
+                      ">{{$t('message1.Quote')}}</span>
+                                    <span @click="axx(itemss,2)" style="
+                        display: inline-block;
+                        padding: 0.3125rem 1rem;
+                        border-radius: 3.125rem;
+                        margin: 0px 0.75rem;
+                        cursor: pointer;
+                      ">{{$t('message1.Income')}}</span>
+                                </div>
+                            </div>
+                            <div v-show="Favoritesnull" class="spans" style="
+                    width: 100%;
+                    border-radius: 0.25rem;
+                    background-color: #2c2c2c;
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 1rem 0rem;
+                    margin-bottom: 1.25rem;
+                    color: rgba(229, 229, 229, 1);
+                  ">
+                                <div style="
+                      line-height: 1.9375rem;
+                      display: inline-flex;
+                      align-items: center;
+                    ">
+                                    <span style="padding: 0px 0.625rem; font-size: 1.5rem"
+                                        class="el-icon-s-help"></span>
+                                    <span>{{$t('message1.Nomessage')}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </el-col>
+                <el-col :xs="1" :sm="3" :md="3" :lg="3" :xl="3">
+                    <div class="hides">1</div>
+                </el-col>
+            </el-row>
+        </div>
+    </div>
+    <script src="//unpkg.com/vue"></script>
+    <script src="//unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
+    <script src="//unpkg.com/element-ui"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/en.js"></script>
+    <script src="js/zh.js"></script>
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/contractAdress.js"></script>
+    <!-- <script src="./assets/js/web3.min.js"></script> -->
+    <!-- <script src="./assets/abi/offerAbi.js"></script> -->
+    <!-- <script src="./assets/abi/NestPriceAbi.js"></script> -->
+    <!-- <script src="./assets/abi/DividendAbi.js"></script> -->
+    <!-- <script src="./assets/abi/integrationAbi.js"></script> -->
+    <!-- <script src="./assets/js/decimal.min.js"></script> -->
+    <!-- <script src="./assets/js/cutZero.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.2.11/dist/web3.min.js"></script>
+    <script>
+        const messages = {
+            zh: languageChinese,
+            en: languageEnglish,
+        }
+        const i18n = new VueI18n({
+            locale: 'en', // 语言标识
+            messages,
+        })
+        new Vue({
+            el: '#app',
+            i18n,
+            data() {
+                return {
+                    Favoritesnull: true,
+                    Oraclenull: true,
+                    collectData: [],
+                    spanActive: [],
+                    activeStatus: true,
+                    show: true,
+                    inputvalue: '',
+                    dialogVisible: false,
+                    Income_Deposite: false,
+                    Income_Withdraw: false,
+                    amount: 10,
+                    price: 317.6545,
+                    amountStates: true,
+                    num4: 1,
+                    input: 3176.545,
+                    value: null,
+                    img: [],
+                    directionOption: [
+                        {
+                            label: 'English',
+                            value: '0',
+                            src: 'svg/语言切换_美国icon.svg',
+                        },
+                        {
+                            label: 'Chinese',
+                            value: '1',
+                            src: 'svg/语言切换_中国icon.svg',
+                        },
+                    ],
+                    shuju: '',
+                }
+            },
+            created() {
+                if (
+                    this.getCookie('language') == null ||
+                    this.getCookie('language') == 'en'
+                ) {
+                    document.cookie = 'language=' + 'en'
+                    this.value = '0'
+                    this.$i18n.locale = 'en'
+                    $('.language_enimg').show()
+                    $('.language_cnimg').hide()
+                } else {
+                    document.cookie = 'language=' + 'zh'
+                    this.value = '1'
+                    this.$i18n.locale = 'zh'
+                    $('.language_enimg').hide()
+                    $('.language_cnimg').show()
+                }
+            },
+            mounted() {
+                var that = this
+                this.getaxios(true)
+                setInterval(function () {
+                    that.iflash()
+                }, 15000)
+
+                if (typeof web3 !== 'undefined') {
+                    web3 = new Web3(web3.currentProvider)
+                    var coinbase = web3.eth.coinbase
+                    var accounts = web3.eth.accounts
+                    if (
+                        ethereum.selectedAddress !== '' &&
+                        ethereum.selectedAddress !== 'undefined' &&
+                        ethereum.selectedAddress !== null
+                    ) {
+                        $('.loginin').show()
+                        $('.loginout').hide()
+                        $('.pp').text(hidden_address(ethereum.selectedAddress))
+                        // $('.wallet_address').css('pointer-events', 'none')
+                        // web3.eth.getBalance(accounts[0], (err, balance) => {
+                        // 	balance_eth = balance / 1e18
+                        // 	$('.balance_eth').text(balance_eth)
+                        // })
+                    } else {
+                        $('.wallet_address').click(function () {
+                            if (window.ethereum) {
+                                // 请求用户授权
+                                window.ethereum.enable().then(function (res) {
+                                    $('.loginout').hide()
+                                    $('.loginin').show()
+
+                                    setInterval(function () {
+                                        if (ethereum.selectedAddress !== '') {
+                                            location.reload()
+                                        }
+                                    }, 1500)
+                                })
+                            } else if (typeof web3 !== 'undefined') {
+                                web3 = new Web3(web3.currentProvider)
+                                web3.eth.defaultAccount = web3.eth.accounts[0]
+                            } else {
+                                // set the provider you want from Web3.providers
+
+                                web3 = new Web3(
+                                    new Web3.providers.HttpProvider('https://mainnet.infura.io/v3/8098bf03fac34cd0a29c359cdf9e5db2')
+                                )
+                            }
+                        })
+                    }
+                } else {
+                }
+
+            },
+            updated() {
+                $('.mouse_btn>span').mouseenter(function () {
+                    $(this).addClass('activebtn')
+                })
+                $('.mouse_btn>span').mouseleave(function () {
+                    $(this).removeClass('activebtn')
+                })
+                var that = this
+                // var token = $('.icon').attr('src')
+                for (var i = 0; i++; i < that.shuju.length) {
+                    console.log(that.shuju[i])
+                }
+
+            },
+            methods: {
+                selectList() {
+
+                    if (this.inputvalue == '') {
+                        this.getaxios(true)
+                        return;
+                    }
+                    if (this.activeStatus == 1) {
+                        var dats = []
+                        this.shuju.forEach((its) => {
+                            dats.push(its.symbol)
+                        })
+                        // console.log(dats)
+                        var newData = dats.filter((item) => {
+                            if (item.toUpperCase().indexOf(this.inputvalue.toUpperCase()) > -1) {
+                                //indexOf方法中如果xxx.indexOf("")返回值为0
+                                return item
+                            }
+                            return newData
+                        })
+                        var datss = []
+                        for (var i = 0; i < this.shuju.length; i++) {
+                            for (var j = 0; j < newData.length; j++) {
+                                if (this.shuju[i].symbol == newData[j]) {
+                                    datss.push(this.shuju[i])
+                                }
+                            }
+                        }
+                        this.shuju = datss
+                        // console.log(this.shuju.length)
+                        if (this.shuju.length < 1) {
+                            this.Oraclenull = true
+                        }
+                        // console.log(this.inputvalue)
+                        // console.log(newData)
+                    } else {
+                        var activev = this.collectData
+                        var dats = []
+                        activev.forEach((its) => {
+                            dats.push(its.symbol)
+                        })
+                        var newData = dats.filter((items) => {
+                            if (items.toUpperCase().indexOf(this.inputvalue.toUpperCase()) > -1) {
+                                return items
+                            } return newData
+                        })
+                        var datss = []
+                        for (var i = 0; i < activev.length; i++) {
+                            for (var j = 0; j < newData.length; j++) {
+                                if (activev[i].symbol == newData[j]) {
+                                    datss.push(activev[i])
+                                }
+                            }
+                        }
+                        this.collectData = datss
+                        if (this.collectData.length < 1) {
+                            this.Favoritesnull = true
+                        }
+                    }
+                },
+                actives(datas) {
+                    this.activeStatus = datas
+                },
+
+                iflash() {
+                    web3.eth.getAccounts((error, accounts) => {
+                        var wallet_address = accounts[0]
+                        $('.pp').text(hidden_address(wallet_address))
+                    })
+                },
+                aa() {
+                    this.$i18n.locale = 'zh'
+                },
+                Favorites(index) {
+                    let indexs = index.toString()
+                    let isInFavorites = false
+
+                    // 遍历3个列表查看有收藏的去掉收藏
+                    for (let i = 0; i < this.spanActive.length; i++) {
+                        if (indexs == this.spanActive[i]) {
+                            // console.log('remove spanActive ' + i + ' ' + indexs)
+                            this.spanActive.splice(i, 1)
+                            isInFavorites = true
+                            break
+                        }
+                    }
+                    for (let i = 0; i < this.collectData.length; i++) {
+                        if (indexs == this.collectData[i].address) {
+                            // console.log('remove collectData ' + i + ' ' + indexs)
+                            this.collectData.splice(i, 1)
+                            isInFavorites = true
+                            break
+                        }
+                    }
+                    for (let i = 0; i < this.shuju.length; i++) {
+                        if (indexs == this.shuju[i].address) {
+                            1 == this.shuju[i].spans
+                                ? (this.shuju[i].spans = 0)
+                                : (this.shuju[i].spans = 1)
+                            if (false == isInFavorites) {
+                                this.collectData.push(this.shuju[i])
+                            }
+                            break
+                        }
+                    }
+                    if (true == isInFavorites) return
+
+                    // 下面是添加到收藏列表
+                    this.spanActive.push(indexs)
+                    document.cookie = 'icoActive=' + this.spanActive
+                    this.getaxios()
+                },
+                FavoritesRight(index) {
+                    var indexs = index.toString()
+                    if (this.spanActive.includes(indexs)) {
+                        for (var i = 0; i < this.collectData.length; i++) {
+                            if (indexs == this.collectData[i].address) {
+                                this.spanActive.splice(i, 1)
+                            }
+                        }
+                    } else {
+                        this.spanActive.push(index)
+                    }
+                    document.cookie = 'icoActive=' + this.spanActive
+                    this.getaxios()
+                },
+                changeSelection(scope) {
+                    if (scope == 0) {
+                        this.value = 'English'
+                        this.$i18n.locale = 'en'
+                        document.cookie = 'language=' + 'en'
+                        $('.language_enimg').show()
+                        $('.language_cnimg').hide()
+                    } else {
+                        this.value = 'Chinese'
+                        this.$i18n.locale = 'zh'
+                        document.cookie = 'language=' + 'zh'
+                        $('.language_enimg').hide()
+                        $('.language_cnimg').show()
+                    }
+                },
+                getaxios(isMount = false) {
+                    // function mainnet() {
+                    var httpRequest = new XMLHttpRequest() //第一步：建立所需的对象
+                    httpRequest.open(
+                        'GET',
+                        'https://nestdapp.io/nestwebApi/oracle/listNtokenOracle/1',
+                        true
+                    )
+                    httpRequest.send()
+                    let that = this
+
+                    if (true == isMount) {
+                        that.collectData = []
+                    }
+                    httpRequest.onreadystatechange = function () {
+                        if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+                            var json = httpRequest.responseText
+                            that.shuju = JSON.parse(json).value
+                            if (
+                                that.getCookie('icoActive') == [] ||
+                                that.getCookie('icoActive') == null
+                            ) {
+                                that.shuju.forEach((item) => {
+                                    item.spans = 0
+                                    item.url = "./svg/icon/" + item.symbol + ".png"
+                                })
+                            } else {
+                                that.shuju.forEach((item) => {
+                                    item.spans = 0
+                                    item.url = "./svg/icon/" + item.symbol + ".png"
+                                })
+                                if (true == isMount)
+                                    that.spanActive = that.getCookie('icoActive').split(',')
+                                for (let i = 0; i < that.shuju.length; i++) {
+                                    for (let j = 0; j < that.spanActive.length; j++) {
+                                        if (that.shuju[i].address == that.spanActive[j]) {
+                                            that.shuju[i].spans = 1
+                                            if (true == isMount) {
+                                                that.collectData.push(that.shuju[i])
+                                            }
+                                            break
+                                        }
+                                    }
+                                }
+                            }
+                            if (that.collectData.length > 0) {
+                                that.Favoritesnull = false
+                            }
+                            if (that.shuju.length > 0) {
+                                that.Oraclenull = false
+                            }
+                        }
+                    }
+                },
+
+                axx(item, index) {
+                    window.location.href =
+                        'oracle.html' +
+                        '?' +
+                        'symbol=' +
+                        item.symbol +
+                        '&' +
+                        'address=' +
+                        item.address +
+                        '&' +
+                        'showw=' +
+                        index
+                },
+                blurshow() {
+                    this.show = true
+                    this.selectList()
+                },
+
+                // 获取cookie
+                getCookie(name) {
+                    var arr,
+                        reg = new RegExp('(^| )' + name + '=([^;]*)(;|$)')
+                    if ((arr = document.cookie.match(reg))) return unescape(arr[2])
+                    else return null
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>

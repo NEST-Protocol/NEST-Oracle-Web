@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="下拉_icon" class="cls-1" d="M1532.44,47h7.11a0.435,0.435,0,0,1,.38.672c-0.15.268-3.28,4.619-3.54,5.076a0.444,0.444,0,0,1-.77,0c-0.2-.329-3.34-4.7-3.56-5.089A0.436,0.436,0,0,1,1532.44,47Z" transform="translate(-1532 -47)"/>
+</svg>

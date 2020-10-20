@@ -1,0 +1,1 @@
+const DECIMAL_POINT_WIDTH   = 8;

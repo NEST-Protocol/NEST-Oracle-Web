@@ -1,0 +1,21 @@
+<svg id="组_1" data-name="组 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="12" viewBox="0 0 80 12">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-2 {
+        fill: #fff;
+        fill-rule: evenodd;
+        opacity: 0.4;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="40" y1="12" x2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#424242"/>
+      <stop offset="1" stop-color="#4d4d4d"/>
+    </linearGradient>
+  </defs>
+  <rect id="矩形_3" data-name="矩形 3" class="cls-1" width="80" height="12" rx="6" ry="6"/>
+  <path id="矩形_4" data-name="矩形 4" class="cls-2" d="M405,516h1v6h-1v-6Zm-5,0h1v6h-1v-6Zm-5,0h1v6h-1v-6Z" transform="translate(-360 -513)"/>
+</svg>

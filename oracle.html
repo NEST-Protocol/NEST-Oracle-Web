@@ -1,0 +1,3000 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/x-icon" href="./svg/nest.ico" />
+    <title>Nest Oracle Dapp - Nest Protocol Interface</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="google" content="notranslate">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- <script src="js/echarts.min.js"></script> -->
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        html,
+        body {
+            font-family: '微软雅黑';
+        }
+
+        #app {
+            background: url(./svg/bj.jpg) repeat;
+            background-position: 0 0;
+        }
+
+        body {
+            margin: 0rem;
+            padding: 0rem;
+        }
+
+        .head {
+            width: 100%;
+            height: 3.125rem;
+            background-image: linear-gradient(#232323, #2C2C2C);
+        }
+
+        .flex_justcont {
+            display: flex;
+            justify-content: space-between;
+            font-size: .75rem;
+        }
+
+        .head_line {
+            line-height: 3.125rem;
+        }
+
+        .boxs {
+            width: 100%;
+            /* height: 62.5rem; */
+            min-height: 100vh;
+            /* background-color: #1A1A1A; */
+        }
+
+        .btn {
+            color: #FFFFFF;
+            background-color: #666666;
+            border: none;
+        }
+
+        .hides {
+            width: 100%;
+            opacity: 0;
+        }
+
+        .address {
+            border: solid 0.0625rem #2C2C2C;
+            border-radius: 0.25rem;
+            background-color: rgb(44, 44, 44);
+        }
+
+        .addressHeader {
+            width: 100%;
+            background-color: rgb(35, 35, 35);
+            height: 1.875rem;
+            line-height: 1.875rem;
+        }
+
+        .addressHeader_top {
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        .addressHeader_top div:nth-child(1) {
+            color: #E6E6E6
+        }
+
+        .addressHeader_top div:nth-child(2) {
+            color: #4DC3FF;
+        }
+
+        .mains {
+            /* display: flex; */
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        .inputs {
+            width: 100%;
+            border-radius: 1.25rem;
+            border: solid 0.0625rem rgba(154, 154, 154, 1);
+            background-color: rgb(31, 31, 31);
+            color: rgb(230, 230, 230);
+        }
+
+        .ptext {
+            text-align: right;
+            color: rgb(153, 153, 153);
+            font-size: 0.625rem;
+        }
+
+        .staking_assets {
+            width: 45%;
+            display: flex;
+            background-color: rgb(66, 66, 66);
+            text-align: center;
+        }
+
+        .fee {
+            width: 90%;
+            margin: 0 auto;
+            font-size: 1rem;
+        }
+
+        .ax {
+            width: 100%;
+            background-color: rgb(31, 31, 31);
+            color: #FFFFFF;
+            padding: 0.9375rem 0rem;
+            border-radius: 0.3125rem;
+        }
+
+        .btnss {
+            display: block;
+            margin: 1.25rem auto;
+            background-color: #FFC44D;
+            width: 12.5rem;
+            border: none;
+        }
+
+        .lists {
+            width: 100%;
+            border-radius: 0.25rem;
+            background-color: #2C2C2C;
+            margin-bottom: 1.25rem;
+            color: rgba(229, 229, 229, 1);
+        }
+
+        .lists_p {
+            margin-bottom: 0rem;
+        }
+
+        .switchover {
+            width: 100%;
+            background-color: rgb(21, 21, 21);
+            color: rgba(153, 153, 153, 1);
+            display: flex;
+            justify-content: space-between;
+            border-radius: 10rem;
+            margin: 0.625rem 0rem;
+        }
+
+        .switchover div {
+            width: 50%;
+            text-align: center;
+            border-radius: 10rem;
+            padding: 0.3125rem 0rem;
+            cursor: pointer;
+        }
+
+        .active {
+            background-color: rgb(43, 43, 43);
+            color: #FFFFFF;
+        }
+
+        .map {
+            /* width: 50%; */
+            height: 14.5rem;
+        }
+
+        .tops {
+            background-color: rgb(34, 34, 34);
+            border-radius: 0.3125rem 0.3125rem 0rem 0rem;
+            color: rgba(230, 230, 230, 1);
+            font-size: 0.75rem;
+        }
+
+        .tops p {
+            margin: 0.3125rem 0rem;
+        }
+
+        .image_text {
+            width: 47.5%;
+            background-color: rgb(66, 66, 66);
+            display: flex;
+            justify-content: space-around;
+            padding: 0.75rem 0rem;
+            border-radius: 0.3125rem;
+            align-items: center;
+        }
+
+        .image_text p {
+            text-align: center;
+            margin: 0rem;
+        }
+
+        .el-dialog {
+            background-color: rgb(44, 44, 44);
+            color: rgba(154, 154, 154, 1);
+            width: 30%;
+        }
+
+        .el-dialog__title {
+            color: #FFFFFF !important;
+        }
+
+        @media screen and (max-width: 500px) {
+            .el-dialog {
+                width: 90%;
+            }
+        }
+
+        .inpus {
+            color: rgba(229, 229, 229, 1);
+        }
+
+        .inpus .el-input__inner {
+            border: none;
+            border-radius: 6.25rem 0rem 0rem 6.25rem;
+            background-color: rgb(31, 31, 31);
+        }
+
+        .inpus .el-input-group__append {
+            background-color: rgb(31, 31, 31);
+            border: none;
+            border-radius: 0rem 6.25rem 6.25rem 0rem;
+        }
+
+        .loginin {
+            display: none;
+        }
+
+        .wallet_address {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .pp {
+            width: 165px;
+            color: #fff;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-style: oblique;
+            text-align: right;
+            margin-right: 10px;
+            font-size: .825rem;
+            margin: 0;
+            padding-right: 0.3rem;
+
+        }
+
+        .n_yebu,
+        .cr_nest,
+        .cr_sqnum,
+
+
+        .el-input__inner {
+            color: #fff;
+        }
+
+        .el-dialog__body {
+            color: #fff;
+        }
+
+        .el-icon-edit {
+            cursor: pointer;
+        }
+
+        .bj_null .el-dialog__body {
+            text-align: center;
+        }
+
+        .language {
+            width: 1.5rem;
+            position: absolute;
+            right: 0;
+            top: 1.2rem;
+        }
+
+        .language_cnimg {
+            display: none;
+        }
+
+        .language_img {
+            width: 1.5rem;
+            position: absolute;
+            right: 0;
+            top: 1.2rem;
+        }
+
+        .el-button {
+            color: #000;
+            border: none;
+            width: 45%;
+        }
+
+        .lists:hover {
+            background-color: #333333 !important;
+        }
+
+        .switchover div:hover {
+            color: #fff;
+        }
+
+        .el-button:active,
+        .el-button:focus,
+        .el-button:hover {
+            background: #ffd480 !important;
+            color: #000;
+            border-color: unset !important;
+        }
+
+        .WITHDRAW {
+            width: 45%;
+            background-color: rgb(66, 66, 66);
+            border: none;
+            color: rgb(255, 196, 78);
+        }
+
+        .WITHDRAW:hover {
+            background: #5c5c5c !important;
+            color: rgb(255, 196, 78);
+            border-color: unset !important;
+        }
+
+        .gray:hover {
+            background: #5c5c5c !important;
+            color: rgb(255, 196, 78);
+            border-color: unset ccc;
+        }
+
+        .xt_addr,
+        .ntoken_addr,
+        .token {
+            cursor: pointer;
+        }
+
+
+        .token:hover {
+            color: #80d4ff !important;
+        }
+
+        .xt_addr:hover {
+            color: #80d4ff !important;
+        }
+
+        .ntoken_addr:hover {
+            color: #80d4ff !important;
+        }
+
+        .cancel {
+            color: rgb(255, 196, 78);
+            background-color: rgb(66, 66, 66);
+        }
+
+        .cancel:hover {
+            background: #5c5c5c !important;
+            color: rgb(255, 196, 78);
+            border-color: unset !important;
+        }
+
+        .n_hover:hover,
+        .n_hover:active,
+        .n_hover:focus {
+            background: unset !important;
+            color: unset;
+            border-color: unset !important;
+            border: none;
+        }
+
+        .n_yebu {
+            display: none;
+        }
+
+        .sr_jg {
+            font-size: 1rem;
+        }
+
+        .syend {
+            display: none;
+        }
+
+        .sq_style {
+            margin-left: 10px;
+            cursor: pointer;
+            background: rgba(0, 174, 255, .2);
+            padding: 2px 5px;
+            padding-bottom: 4px;
+            border-radius: 5px;
+            border: 1px solid (178, 229, 255);
+            color: rgba(0, 174, 255, 1);
+            box-sizing: border-box;
+            width: 4.5rem;
+        }
+
+        .sq_style:hover {
+            background: rgba(51, 51, 51, .3) !important;
+        }
+
+        html,
+        body {
+            background: #2C2C2C
+        }
+
+        .bj_sq_text {
+            text-align: center;
+            margin: 0rem;
+            height: 32px;
+            line-height: 32px;
+        }
+
+        .cr_nest,
+        .cr_sqnum {
+            display: none;
+        }
+
+        .ysq,
+        .sy_wsq {
+            display: none;
+            width: 100% !important;
+            margin-left: 0 !important;
+        }
+
+        .ax .wsq:active,
+        .ax .wsq:focus,
+        .ax .wsq:hover {
+            background: #00aeff !important;
+        }
+
+        .ax .sy_ysq:active,
+        .ax .sy_ysq:focus,
+        .ax .sy_ysq:hover {
+            background: #00aeff !important;
+        }
+
+        .ax .ysq:active,
+        .ax .ysq:focus,
+        .ax .ysq:hover {
+            background: rgba(51, 51, 51, .3) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="head">
+            <el-row>
+                <el-col :xs="1" :sm="3" :md="3" :lg="3" :xl="3">
+                    <div class="hides">1</div>
+                </el-col>
+                <el-col :xs="22" :sm="18" :md="18" :lg="18" :xl="18">
+                    <div class="flex_justcont head_line" style="position: relative;">
+                        <div style="display: flex;">
+                            <img src="./svg/logo.svg" style="width: 4.75rem;cursor: pointer;" alt="" class="img_reback">
+                        </div>
+                        <div class="flex_justcont head_line">
+                            <div class="wallet_address">
+                                <span class="pp">{{$t('message1.connect')}}</span>
+                                <div class="loginin">
+                                    <img src="svg/metamask_icon_高亮.svg"
+                                        style="width: 1.5625rem;height: 0.725rem;margin-top: 1.25rem;" />
+                                </div>
+                                <div class="loginout">
+                                    <img src="svg/metamask_icon_置灰.svg"
+                                        style="width: 1.5625rem;height: 0.725rem;margin-top: 1.25rem;" />
+                                </div>
+                            </div>
+                            <el-select v-model="value" @change="changeSelection(value)" size="small" :value="0"
+                                style="width: 3.25rem;opacity: 0;z-index: 99;">
+                                <el-option v-for="item in directionOption" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                    <img :src="item.src" style="
+							                        width: 1.5625rem;
+							                        height: 0.725rem;
+							                        
+							                      " />
+                                </el-option>
+                            </el-select>
+                            <img src="./svg/语言切换_美国icon.svg" alt="" class="language_enimg language_img">
+                            <img src="./svg/语言切换_中国icon.svg" alt="" class="language_cnimg language_img">
+                        </div>
+                    </div>
+                </el-col>
+                <el-col :xs="1" :sm="3" :md="3" :lg="3" :xl="3">
+                    <div class="hides">1</div>
+                </el-col>
+            </el-row>
+        </div>
+        <div class="boxs" style="clear: both;">
+            <el-row>
+                <el-col :xs="1" :sm="3" :md="3" :lg="3" :xl="3">
+                    <div class="hides">1</div>
+                </el-col>
+                <el-col :xs="22" :sm="18" :md="18" :lg="18" :xl="18">
+                    <div style="margin: 0.925rem 0rem;" class="flex_justcont">
+                        <div>
+                            <el-button icon="el-icon-arrow-left" round class="btn n_hover" size="small" @click="reback"
+                                style="   
+    box-shadow: 0px 4px 4px 0px #000000;
+    background: unset;
+    color: #fff; width: 100%;">
+                            </el-button>
+                        </div>
+                        <div>
+                            <el-button class="btn n_hover" round size="small" style="
+    box-shadow: 0px 4px 4px 0px #000000;
+    background: unset;
+    color: #fff;width: 100%;cursor: text;">ETH/<span class="u_name"></span>
+                                {{ $t("message1.Oracle") }}</el-button>
+                        </div>
+                        <div style="opacity: 0;">3</div>
+                    </div>
+                    <div class="switchover">
+                        <div :class="{active:1==activeStatus}" @click="actives(1)">{{ $t("message1.Quote") }}</div>
+                        <div :class="{active:2==activeStatus}" @click="actives(2)">{{ $t("message1.Income") }}</div>
+                    </div>
+                    <div v-show="activeStatus==1">
+                        <div class="address">
+                            <div class="addressHeader">
+                                <div class="flex_justcont addressHeader_top" style="font-style: oblique;">
+                                    <div><span class="u_name"></span> {{ $t("message1.address") }}</div>
+                                    <div class="token">oxsadsdhasjkhj</div>
+                                </div>
+                            </div>
+                            <el-row class="mains">
+                                <el-col :xs='24' :sm="12" :md="12" :lg="12" :xl="12"
+                                    style="padding: 0.625rem 0.625rem;color: #E5E5E5;">
+                                    <div class="flex_justcont">
+                                        <div style="margin-top: 0.2rem;">
+                                            <span style="font-size: .925rem;">{{ $t("message1.price") }}</span>
+                                            <!-- <span class="price-invalid-label"></span> -->
+                                        </div>
+                                        <p class="pc_warn"
+                                            style="color: red;font-size: 0.625rem;padding: 0;margin-bottom: 0;display: none; cursor: pointer;">
+                                            {{$t('message1.pc_warn')}}</p>
+                                    </div>
+
+                                    <div class="inpus" style="margin-top: 1.4rem;">
+                                        <el-input placeholder="" size="small" v-model="input" class="sr_jg"
+                                            oninput="value=value.replace(/^\D*(\d*(?:\.\d{0,8})?).*$/g, '$1')"
+                                            maxlength="13">
+                                            <el-button slot="append" class="u_name n_hover"></el-button>
+                                        </el-input>
+                                    </div>
+                                    <p class="ptext">1 ETH = <span class="sr_token_price1">--</span> <span
+                                            class="u_name"></span></p>
+                                    <p>{{ $t("message1.Staking") }}</p>
+                                    <div class="flex_justcont">
+                                        <div class="image_text">
+                                            <div>
+                                                <img src="svg/icon/MR.png" class="token_img"
+                                                    style="width: 2.75rem;height: 2.75rem;" />
+                                            </div>
+                                            <div>
+                                                <p style="margin-top: 0.75rem;font-size: 1rem;font-weight: bold;margin: 0;"
+                                                    class="sr_token_price">--</p>
+                                                <p class="u_name"></p>
+                                            </div>
+                                        </div>
+                                        <div class="image_text">
+                                            <div>
+                                                <img src="svg/icon/ETH.png" style="width: 2.75rem;height: 2.75rem;" />
+                                            </div>
+                                            <div>
+                                                <p style="margin-top: 0.75rem;font-size: 1rem;font-weight: bold;margin: 0;"
+                                                    class="bj_eth_num">{{amount}}</p>
+                                                <p>ETH</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <el-button-group style="margin: 0 auto;display: table;margin-top: 2.1rem;">
+                                        <el-button :disabled="amountStates" class="gray"
+                                            style="background-color: rgb(66,66,66);color: rgba(153, 153, 153, 1);border: none;padding-left: 4rem;padding-right: 4rem;"
+                                            size="small" round type="primary" icon="el-icon-minus" @click="delamount">
+                                        </el-button>
+                                        <el-button
+                                            style="background-color: rgba(255, 196, 77, 1);color: rgba(0, 0, 0, 1);border: none;padding-left: 4rem;padding-right: 4rem;"
+                                            size="small" round type="primary" @click="addamount"><i
+                                                class="el-icon-plus el-icon--right"></i></el-button>
+                                    </el-button-group>
+                                </el-col>
+                                <el-col :xs='24' :sm="12" :md="12" :lg="12" :xl="12" style="color: #E5E5E5;">
+                                    <div class="fee">
+                                        <div class="flex_justcont"
+                                            style="margin: 0 auto;width: 95%;margin-top: 1.875rem;margin-bottom: 0.625rem;">
+                                            <div style="color: rgb(153,153,153);">{{ $t("message1.Fee") }}</div>
+                                            <div><span class="gas" style="font-size: .825rem;">-- </span> ETH</div>
+                                        </div>
+                                        <div class="flex_justcont"
+                                            style="margin: 0 auto;width: 95%;margin-bottom: 2.5rem;">
+                                            <div style="color: rgb(153,153,153);">{{ $t("message1.Estimated") }}</div>
+                                            <div><span class="miningAmount" style="font-size: .825rem;"></span> <span
+                                                    class="nname"></span></div>
+                                        </div>
+
+                                        <div class="flex_justcont"
+                                            style="color: rgba(191, 147, 57, 1);margin: 1.25rem auto;width: 95%;">
+                                            <div>{{ $t("message1.balanceETH") }}</div>
+                                            <div><span class="eth_balance" style="font-size: .825rem;"></span> ETH
+                                            </div>
+                                        </div>
+                                        <div class="ax">
+                                            <div class="flex_justcont"
+                                                style="color: rgba(191, 147, 57, 1);padding: 0.625rem 0rem;margin: 0 auto;width: 95%;">
+                                                <div><span class="u_name"></span> {{ $t("message1.balanceUSDT") }}</div>
+                                                <div><span class="token_balance" style="font-size: .825rem;"></span>
+                                                    <span class="u_name"></span>
+                                                </div>
+                                            </div>
+                                            <div class="flex_justcont"
+                                                style="color: rgb(153,153,153);margin: 0 auto;width: 95%;">
+                                                <div>{{ $t("message1.Approvedamount") }}</div>
+                                                <div style="padding-bottom: 0.625rem;">
+                                                    <el-tooltip class="item sq_style wsq" effect="dark">
+                                                        <div slot="content">{{$t("message1.qp_ysq")}}</div>
+                                                        <el-button class="" @click="qxsq">
+                                                            {{$t("message1.sq")}}</el-button>
+                                                    </el-tooltip>
+
+                                                    <el-tooltip class="item sq_style ysq" effect="dark"
+                                                        placement="top-start">
+                                                        <div slot="content">{{$t("message1.qp_wsq")}}</div>
+                                                        <el-button class="" style="background:#333333;color:#7E7E7E"
+                                                            @click="bj_sq_max">
+                                                            {{$t("message1.ysq")}}</el-button>
+                                                    </el-tooltip>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <el-button class="btnss" round size="small" @click="bbj"
+                                            style="margin-top:2rem">
+                                            {{ $t("message1.quqteBtn") }}</el-button>
+                                    </div>
+                                </el-col>
+                            </el-row>
+                        </div>
+                        <div style="margin: 0.925rem 0rem;">
+                            <span
+                                style="padding: 6px 9px;border-radius: 20px;font-size: .625rem;   box-shadow: 0px 4px 4px 0px #000000;background: unset;color: #fff;"
+                                round size="small" class="btn">{{ $t("message1.Verifying") }}</span>
+                        </div>
+                        <div id="daohang"></div>
+                        <div id="daohang2"></div>
+                        <div class="zw"
+                            style="width: 100%;border-radius: 0.25rem;background-color: #2C2C2C;display: flex;margin-top: 1rem;">
+                            <p style="margin: 1.25rem 0rem 1.25rem 2.1875rem;color:#5c5c5c"><span
+                                    class="el-icon-s-help"></span>{{ $t("message1.Quotation") }}</p>
+                        </div>
+                    </div>
+                    <div v-show="activeStatus==2">
+                        <!-- <el-row style="border-radius: 0.3125rem;margin-bottom: 0.9375rem;">
+								<el-col :xs='24' :sm="12" :md="12" :lg="12" :xl="12" class="map"
+									style="background-color: rgb(39,39,39);border-radius:0.3125rem 0rem 0rem 0.3125rem;">
+									<div id="pushed" style="width: 21.875rem;height:15.625rem;"></div>
+								</el-col>
+								<el-col :xs='24' :sm="12" :md="12" :lg="12" :xl="12" class="map"
+									style="background-color: rgb(44,44,44);border-radius: 0rem 0.3125rem 0.3125rem 0rem;">
+									<p style="text-align: center;color: rgba(230, 230, 230, 1);">Annualized return on
+										holding NEST</p>
+									<div class="flex_justcont" style="color: rgba(153, 153, 153, 1);">
+										<div style="width: 50%;text-align: center;padding: 0rem 0.625rem;">
+											<p style="color: rgba(255, 196, 78, 1);font-size: 1.25rem;">23.22%</p>
+											<p>7day average annualization rate of return by holding NEST</p>
+										</div>
+										<div style="width: 50%;text-align: center;padding: 0rem 0.625rem;">
+											<p style="color: rgba(255, 196, 78, 1);font-size: 1.25rem;">23.22%</p>
+											<p>7day average annualization rate of return by holding NEST</p>
+										</div>
+									</div>
+								</el-col>
+							</el-row> -->
+                        <div style="width: 100%;border-radius: 0.3125rem;">
+                            <div class="tops" style="font-style:oblique;;">
+                                <div class="flex_justcont" style="width: 90%;margin: 0 auto; ">
+                                    <p>{{ $t("message1.Incomecontract") }}</p>
+                                    <p class="xt_addr" style="color: rgba(77, 196, 255, 1);">
+                                        0xc83E009c7794e8f6d1954dc13c23A35Fc4D039F6</p>
+                                </div>
+                                <div class="flex_justcont" style="width: 90%;margin: 0 auto;">
+                                    <p><span class="nname"></span>{{ $t("message1.Incomecontract2") }}</p>
+                                    <p class="ntoken_addr" style="color: rgba(77, 196, 255, 1);"></p>
+                                </div>
+                            </div>
+                            <div
+                                style="width: 100%;background-color: rgb(44,44,44);color: rgba(229, 229, 229, 1);font-size: 0.8125rem;">
+                                <p style="margin: 0rem;text-align: center;padding: 1rem 0rem; font-size: 1.125rem;">
+                                    {{ $t("message1.Depositincome") }}<span
+                                        class="nname"></span>{{ $t("message1.Depositincome2") }}</p>
+                                <el-row>
+                                    <el-col :xs='24' :sm="12" :md="12" :lg="12" :xl="12"
+                                        style="padding: 1.25rem 1.25rem;">
+                                        <div>
+                                            <div style="width: 95%;margin: 0 auto;">
+                                                <div class="flex_justcont">
+                                                    <p style="color: rgba(154, 154, 154, 1);"><span
+                                                            class="nname"></span>{{ $t("message1.total") }}</p>
+                                                    <p class="total" style="font-size:.825rem"></p>
+                                                </div>
+                                            </div>
+                                            <div style="width: 95%;margin: 0 auto;">
+                                                <div class="flex_justcont">
+                                                    <p style="color: rgba(154, 154, 154, 1);">
+                                                        {{ $t("message1.SavedNEST") }}<span class="nname"></span>
+                                                    </p>
+                                                    <p class="myJoinNest" style="font-size:.825rem"></p>
+                                                </div>
+
+                                            </div>
+                                            <div style="width: 95%;margin: 0 auto;">
+                                                <div class="flex_justcont">
+                                                    <p style="color: rgba(154, 154, 154, 1);">
+                                                        {{ $t("message1.earningspercentage") }}</p>
+                                                    <p class="myper" style="font-size:.825rem"></p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                style="width: 100%;background-color: rgb(31,31,31);border-radius: 0.3125rem;">
+                                                <div style="width: 95%;margin: 0 auto;">
+                                                    <div class="flex_justcont" style="color: rgba(255, 196, 78, 1);">
+                                                        <p><span class="nname"></span>{{ $t("message1.balanceNEST") }}
+                                                        </p>
+                                                        <p class="nest_balance" style="font-size:.825rem"></p>
+                                                    </div>
+                                                    <div class="flex_justcont ax" style="align-items: center;">
+                                                        <p style="color: rgba(154, 154, 154, 1);"><span
+                                                                class="nname"></span>
+                                                            {{ $t("message1.Approvedamount") }}</p>
+
+                                                        <div style="">
+                                                            <el-tooltip class="item cr_sq sq_style sy_ysq "
+                                                                effect="dark">
+                                                                <div slot="content">{{$t("message1.qp_ysq")}}</div>
+                                                                <el-button class="" @click="sy_wsq">
+                                                                    {{$t("message1.sq")}}</el-button>
+                                                            </el-tooltip>
+
+                                                            <el-tooltip class="item cr_sq sq_style sy_wsq cqq"
+                                                                effect="dark" placement="top-start">
+                                                                <div slot="content">{{$t("message1.qp_wsq")}}</div>
+                                                                <el-button class=""
+                                                                    style="background:#333333;color:#7E7E7E">
+                                                                    {{$t("message1.ysq")}}</el-button>
+                                                            </el-tooltip>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="flex_justcont" style="margin: 0.9375rem 0rem;">
+                                            <el-button @click="Income_Withdraw = true" class="WITHDRAW" size="small"
+                                                round>{{ $t("message1.WITHDRAW") }}</el-button>
+                                            <el-button class="DEPOSITE"
+                                                style="width: 45%;background-color: rgba(255, 196, 78, 1);border: none;"
+                                                size="small" round>{{ $t("message1.DEPOSITE") }}</el-button>
+                                        </div>
+                                    </el-col>
+                                    <el-col :xs='24' :sm="12" :md="12" :lg="12" :xl="12"
+                                        style="padding: 1.25rem 0.625rem;">
+                                        <div style="width: 95%;margin: 0 auto;">
+                                            <div class="flex_justcont">
+                                                <p style="color: rgba(154, 154, 154, 1);" class="systart">
+                                                    {{ $t("message1.distribution") }}
+                                                </p>
+                                                <p style="color: rgba(154, 154, 154, 1);" class="syend">
+                                                    {{ $t("message1.distribution2") }}
+                                                </p>
+                                                <p class="" style="font-size: .825rem;">
+                                                    {{days}}{{ $t("message1.day") }}{{h}}{{ $t("message1.hours") }}{{min}}{{ $t("message1.sec") }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div style="width: 95%;margin: 0 auto;">
+                                            <div class="flex_justcont">
+                                                <p style="color: rgba(154, 154, 154, 1);">{{ $t("message1.totals") }}
+                                                </p>
+                                                <p class="eth_allearnings" style="font-size:.825rem"></p>
+                                            </div>
+                                        </div>
+                                        <div style="width: 95%;margin: 0 auto;">
+                                            <div class="flex_justcont">
+                                                <p style="color: rgba(154, 154, 154, 1);">{{ $t("message1.Savings") }}
+                                                </p>
+                                                <p class="leveingBalance" style="font-size:.825rem"></p>
+                                            </div>
+                                        </div>
+                                        <div style="width: 95%;margin: 0 auto;">
+                                            <div class="flex_justcont" style="color: rgba(255, 196, 78, 1);">
+                                                <p>{{ $t("message1.My") }}</p>
+                                                <p class="eth_earnings" style="font-size:.825rem"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex-justcont">
+                                            <el-button size="small" class="claim"
+                                                style="width: 50%;margin: 0 auto;display: block;background-color: rgba(255, 196, 78, 1);border: none;margin-top: 3.85rem;"
+                                                round>{{ $t("message1.CLAIM") }}</el-button>
+                                        </div>
+
+                                    </el-col>
+                                </el-row>
+                            </div>
+                        </div>
+                    </div>
+                </el-col>
+                <el-col :xs="1" :sm="3" :md="3" :lg="3" :xl="3">
+                    <div class="hides">1</div>
+                </el-col>
+            </el-row>
+        </div>
+        <el-dialog :title="dialog_text" :visible.sync="dialogVisible" center class="bj" :close-on-click-modal="false">
+            <span style="text-align: center;">{{ $t("message1.Penaltybottom") }}</span>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible = false" round size=small class='btnss'>{{ $t("message1.CONFIRMbtn") }}
+                </el-button>
+            </span>
+        </el-dialog>
+        <el-dialog :title="dialog_text" :visible.sync="dialogVisible2" center class="bj" :close-on-click-modal="false">
+            <span style="text-align: center;">{{ $t("message1.Penaltybottom2") }}</span>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible2 = false" round size=small class='btnss'>
+                    {{ $t("message1.CONFIRMbtn") }}
+                </el-button>
+            </span>
+        </el-dialog>
+        <el-dialog :visible.sync="dialogVisible_null" center class="bj_null" :close-on-click-modal="false">
+            <span style="text-align: center;">{{ $t("message1.null") }}</span>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible_null = false" round size=small class='btnss'>
+                    {{ $t("message1.CONFIRMbtn") }}
+                </el-button>
+            </span>
+        </el-dialog>
+        <el-dialog :visible.sync="dialogVisible_bj_sq" center :close-on-click-modal="false">
+            <span style="text-align: center;">{{ $t("message2.sq_bz") }}</span>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible_bj_sq = false" round size=small class='btnss'>
+                    {{ $t("message1.CONFIRMbtn") }}
+                </el-button>
+            </span>
+        </el-dialog>
+        <el-dialog :visible.sync="dialogVisible_crsj" center :close-on-click-modal="false">
+            <span style="text-align: center;display: block;">{{ $t("message1.crsj") }}</span>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible_crsj = false" round size=small class='btnss'>
+                    {{ $t("message1.CONFIRMbtn") }}
+                </el-button>
+            </span>
+        </el-dialog>
+        <el-dialog :visible.sync="dialogVisible_sysj" center :close-on-click-modal="false">
+            <span style="text-align: center;display: block;">{{ $t("message1.sysj") }}</span>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible_sysj = false" round size=small class='btnss'>
+                    {{ $t("message1.CONFIRMbtn") }}
+                </el-button>
+            </span>
+        </el-dialog>
+        <el-dialog :visible.sync="dialogVisible_fh_warn" center :close-on-click-modal="false">
+            <span style="text-align: center;display: block;">{{ $t("message1.fh_warn") }}</span>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible_fh_warn = false" round size=small class='btnss'>
+                    {{ $t("message1.CONFIRMbtn") }}
+                </el-button>
+            </span>
+        </el-dialog>
+        <el-dialog :title="dialog_Deposite" :visible.sync="Income_Deposite" center :close-on-click-modal="false">
+            <span>
+                <div
+                    style="width: 100%;border-radius: 1.25rem;border:none;background-color: rgb(31,31,31);color: rgb(230,230,230);">
+                    <div class="inpus">
+                        <el-input placeholder="" size="small" v-model="val2" class="val2" @focus="qx2"
+                            oninput="value=value.replace(/^\D*(\d*(?:\.\d{0,8})?).*$/g, '$1')" maxlength="13">
+                        </el-input>
+                    </div>
+                </div>
+                <div class="flex_justcont" style="margin: 1.25rem 0rem;color: rgba(255, 196, 78, 1);">
+                    <div><span class="nname"></span>{{ $t("message1.balanceNEST") }}</div>
+                    <div class="nest_balance"></div>
+                </div>
+                <div class="flex_justcont" style="margin: 1.25rem 0rem;">
+
+                </div>
+                <p class="cr_nest" style="text-align: center;color: red;">{{$t('message2.n_bz')}}</p>
+                <p class="cr_sqnum" style="text-align: center;color: red;">{{$t('message2.sq_bz')}}</p>
+            </span>
+            <span slot="footer" class="dialog-footer flex_justcont">
+                <el-button @click="Income_Deposite = false" round size=small class='btnss cancel'>
+                    {{$t('message2.CANCEL')}}</el-button>
+                <el-button round size=small class='btnss cq2'>{{$t('message2.CONFIRM')}}</el-button>
+            </span>
+        </el-dialog>
+        <el-dialog :title="dialog_withdraw" :visible.sync="Income_Withdraw" center :close-on-click-modal="false">
+            <span>
+                <div
+                    style="width: 100%;border-radius: 1.25rem;border:none;background-color: rgb(31,31,31);color: rgb(230,230,230);">
+                    <div class="inpus">
+                        <el-input placeholder="" size="small" v-model="val1" class="qc" @focus="qx"
+                            oninput="value=value.replace(/^\D*(\d*(?:\.\d{0,8})?).*$/g, '$1')" maxlength="13">
+                        </el-input>
+                    </div>
+                </div>
+                <div class="flex_justcont" style="margin: 1.25rem 0rem;">
+                    <div>{{$t('message1.SavedNEST')}}<span class="nname"></span></div>
+                    <div class="myJoinNest"></div>
+                </div>
+                <p style="color:red ;text-align: center;" class="n_yebu">{{$t('message2.n_bz')}}</p>
+            </span>
+            <span slot="footer" class="dialog-footer flex_justcont">
+                <el-button @click="Income_Withdraw = false" round size=small class='btnss cancel'>
+                    {{$t('message2.CANCEL')}}</el-button>
+                <el-button @click="Income_Withdraw = true" round size=small class='btnss Income_Withdraw2'>
+                    {{$t('message2.CONFIRM')}}
+                </el-button>
+            </span>
+        </el-dialog>
+
+    </div>
+    <script src="//unpkg.com/vue"></script>
+    <script src="//unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
+    <script src="//unpkg.com/element-ui"></script>
+    <script src="./js/en.js"></script>
+    <script src="./js/zh.js"></script>
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/contractAdress.js"></script>
+    <script src="./assets/abi/offerAbi.js"></script>
+    <script src="./assets/abi/NestPriceAbi.js"></script>
+    <script src="./assets/abi/DividendAbi.js"></script>
+    <script src="./assets/abi/integrationAbi.js"></script>
+    <script src="./assets/abi/NTokenAbi.js"></script>
+    <script src="./assets/js/decimal.min.js"></script>
+    <!-- <script src="./js/main.js"></script> -->
+    <script src="./assets/js/cutZero.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.2.11/dist/web3.min.js"></script>
+    <script src="./js/Constants.js"></script>
+    <script>
+        const messages = {
+            zh: languageChinese,
+            en: languageEnglish
+        }
+        const i18n = new VueI18n({
+            locale: 'en', // 语言标识
+            messages
+        })
+
+        new Vue({
+            el: "#app",
+            i18n,
+            data() {
+                return {
+                    // 切换弹窗title上的语言
+                    dialog_withdraw: null,
+                    dialog_Approve: null,
+                    dialog_Deposite: null,
+                    dialog_NEST: null,
+                    dialog_text: null,
+                    dialogVisible: false,
+                    dialogVisible2: false,
+                    Income_Deposite: false,
+                    Income_Withdraw: false,
+                    dialogVisibleMAX: false,
+                    dialogVisible_bj_sq: false,
+                    dialogVisibleMAX_bj: false,
+                    dialogVisible_null: false,
+                    dialogVisible_crsj: false,
+                    dialogVisible_sysj: false,
+                    dialogVisible_fh_warn: false,
+                    radio: '1',
+                    radioHide: true,
+                    val1: '',
+                    val2: '',
+                    val3: '',
+                    val4: '',
+                    amount: '',
+                    price: '',
+                    amountStates: true,
+                    num4: 1,
+                    input: '',
+                    value: 'null',
+                    activeStatus: 1,
+                    dj: '',
+                    directionOption: [{
+                        label: 'English',
+                        value: '0',
+                        src: 'svg/语言切换_美国icon.svg'
+                    },
+                    {
+                        label: 'Chinese',
+                        value: '1',
+                        src: 'svg/语言切换_中国icon.svg'
+                    },
+                    ],
+                    week: "",
+                    days: null,
+                    h: null,
+                    min: null,
+                    token_name: '',
+                    token_name_addr: '',
+                    n_addr: ''
+                }
+            },
+            created() {
+
+
+
+            },
+            mounted() {
+                // this.drawLine();
+
+                // 测试网合约地址
+                if (web3.version.network == 3) {
+                    USDT_addr = "0xf17D721369F540f7485E1033194eBf92e3f88079",
+                        // USDT报价合约地址
+                        USDT_offer = "0xFf6ad075D75FA51cdB231da54E6dF007E60C7122",
+                        // 其他报价合约地址
+                        _offer = "0x49665947b3Ac4a75DaD7B8E59701752bEc28Ff66",
+                        // 测试网价格合约地址
+                        price_addr = "0x2600D6ef3B02bBbc14783926bB76b14EBd38f6A6",
+
+                        // 分红合约地址
+                        Dividend_addr = "0xDE83944619005d5EE4AAB951199748D599fCff44",
+                        //分红NEST地址
+                        NEST_addr = "0xf565422eBd4A8976e1e447a849b8B483C68EFD0C",
+                        // 信息整合合约地址
+                        Integratiotoken = "0x2D5990d95Ca8a53F329b7F5B1E89C53D916C7D82",
+                        // NEST锁仓合约地址,
+                        NEST_lock = "0xdC912578B5e8f24b13E79ab072a1E9C86e659694",
+                        // 测试网NToken映射合约地址
+                        mapping_addr = "0x511fe13ca247ceF81332eE27f743E051991008Cb"
+                } else if (web3.version.network == 1) {
+                    // 主网合约地址
+
+                    USDT_addr = "0xdac17f958d2ee523a2206206994597c13d831ec7",
+                        // USDT报价合约地址
+                        USDT_offer = "0xc83E009c7794e8f6d1954dc13c23A35Fc4D039F6",
+                        // 其他报价合约地址
+                        _offer = "0x1542E790a742333EA6A2F171c5d07A2E7794EEf4",
+                        // 测试网价格合约地址
+                        price_addr = "0x94F36FAa6bB4f74009637292b09C355CcD3e80Eb",
+
+                        // 分红合约地址
+                        Dividend_addr = "0x19E1d193A448bD13097EFC2aea867468726e67c5",
+                        //分红NEST地址
+                        NEST_addr = "0x04abEdA201850aC0124161F037Efd70c74ddC74C",
+                        // 信息整合合约地址
+                        Integratiotoken = "0xBE6Aa1f0Fe8F19a8f7CC40C8916B0C0361197D77",
+                        // NEST锁仓合约地址,
+                        NEST_lock = "0x03904F4B9Fb54c61AAf96d0aCDD2e42a46c99102",
+                        // 测试网NToken映射合约地址
+                        mapping_addr = "0xF9Dc75762fC000f3fb1cF88E7fcc32f9969BA003"
+                }
+                if (typeof web3 !== 'undefined') {
+                    web3 = new Web3(web3.currentProvider);
+                    var coinbase = web3.eth.coinbase;
+                    var accounts = web3.eth.accounts;
+                    if (ethereum.selectedAddress !== '' && ethereum.selectedAddress !== 'undefined' && ethereum.selectedAddress !== null) {
+                        $('.loginin').show()
+                        $('.loginout').hide()
+                        // $('.wallet_address').css('pointer-events', 'none')
+                        // web3.eth.getBalance(accounts[0], (err, balance) => {
+                        // 	balance_eth = balance / 1e18
+                        // 	$('.balance_eth').text(balance_eth)
+                        // })
+                    } else {
+                        $('.wallet_address').click(function () {
+                            if (window.ethereum) {
+                                // 请求用户授权
+                                window.ethereum.enable().then(function (res) {
+                                    $('.loginout').hide()
+                                    $('.loginin').show()
+
+                                    setInterval(function () {
+                                        if (ethereum.selectedAddress !== "") {
+                                            location.reload()
+                                        }
+                                    }, 2000)
+                                })
+                            } else if (typeof web3 !== 'undefined') {
+                                web3 = new Web3(web3.currentProvider);
+                                web3.eth.defaultAccount = web3.eth.accounts[0];
+                            } else {
+                                // set the provider you want from Web3.providers
+                                web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/8098bf03fac34cd0a29c359cdf9e5db2"));
+                            }
+
+                        })
+                    }
+                } else {
+                }
+                if (this.getQueryVariable("showw")) {
+                    this.activeStatus = this.getQueryVariable("showw")
+
+                    this.token_name = this.getQueryVariable("symbol")
+                    this.token_name_addr = this.getQueryVariable("address")
+                    var img_src = "./svg/icon/" + this.token_name + ".png"
+                    if (this.token_name == 'CoFi' || this.token_name == 'sUSD' || this.token_name == 'REPv2' || this.token_name == 'BAND' || this.token_name == 'CRV' || this.token_name == 'HBCH' || this.token_name == 'RSR' || this.token_name == 'wNXM' || this.token_name == 'UNI' || this.token_name == 'AMPL' || this.token_name == 'ANT' || this.token_name == 'BAL' || this.token_name == 'BAT' || this.token_name == 'BIX' || this.token_name == 'BNB' || this.token_name == 'COMP' || this.token_name == 'DAI' || this.token_name == 'DGD' || this.token_name == 'ELF' || this.token_name == 'ENJ' || this.token_name == 'GNO' || this.token_name == 'GNT' || this.token_name == 'GUSD' || this.token_name == 'HBTC' || this.token_name == 'HPT' || this.token_name == 'HT' || this.token_name == 'HUSD' || this.token_name == 'imBTC' || this.token_name == 'KCS' || this.token_name == 'KEY' || this.token_name == 'KNC' || this.token_name == 'LEND' || this.token_name == 'LEO' || this.token_name == 'LINK' || this.token_name == 'LRC' || this.token_name == 'MANA' || this.token_name == 'MATIC' || this.token_name == 'MCO' || this.token_name == 'MKR' || this.token_name == 'MX' || this.token_name == 'NEXO' || this.token_name == 'OKB' || this.token_name == 'OMG' || this.token_name == 'PAX' || this.token_name == 'REN' || this.token_name == 'renBTC' || this.token_name == 'REP' || this.token_name == 'SNT' || this.token_name == 'SNX' || this.token_name == 'TUSD' || this.token_name == 'USDC' || this.token_name == 'USDT' || this.token_name == 'WBTC' || this.token_name == 'YFI' || this.token_name == 'YFII' || this.token_name == 'ZB' || this.token_name == 'ZRX')
+                        $('.token_img').attr('src', img_src)
+                } else {
+                    $('.token_img').attr('src', "./svg/icon/MR.png")
+                }
+
+                $('.u_name').text(this.token_name)
+                if ($(window).width() <= 500) {
+                    $('.token').text(hidden_address(this.token_name_addr))
+                    $('.xt_addr').text(hidden_address('0xc83E009c7794e8f6d1954dc13c23A35Fc4D039F6'))
+                } else {
+                    $('.token').text(this.token_name_addr)
+                    $('.xt_addr').text('0xc83E009c7794e8f6d1954dc13c23A35Fc4D039F6')
+                }
+
+
+                $('.img_reback').click(function () {
+                    window.location.href = "index.html"
+                })
+
+                $('.xt_addr').click(function () {
+                    var addr = $(this).text()
+                    var _herf = "https://cn.etherscan.com/address/" + addr
+                    window.open(_herf)
+                })
+                $('.ntoken_addr').click(function () {
+                    var addr = $(this).text()
+                    var _herf = "https://cn.etherscan.com/token/" + addr
+                    window.open(_herf)
+                })
+                $('.token').click(function () {
+                    var addr = $(this).text()
+                    var _herf = "https://cn.etherscan.com/address/" + addr
+                    window.open(_herf)
+                })
+                if (this.token_name == 'USDT') {
+                    $('.nname').text('NEST')
+
+                    n_n = 'NEST'
+                    $('.t_name').text('NEST')
+                    this.amount = 30
+                } else {
+                    USDT_addr = this.token_name_addr
+                    USDT_offer = _offer
+
+                    $('.nname').text('N' + this.token_name)
+                    n_n = 'N' + this.token_name
+                    $('.t_name').text(this.token_name)
+                    this.amount = 10
+                }
+                if (this.getCookie("language") == null || this.getCookie("language") == "en") {
+                    document.cookie = "language=" + "en"
+                    this.value = '0'
+                    this.$i18n.locale = 'en'
+                    $('.language_enimg').show()
+                    $('.language_cnimg').hide()
+                    this.dialog_withdraw = "Withdraw " + n_n
+                    this.dialog_Approve = this.token_name + " Approve"
+                    this.dialog_Deposite = "Deposite " + n_n
+                    this.dialog_NEST = n_n + " Approve"
+                    this.dialog_text = "Penalty for Quotation Deviation"
+                } else {
+                    document.cookie = "language=" + "zh"
+                    this.value = '1'
+                    this.$i18n.locale = 'zh'
+                    $('.language_enimg').hide()
+                    $('.language_cnimg').show()
+                    this.dialog_withdraw = "取出 " + n_n
+                    this.dialog_Approve = this.token_name + " 授权"
+                    this.dialog_Deposite = "存入 " + n_n
+                    this.dialog_NEST = n_n + " 授权"
+                    this.dialog_text = "报价偏差"
+                }
+                // this.getQueryVariable(symbol)
+                setInterval(function () {
+                    that.times();//调用倒计时函数
+                }, 1000)
+
+
+                // this.drawLine()
+
+
+                $('.sr_jg>input').bind("input propertychange", function () {
+                    that.bind()
+                })
+
+                setInterval(function () {
+                    that.flash()
+                }, 15000)
+                var that = this
+                web3.eth.getAccounts((error, accounts) => {
+                    var wallet_address = accounts[0]
+
+                    // 映射合约地址查询
+
+                    if (this.token_name == 'USDT') {
+                        if ($(window).width() <= 500) {
+                            $('.ntoken_addr').text(hidden_address(NEST_addr))
+                        } else {
+                            $('.ntoken_addr').text(NEST_addr)
+                        }
+                        // 	var a_addr = $('.ntoken_addr').text()
+                        // console.log(a_addr)
+                        var bonusInfo = new web3.eth.Contract(IntegrationAbi, Integratiotoken)
+                        bonusInfo.methods.bonusInfo(NEST_addr)
+                            .call({ from: accounts[0] })
+                            .then(function (result) {
+                                var leveingBalance = result.leveingBalance
+                                var decimalContract = new web3.eth.Contract(NestPriceAbi, NEST_addr)
+                                decimalContract.methods.decimals().call({ from: accounts[0] }).then(function (result) {
+                                    var demical = "1e" + result
+                                    $('.leveingBalance').text(cutZero((leveingBalance / demical * 1).toFixed(8).slice(0, 14)))
+                                })
+                            })
+                        var getInfoContract = new web3.eth.Contract(DividendAbi, Dividend_addr)
+                        getInfoContract.methods.getInfo(NEST_addr)
+                            .call({ from: accounts[0] })
+                            .then(function (result) {
+                                var getInfo = result
+                                var decimalContract = new web3.eth.Contract(NestPriceAbi, NEST_addr)
+                                decimalContract.methods.decimals().call().then(function (result) {
+                                    var demical = "1e" + result
+                                    var total = getInfo.tokenValue / demical
+                                    var myJoinNest = getInfo.myJoinNest / demical
+                                    var myper = myJoinNest / total * 100
+                                    var balance = getInfo.leftNum / demical
+                                    var sq_num = getInfo.allowNum / new Decimal(demical * 1)
+                                    var eth_earnings = getInfo.getEth / 1e18
+                                    var eth_allearnings = getInfo.ethNum / 1e18
+                                    $('.total').text(cutZero((total * 1).toFixed(8).slice(0, 14)))
+                                    $('.myJoinNest').text(cutZero((myJoinNest * 1).toFixed(8).slice(0, 14)))
+                                    $('.nest_balance').text(cutZero((balance * 1).toFixed(8).slice(0, 14)))
+                                    $('.myper').text(cutZero((myper * 1).toFixed(8).slice(0, 14)) + "%")
+
+                                    $('.eth_earnings').text(cutZero((eth_earnings * 1).toFixed(8).slice(0, 14)))
+                                    $('.eth_allearnings').text(cutZero((eth_allearnings * 1).toFixed(8).slice(0, 14)))
+                                    if (sq_num > 0) {
+                                        $('.sy_wsq').hide()
+                                        $('.sy_ysq').show()
+                                    } else {
+                                        $('.sy_wsq').show()
+                                        $('.sy_ysq').hide()
+                                    }
+                                })
+                            })
+                    } else {
+                        USDT_addr = this.token_name_addr
+                        USDT_offer = _offer
+
+                        var checkTokenMapping = new web3.eth.Contract(mappingabi, mapping_addr)
+                        checkTokenMapping.methods.checkTokenMapping(USDT_addr)
+                            .call({ from: accounts[0] })
+                            .then(function (result) {
+                                var ntoken_addr = result
+                                var bonusInfo = new web3.eth.Contract(IntegrationAbi, Integratiotoken)
+                                bonusInfo.methods.bonusInfo(ntoken_addr)
+                                    .call({ from: accounts[0] })
+                                    .then(function (result) {
+                                        console.log(result)
+                                        var leveingBalance = result.leveingBalance
+                                        var decimalContract = new web3.eth.Contract(NestPriceAbi, NEST_addr)
+                                        decimalContract.methods.decimals().call({ from: accounts[0] }).then(function (result) {
+                                            var demical = "1e" + result
+                                            $('.leveingBalance').text(cutZero((leveingBalance / demical * 1).toFixed(8).slice(0, 14)))
+                                        })
+                                    })
+                                if ($(window).width() <= 500) {
+                                    $('.ntoken_addr').text(hidden_address(ntoken_addr))
+                                } else {
+                                    $('.ntoken_addr').text(ntoken_addr)
+                                }
+                                var getInfoContract = new web3.eth.Contract(DividendAbi, Dividend_addr)
+                                getInfoContract.methods.getInfo(ntoken_addr)
+                                    .call({ from: accounts[0] })
+                                    .then(function (result) {
+                                        var getInfo = result
+                                        var decimalContract = new web3.eth.Contract(NestPriceAbi, ntoken_addr)
+                                        decimalContract.methods.decimals().call().then(function (result) {
+                                            var demical = "1e" + result
+                                            var total = getInfo.tokenValue / demical
+                                            var myJoinNest = getInfo.myJoinNest / demical
+                                            var myper = myJoinNest / total * 100
+                                            var balance = getInfo.leftNum / demical
+                                            var sq_num = getInfo.allowNum / new Decimal(demical * 1)
+                                            var eth_earnings = getInfo.getEth / 1e18
+                                            var eth_allearnings = getInfo.ethNum / 1e18
+                                            $('.total').text(cutZero((total * 1).toFixed(8).slice(0, 14)))
+                                            $('.myJoinNest').text(cutZero((myJoinNest * 1).toFixed(8).slice(0, 14)))
+                                            $('.nest_balance').text(cutZero((balance * 1).toFixed(8).slice(0, 14)))
+                                            $('.myper').text(cutZero((myper * 1).toFixed(8).slice(0, 14)) + "%")
+
+                                            $('.eth_earnings').text(cutZero((eth_earnings * 1).toFixed(8).slice(0, 14)))
+                                            $('.eth_allearnings').text(cutZero((eth_allearnings * 1).toFixed(8).slice(0, 14)))
+                                            console.log(sq_num)
+                                            if (sq_num > 0) {
+                                                $('.sy_wsq').hide()
+                                                $('.sy_ysq').show()
+                                            } else {
+                                                $('.sy_wsq').show()
+                                                $('.sy_ysq').hide()
+                                            }
+                                        })
+                                    })
+
+                            })
+                    }
+                    web3.eth.getBalance(accounts[0], (err, balance) => {
+                        var eth_balance = (balance / 1e18).toFixed(DECIMAL_POINT_WIDTH)
+                        $('.eth_balance').text(cutZero((eth_balance * 1).toFixed(8).slice(0, 14)))
+                    })
+                    $('.pp').text(hidden_address(wallet_address))
+                    var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                    listContract.methods.list('0', '50', '0')
+                        .call({ from: accounts[0] })
+                        .then(function (result) {
+                            var strs = new Array(); //定义一数组
+                            var arr = [];
+                            strs = result.split(","); //字符分割
+                            for (i = 0; i < strs.length; i += 9) {
+                                arr.push(strs.slice(i, i + 9))
+                            }
+
+                            var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                            listContract.methods.list('51', '100', '0')
+                                .call({ from: accounts[0] })
+                                .then(function (result) {
+                                    var strs = new Array(); //定义一数组
+
+                                    strs = result.split(","); //字符分割
+                                    for (i = 0; i < strs.length; i += 9) {
+                                        arr.push(strs.slice(i, i + 9))
+                                    }
+                                })
+                            var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                            listContract.methods.list('101', '150', '0')
+                                .call({ from: accounts[0] })
+                                .then(function (result) {
+                                    var strs = new Array(); //定义一数组
+
+                                    strs = result.split(","); //字符分割
+                                    for (i = 0; i < strs.length; i += 9) {
+                                        arr.push(strs.slice(i, i + 9))
+                                    }
+                                })
+                            var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                            listContract.methods.list('151', '200', '0')
+                                .call({ from: accounts[0] })
+                                .then(function (result) {
+                                    var strs = new Array(); //定义一数组
+
+                                    strs = result.split(","); //字符分割
+                                    for (i = 0; i < strs.length; i += 9) {
+                                        arr.push(strs.slice(i, i + 9))
+                                    }
+
+                                })
+                            var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                            listContract.methods.list('201', '250', '0')
+                                .call({ from: accounts[0] })
+                                .then(function (result) {
+                                    var strs = new Array(); //定义一数组
+
+                                    strs = result.split(","); //字符分割
+                                    for (i = 0; i < strs.length; i += 9) {
+                                        arr.push(strs.slice(i, i + 9))
+                                    }
+                                })
+                            var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                            listContract.methods.list('251', '300', '0')
+                                .call({ from: accounts[0] })
+                                .then(function (result) {
+                                    var strs = new Array(); //定义一数组
+
+                                    strs = result.split(","); //字符分割
+                                    for (i = 0; i < strs.length; i += 9) {
+                                        arr.push(strs.slice(i, i + 9))
+                                    }
+                                })
+                            var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                            listContract.methods.list('301', '350', '0')
+                                .call({ from: accounts[0] })
+                                .then(function (result) {
+                                    var strs = new Array(); //定义一数组
+
+                                    strs = result.split(","); //字符分割
+                                    for (i = 0; i < strs.length; i += 9) {
+                                        arr.push(strs.slice(i, i + 9))
+                                    }
+                                })
+                            var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                            listContract.methods.list('351', '400', '0')
+                                .call({ from: accounts[0] })
+                                .then(function (result) {
+                                    var strs = new Array(); //定义一数组
+
+                                    strs = result.split(","); //字符分割
+                                    for (i = 0; i < strs.length; i += 9) {
+                                        arr.push(strs.slice(i, i + 9))
+                                    }
+                                })
+                            var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                            listContract.methods.list('401', '450', '0')
+                                .call({ from: accounts[0] })
+                                .then(function (result) {
+                                    var strs = new Array(); //定义一数组
+
+                                    strs = result.split(","); //字符分割
+                                    for (i = 0; i < strs.length; i += 9) {
+                                        arr.push(strs.slice(i, i + 9))
+                                    }
+                                })
+                            var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                            listContract.methods.list('451', '500', '0')
+                                .call({ from: accounts[0] })
+                                .then(function (result) {
+                                    var strs = new Array(); //定义一数组
+
+                                    strs = result.split(","); //字符分割
+                                    for (i = 0; i < strs.length; i += 9) {
+                                        arr.push(strs.slice(i, i + 9))
+                                    }
+                                })
+                            var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                            listContract.methods.list('501', '550', '0')
+                                .call({ from: accounts[0] })
+                                .then(function (result) {
+                                    var strs = new Array(); //定义一数组
+
+                                    strs = result.split(","); //字符分割
+                                    for (i = 0; i < strs.length; i += 9) {
+                                        arr.push(strs.slice(i, i + 9))
+                                    }
+
+                                })
+                            var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                            listContract.methods.list('551', '600', '0')
+                                .call({ from: accounts[0] })
+                                .then(function (result) {
+                                    var strs = new Array(); //定义一数组
+
+                                    strs = result.split(","); //字符分割
+                                    for (i = 0; i < strs.length; i += 9) {
+                                        arr.push(strs.slice(i, i + 9))
+                                    }
+                                })
+                            var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                            listContract.methods.list('601', '650', '0')
+                                .call({ from: accounts[0] })
+                                .then(function (result) {
+                                    var strs = new Array(); //定义一数组
+
+                                    strs = result.split(","); //字符分割
+                                    for (i = 0; i < strs.length; i += 9) {
+                                        arr.push(strs.slice(i, i + 9))
+                                    }
+                                })
+                            var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                            listContract.methods.list('651', '700', '0')
+                                .call({ from: accounts[0] })
+                                .then(function (result) {
+                                    var strs = new Array(); //定义一数组
+
+                                    strs = result.split(","); //字符分割
+                                    for (i = 0; i < strs.length; i += 9) {
+                                        arr.push(strs.slice(i, i + 9))
+                                    }
+                                })
+                            var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                            listContract.methods.list('701', '750', '0')
+                                .call({ from: accounts[0] })
+                                .then(function (result) {
+                                    var strs = new Array(); //定义一数组
+
+                                    strs = result.split(","); //字符分割
+                                    for (i = 0; i < strs.length; i += 9) {
+                                        arr.push(strs.slice(i, i + 9))
+                                    }
+                                })
+                            var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                            listContract.methods.list('751', '800', '0')
+                                .call({ from: accounts[0] })
+                                .then(function (result) {
+                                    var strs = new Array(); //定义一数组
+
+                                    strs = result.split(","); //字符分割
+                                    for (i = 0; i < strs.length; i += 9) {
+                                        arr.push(strs.slice(i, i + 9))
+                                    }
+                                })
+                            var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                            listContract.methods.list('801', '850', '0')
+                                .call({ from: accounts[0] })
+                                .then(function (result) {
+                                    var strs = new Array(); //定义一数组
+
+                                    strs = result.split(","); //字符分割
+                                    for (i = 0; i < strs.length; i += 9) {
+                                        arr.push(strs.slice(i, i + 9))
+                                    }
+                                    console.log(arr)
+                                    web3.eth.getBlockNumber().then(function (result) {
+                                        var qk_num = result
+                                        USDT_addr = that.token_name_addr
+                                        var decimalContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                                        decimalContract.methods.decimals().call().then(function (result) {
+                                            var demical = "1e" + result
+                                            var dh = '';
+                                            var dh2 = ''
+                                            if (that.$i18n.locale == 'en') {
+                                                bj_text = 'Quote'
+                                                yzjd = 'Verification progress'
+                                                qh_text = 'RETRIEVE'
+                                                cd_text = "TAKER"
+                                            } else {
+                                                bj_text = '报价'
+                                                yzjd = '验证进度'
+                                                qh_text = '取回'
+                                                cd_text = "吃单"
+                                            }
+                                            for (j = 0; j < arr.length; j++) {
+                                                var addr = "0x" + arr[j][1]
+                                                var bh_addr = '0x' + arr[j][0]
+                                                var t_addr = $('.token').text()
+                                                var hy_taddr = "0x" + arr[j]
+                                                if (addr.toLowerCase() == (accounts[0]).toLowerCase() && (qk_num * 1 - (arr[j][7] * 1)) > 25 && (arr[j][3] !== '0' || arr[j][4] !== '0')) {
+
+                                                    obj = arr[j][0]
+                                                    pri = (cutZero(((arr[j][6] / demical) / (arr[j][5] / 1e18)).toFixed(8).slice(0, 14)))
+                                                    dh += '<div class="lists" style="padding-bottom:.5rem">'
+                                                        + '<div class="flex_justcont" style="width: 95%;margin: 0 auto;">'
+                                                        + '<div style="color: rgba(255, 196, 77, 1);width:130px">'
+                                                        + '<p class="lists_p" style="font-size:1rem;margin-top:1.5rem"><span class="el-icon-user-solid"></span ><span class="bj_text">' + bj_text + '</span></p>'
+
+                                                        + '</div>'
+                                                        + '<div style="width:130px;text-align:center">'
+                                                        + '<p class="lists_p" style="font-size:.925rem">25/25</p>'
+                                                        + '<p style="margin-top: 0rem;font-size: 0.625rem;color: rgba(153, 153, 153, 1);" class="yzjd">' + yzjd + '</p>'
+                                                        + '</div>'
+                                                        + '<p class="bh_addr" style="display:none">' + bh_addr + '</p>'
+                                                        + '<div style="width:150px;text-align:center">'
+                                                        + '<p class="lists_p list_qh" style="margin-top:1.25rem;background-color: rgba(255, 196, 77, 1);color:rgba(0, 0, 0, 1);height:2rem;text-align:center;line-height:2rem;border-radius: 16px;font-size: 14px;cursor:pointer;" class="list_qh">' + qh_text + '</p>'
+
+                                                        + '</div>'
+                                                        + '</div>'
+                                                        + '</div>'
+                                                        ;
+                                                }
+
+                                            }
+
+                                            for (k = 0; k < arr.length; k++) {
+                                                var t_addr = $('.token').text()
+                                                var hy_taddr = "0x" + arr[k][2]
+                                                var t_name_ = $('.u_name').text()
+
+                                                if (that.token_name != "USDT") {
+
+                                                    if (hy_taddr.toLowerCase() == t_addr.toLowerCase()) {
+                                                        if (qk_num * 1 - (arr[k][7] * 1) <= 25 && arr[k][5] !== '0') {
+                                                            obj = arr[k][0]
+                                                            pri = arr[k][6] / arr[k][5]
+                                                            pri = (cutZero(((arr[k][6] / demical) / (arr[k][5] / 1e18)).toFixed(8).slice(0, 14)))
+                                                            qk_now = qk_num * 1 - (arr[k][7] * 1)
+                                                            dh2 += '<div class="lists" style="padding-bottom:.5rem">'
+                                                                + '<div class="flex_justcont" style="width: 95%;margin: 0 auto;">'
+                                                                + '<div style="color: rgba(229, 229, 229, 1);width:130px">'
+                                                                + '<p class="lists_p" class="bj_text">' + bj_text + '</p>'
+                                                                + '<p style="margin-top: 0rem;font-size: 0.625rem;"><span style="font-size:1.25rem">' + pri + '</span><span> ' + that.token_name + '/ETH</span></p>'
+                                                                + '</div>'
+                                                                + '<div style="width:130px;text-align:center">'
+                                                                + '<p class="lists_p" style="font-size:.925rem;margin-top:1.15rem">' + qk_now + '/25</p>'
+                                                                + '<p style="margin-top: 0rem;font-size: 0.625rem;color: rgba(153, 153, 153, 1);"class="yzjd">' + yzjd + '</p>'
+                                                                + '</div>'
+                                                                + '<div style="width:150px">'
+                                                                + '<p class="lists_p " style="margin-top:1.25rem;background-color: rgba(153, 153, 153, 1);color: rgba(0, 0, 0, 1);padding: 0.4rem 2.9rem;border-radius: 16px;font-size: 14px;cursor: not-allowed;visibility: hidden;" class="list_cd">' + cd_text + '</p>'
+
+                                                                + '</div>'
+                                                                + '</div>'
+                                                                + '</div>'
+                                                                ;
+                                                        }
+                                                    }
+
+                                                } else {
+                                                    if (qk_num * 1 - (arr[k][7] * 1) <= 25 && arr[k][5] !== '0') {
+                                                        obj = arr[k][0]
+                                                        pri = arr[k][6] / arr[k][5]
+                                                        pri = (cutZero(((arr[k][6] / demical) / (arr[k][5] / 1e18)).toFixed(8).slice(0, 14)))
+                                                        qk_now = qk_num * 1 - (arr[k][7] * 1)
+                                                        dh2 += '<div class="lists" style="padding-bottom:.5rem">'
+                                                            + '<div class="flex_justcont" style="width: 95%;margin: 0 auto;">'
+                                                            + '<div style="color: rgba(229, 229, 229, 1);width:130px">'
+                                                            + '<p class="lists_p" class="bj_text">' + bj_text + '</p>'
+                                                            + '<p style="margin-top: 0rem;font-size: 0.625rem;"><span style="font-size:1.25rem">' + pri + '</span><span> ' + that.token_name + '/ETH</span></p>'
+                                                            + '</div>'
+                                                            + '<div style="width:130px;text-align:center">'
+                                                            + '<p class="lists_p" style="font-size:.925rem;margin-top:1.15rem">' + qk_now + '/25</p>'
+                                                            + '<p style="margin-top: 0rem;font-size: 0.625rem;color: rgba(153, 153, 153, 1);"class="yzjd">' + yzjd + '</p>'
+                                                            + '</div>'
+                                                            + '<div style="width:150px">'
+                                                            + '<p class="lists_p " style="margin-top:1.25rem;background-color: rgba(153, 153, 153, 1);color: rgba(0, 0, 0, 1);padding: 0.4rem 2.9rem;border-radius: 16px;font-size: 14px;cursor: not-allowed;visibility: hidden;" class="list_cd">' + cd_text + '</p>'
+
+                                                            + '</div>'
+                                                            + '</div>'
+                                                            + '</div>'
+                                                            ;
+                                                    }
+                                                }
+
+                                            }
+                                            document.getElementById('daohang').innerHTML = dh;
+                                            document.getElementById('daohang2').innerHTML = dh2
+                                            if ($("#daohang:has(div)").length !== 0 || $("#daohang2:has(div)").length !== 0) {
+                                                //含有子元素
+                                                $('.zw').hide()
+                                            } else {
+                                                //不含子元素
+                                                $('.zw').show()
+
+                                            }
+
+                                        })
+
+                                    })
+                                })
+
+                        })
+
+
+
+
+                    var updateAndCheckPriceNowContract = new web3.eth.Contract(NestPriceAbi, price_addr)
+                    updateAndCheckPriceNowContract.methods.checkPriceNow(USDT_addr)
+                        .call()
+                        .then(function (result) {
+                            var ethAmount = web3.utils.fromWei(result[0], 'ether')
+                            var erc20Amount = result[1];
+                            var _token_price = (erc20Amount / ethAmount);
+                            var decimalContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                            decimalContract.methods.decimals().call().then(function (result) {
+                                var demical = "1e" + result
+                                var token_price = _token_price / demical
+                                $('.token_price').text(token_price)
+                                // $('.sr_token_price1').text(token_price)
+                            })
+                        })
+                    var pricingInfo = new web3.eth.Contract(IntegrationAbi, Integratiotoken)
+                    pricingInfo.methods.pricingInfo(USDT_addr)
+                        .call({ from: accounts[0] })
+                        .then(function (result) {
+                            var _res = result
+                            var decimalContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                            decimalContract.methods.decimals().call().then(function (result) {
+                                var demical = "1e" + result
+                                var decimalContract = new web3.eth.Contract(NestPriceAbi, NEST_addr)
+                                decimalContract.methods.decimals().call().then(function (result) {
+                                    var n_demical = "1e" + result
+                                    let eth_balance = (_res.leftETHBalance / 1e18).toFixed(DECIMAL_POINT_WIDTH)
+                                    let offerAddress = _res.offerPrice
+                                    let miningAmount = (_res.miningAmount / n_demical).toFixed(DECIMAL_POINT_WIDTH)
+                                    let leftTokenBalance = (_res.leftTokenBalance / demical).toFixed(DECIMAL_POINT_WIDTH)
+                                    let allowAmount = (_res.allowAmount / demical).toFixed(DECIMAL_POINT_WIDTH)
+                                    let sq_num = _res.allowAmount
+                                    if (sq_num * 1 > 0) {
+                                        $('.ysq').hide()
+                                        $('.wsq').show()
+                                    } else {
+                                        $('.ysq').show()
+                                        $('.wsq').hide()
+                                    }
+                                    $('.token_balance').text(cutZero((leftTokenBalance * 1).toFixed(8).slice(0, 14)))
+                                    $('.miningAmount').text(cutZero((miningAmount * 1).toFixed(8).slice(0, 14)))
+                                })
+                            })
+                        })
+                    var updateAndCheckPriceNowContract = new web3.eth.Contract(NestPriceAbi, price_addr)
+                    updateAndCheckPriceNowContract.methods.checkPriceNow(USDT_addr)
+                        .call()
+                        .then(function (result) {
+                            var ethAmount = web3.utils.fromWei(result[0], 'ether')
+                            var erc20Amount = result[1];
+                            var decimalContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                            decimalContract.methods.decimals().call().then(function (result) {
+                                var demical = "1e" + result
+                                var token_price = (erc20Amount / ethAmount) / demical;
+                                $('.token_price').text(token_price)
+                            })
+                        })
+                    $('.pc_warn').click(function () {
+                        if (that.token_name == 'USDT') {
+                            that.dialogVisible2 = true
+                        } else {
+                            that.dialogVisible = true
+                        }
+                    })
+                    $('.WITHDRAW').click(function () {
+                        var n_addr = $('.ntoken_addr').text()
+                        var getInfoContract = new web3.eth.Contract(DividendAbi, Dividend_addr)
+                        getInfoContract.methods.getInfo(n_addr)
+                            .call({ from: accounts[0] })
+                            .then(function (result) {
+                                var getInfo = result
+                                var decimalContract = new web3.eth.Contract(NestPriceAbi, n_addr)
+                                decimalContract.methods.decimals().call().then(function (result) {
+                                    var demical = "1e" + result
+                                    var myJoinNest = getInfo.myJoinNest / demical
+
+                                    $('.myJoinNest').text(myJoinNest)
+
+                                })
+                            })
+                    })
+                    $('.DEPOSITE').click(function () {
+                        console.log(that.week, that.days)
+                        if ((that.week <= 5 && that.days == 1) || (that.week > 0 && that.week <= 4) || (that.week == 5 && that.days == 0)) {
+                            that.Income_Deposite = true
+                            var n_addr = $('.ntoken_addr').text()
+                            var getInfoContract = new web3.eth.Contract(DividendAbi, Dividend_addr)
+                            getInfoContract.methods.getInfo(n_addr)
+                                .call({ from: accounts[0] })
+                                .then(function (result) {
+                                    var getInfo = result
+                                    var decimalContract = new web3.eth.Contract(NestPriceAbi, n_addr)
+                                    decimalContract.methods.decimals().call().then(function (result) {
+                                        var demical = "1e" + result
+                                        // var myJoinNest = getInfo.myJoinNest / demical
+                                        var balance = (getInfo.leftNum / demical).toFixed(DECIMAL_POINT_WIDTH)
+                                        var sq_num = (getInfo.allowNum / demical).toFixed(DECIMAL_POINT_WIDTH)
+                                        $('.nest_balance').text(cutZero((balance * 1).toFixed(8).slice(0, 14)))
+                                        // $('.myper').text(myper)
+                                        // if (sq_num >= demical / 10) {
+                                        // 	$('.sq_num').text('Max')
+                                        // } else {
+                                        // 	$('.sq_num').text(cutZero((sq_num * 1).toFixed(8).slice(0, 14)))
+                                        // }
+                                    })
+                                })
+                        }
+                        if ((that.week == 5 && that.days == 2) || that.week == 6 || that.week == 0) {
+                            that.Income_Deposite = false
+                            that.dialogVisible_crsj = true
+                        }
+
+                    })
+                    // 报价授权
+                    $('.bj_sq').click(function () {
+                        var sq_usdtContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                        sq_usdtContract.methods.approve(USDT_offer,
+                            ("999999999999999999999999999999999999")).send({ from: accounts[0] }).on('transactionHash', function (hash) {
+                            })
+                            .on('receipt', function (receipt) {
+                                that.flash()
+                            })
+                            .on('confirmation', function (confirmationNumber, receipt) {
+                                that.flash()
+                            })
+                            .on('error', function () {
+                                that.flash()
+                            });
+                    })
+
+
+
+                    // quchu
+                    var that = this
+                    $('.Income_Withdraw2').click(function () {
+                        // n_addr = NEST_addr
+                        var n_addr = $('.ntoken_addr').text()
+                        var num = new Decimal($('.qc>input').val() * 1)
+                        var getInfoContract = new web3.eth.Contract(DividendAbi, Dividend_addr)
+                        getInfoContract.methods.getInfo(n_addr)
+                            .call({ from: accounts[0] })
+                            .then(function (result) {
+                                var getInfo = result
+                                var decimalContract = new web3.eth.Contract(NestPriceAbi, n_addr)
+                                decimalContract.methods.decimals().call().then(function (result) {
+                                    var darr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                                    var str = "";
+                                    //根据name获取所有元素
+
+                                    for (var i = 0; i < result; i++) {
+                                        str += darr[i];
+                                    }
+                                    var demical = new Decimal((1 + str) * 1)
+                                    var total = (getInfo.tokenValue / demical).toFixed(DECIMAL_POINT_WIDTH)
+                                    var myJoinNest = (getInfo.myJoinNest / demical).toFixed(DECIMAL_POINT_WIDTH)
+                                    var myper = (myJoinNest / total * 100).toFixed(DECIMAL_POINT_WIDTH) + "%"
+                                    var balance = (getInfo.leftNum / demical).toFixed(DECIMAL_POINT_WIDTH)
+                                    var sq_num = (getInfo.allowNum / demical).toFixed(DECIMAL_POINT_WIDTH)
+                                    var eth_earnings = (getInfo.getEth / 1e18).toFixed(DECIMAL_POINT_WIDTH)
+                                    var eth_allearnings = (getInfo.ethNum / 1e18).toFixed(DECIMAL_POINT_WIDTH)
+                                    amount = new Decimal(num * demical)
+                                    if (num > myJoinNest * 1) {
+                                        $('.n_yebu').show()
+                                    }
+                                    if (num <= myJoinNest * 1 && num >= 0) {
+                                        $('.n_yebu').hide()
+                                        var takeOutContract = new web3.eth.Contract(DividendAbi, Dividend_addr)
+                                        takeOutContract.methods.takeOut(amount.toFixed(), n_addr)
+                                            .send({ from: accounts[0] })
+                                            .on('transactionHash', function (hash) {
+                                                // 发起交易
+                                            })
+                                            .on('receipt', function (receipt) {
+                                                //
+                                                that.flash()
+                                                that.Income_Withdraw = false
+                                            })
+                                            .on('confirmation', function (confirmationNumber, receipt) {
+                                                //
+                                                that.Income_Withdraw = false
+                                                that.flash()
+                                                $('.qc>input').val('')
+                                            })
+                                            .on('error', function () {
+                                                that.flash()
+                                                // 拒绝交易
+                                            });
+                                    }
+                                })
+                            })
+                    })
+
+                    // 存入
+                    $('.cq2').click(function () {
+                        // n_addr = NEST_addr
+                        var n_addr = $('.ntoken_addr').text()
+                        var num = new Decimal($('.val2>input').val())
+                        var getInfoContract = new web3.eth.Contract(DividendAbi, Dividend_addr)
+                        getInfoContract.methods.getInfo(n_addr)
+                            .call({ from: accounts[0] })
+                            .then(function (result) {
+                                var getInfo = result
+                                var decimalContract = new web3.eth.Contract(NestPriceAbi, n_addr)
+                                decimalContract.methods.decimals().call().then(function (result) {
+                                    var darr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                                    var str = "";
+                                    //根据name获取所有元素
+
+                                    for (var i = 0; i < result; i++) {
+                                        str += darr[i];
+                                    }
+                                    var demical = ((1 + str) * 1)
+                                    var total = (getInfo.tokenValue / demical).toFixed(DECIMAL_POINT_WIDTH)
+                                    var myJoinNest = (getInfo.myJoinNest / demical).toFixed(DECIMAL_POINT_WIDTH)
+                                    var myper = (myJoinNest / total * 100).toFixed(DECIMAL_POINT_WIDTH) + "%"
+                                    var balance = (getInfo.leftNum / demical).toFixed(DECIMAL_POINT_WIDTH)
+                                    var sq_num = (getInfo.allowNum / demical).toFixed(DECIMAL_POINT_WIDTH)
+                                    var eth_earnings = (getInfo.getEth / 1e18).toFixed(DECIMAL_POINT_WIDTH)
+                                    var eth_allearnings = (getInfo.ethNum / 1e18).toFixed(DECIMAL_POINT_WIDTH)
+                                    var amount = new Decimal(num * (demical))
+                                    if (num * 1 > balance * 1) {
+                                        $('.cr_nest').show()
+                                    }
+                                    if (sq_num > 0) {
+
+                                    } else {
+                                        var lock_sqContract = new web3.eth.Contract(NestPriceAbi, n_addr)
+                                        lock_sqContract.methods.approve(NEST_lock,
+                                            '99999999999999999999999999999999999'
+                                        ).send({ from: accounts[0] }).on('transactionHash', function (hash) {
+                                        })
+                                            .on('receipt', function (receipt) {
+                                                that.flash()
+                                            })
+                                            .on('confirmation', function (confirmationNumber, receipt) {
+                                                that.flash()
+                                                that.dialogVisibleMAX = false
+                                            })
+                                            .on('error', function () {
+                                                that.flash()
+
+                                            });
+                                    }
+                                    if (num * 1 <= balance * 1 && num * 1 <= sq_num * 1 && num * 1 >= 0) {
+                                        $('.cr_nest').hide()
+                                        $('.cr_nest').hide()
+                                        var depositInContract = new web3.eth.Contract(DividendAbi, Dividend_addr)
+                                        depositInContract.methods.depositIn(amount.toFixed(), n_addr)
+                                            .send({ from: accounts[0] })
+                                            .on('transactionHash', function (hash) {
+                                                // 发起交易
+                                            })
+                                            .on('receipt', function (receipt) {
+                                                //
+                                                that.flash()
+                                                that.Income_Deposite = false
+                                            })
+                                            .on('confirmation', function (confirmationNumber, receipt) {
+                                                //
+                                                that.Income_Deposite = false
+                                                that.flash()
+                                                $('.val2').val('')
+                                            })
+                                            .on('error', function () {
+                                                that.flash()
+                                                // 拒绝交易
+                                            });
+                                    }
+                                })
+                            })
+
+                    })
+                    // 领取收益
+                    $('.claim').click(function () {
+                        if ((that.week <= 5 && that.days == 1) || (that.week > 0 && that.week <= 4) || (that.week == 5 && that.days == 0)) {
+                            that.dialogVisible_sysj = true
+                        }
+                        if ((that.week == 5 && that.days == 2 || that.week == 6 || that.week == 0)) {
+                            var n_addr = $('.ntoken_addr').text()
+                            var getInfoContract = new web3.eth.Contract(DividendAbi, Dividend_addr)
+                            getInfoContract.methods.getInfo(n_addr)
+                                .call({ from: accounts[0] })
+                                .then(function (result) {
+                                    var getInfo = result
+                                    var decimalContract = new web3.eth.Contract(NestPriceAbi, n_addr)
+                                    decimalContract.methods.decimals().call().then(function (result) {
+                                        var demical = "1e" + result
+                                        var eth_earnings = getInfo.getEth / demical
+                                        var bonusInfo = new web3.eth.Contract(IntegrationAbi, Integratiotoken)
+                                        bonusInfo.methods.bonusInfo(n_addr)
+                                            .call({ from: accounts[0] })
+                                            .then(function (result) {
+                                                var fh_addr = result.tokenAbonusContractAddress
+                                                if (eth_earnings <= 0) {
+                                                    that.dialogVisible_fh_warn = true
+                                                }
+                                                if (eth_earnings > 0) {
+                                                    that.dialogVisible_fh_warn = false
+                                                    var getAbonusContract = new web3.eth.Contract(DividendAbi, Dividend_addr)
+                                                    getAbonusContract.methods.getAbonus(n_addr)
+                                                        .send({ from: accounts[0] })
+                                                        .on('transactionHash', function (hash) {
+                                                            // 发起交易
+                                                        })
+                                                        .on('receipt', function (receipt) {
+                                                            //c
+                                                            that.flash()
+                                                        })
+                                                        .on('confirmation', function (confirmationNumber, receipt) {
+                                                            //
+                                                            that.flash()
+                                                            console.log(1)
+                                                        })
+                                                        .on('error', function () {
+                                                            // 拒绝交易
+                                                            that.flash()
+                                                        });
+                                                }
+                                            })
+
+                                    })
+                                })
+                        }
+
+
+                    })
+                    var that = this
+                    $('.cqq').click(function () {
+                        // n_addr = NEST_addr
+                        var n_addr = $('.ntoken_addr').text()
+                        var lock_sqContract = new web3.eth.Contract(NestPriceAbi, n_addr)
+                        lock_sqContract.methods.approve(NEST_lock,
+                            '999999999999999999999999999999999999'
+                        ).send({ from: accounts[0] }).on('transactionHash', function (hash) {
+                        })
+                            .on('receipt', function (receipt) {
+                                that.flash()
+                                $('.sy_wsq').hide()
+                                $('.sy_ysq').show()
+                            })
+                            .on('confirmation', function (confirmationNumber, receipt) {
+                                that.flash()
+                                that.dialogVisibleMAX = false
+                            })
+                            .on('error', function () {
+                                that.flash()
+
+                            });
+                    })
+                    // 取回
+                    $('#daohang').on('click', ".list_qh", function () {
+
+                        var _addr = $(this).parent().siblings('.bh_addr').text()
+                        var turnOutContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                        turnOutContract.methods.turnOut(_addr)
+                            .send({ from: accounts[0] })
+                            .on('transactionHash', function (hash) {
+                                // 发起交易
+                            })
+                            .on('receipt', function (receipt) {
+                                //
+                                that.flash()
+                            })
+                            .on('confirmation', function (confirmationNumber, receipt) {
+                                //
+                                that.flash()
+                            })
+                            .on('error', function () {
+                                // 拒绝交易
+                                that.flash()
+                            });
+                    })
+                })
+
+            },
+            methods: {
+                qxsq() {
+
+                    var that = this
+                    web3.eth.getAccounts((error, accounts) => {
+                        var n_addr = $('.token').text()
+
+                        var lock_sqContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                        lock_sqContract.methods.approve(USDT_offer,
+                            '0'
+                        ).send({ from: accounts[0] }).on('transactionHash', function (hash) {
+                        })
+                            .on('receipt', function (receipt) {
+                                that.flash()
+                            })
+                            .on('confirmation', function (confirmationNumber, receipt) {
+                                that.flash()
+                                that.dialogVisibleMAX = false
+                            })
+                            .on('error', function () {
+                                that.flash()
+
+                            });
+                    })
+
+                },
+                sy_wsq() {
+                    web3.eth.getAccounts((error, accounts) => {
+                        var that = this
+                        var n_addr = $('.ntoken_addr').text()
+                        var lock_sqContract = new web3.eth.Contract(NestPriceAbi, n_addr)
+                        lock_sqContract.methods.approve(NEST_lock,
+                            '0'
+                        ).send({ from: accounts[0] }).on('transactionHash', function (hash) {
+                        })
+                            .on('receipt', function (receipt) {
+                                that.flash()
+                            })
+                            .on('confirmation', function (confirmationNumber, receipt) {
+                                that.flash()
+                                that.dialogVisibleMAX = false
+                            })
+                            .on('error', function () {
+                                that.flash()
+
+                            });
+                    })
+
+                },
+                flash() {
+                    if ($(window).width() <= 500) {
+                        $('.token').text(hidden_address(this.token_name_addr))
+                    } else {
+                        $('.token').text(this.token_name_addr)
+                    }
+                    if (this.token_name == 'USDT') {
+                        $('.nname').text('NEST')
+                        n_n = 'NEST'
+                        $('.t_name').text('NEST')
+                    } else {
+                        USDT_addr = this.token_name_addr
+                        USDT_offer = _offer
+                        $('.nname').text('N' + this.token_name)
+                        n_n = 'N' + this.token_name
+                        $('.t_name').text(this.token_name)
+                    }
+                    if (this.getCookie("language") == null || this.getCookie("language") == "en") {
+                        document.cookie = "language=" + "en"
+                        this.value = '0'
+                        this.$i18n.locale = 'en'
+                        $('.language_enimg').show()
+                        $('.language_cnimg').hide()
+                        this.dialog_withdraw = "Withdraw " + n_n
+                        this.dialog_Approve = this.token_name + " Approve"
+                        this.dialog_Deposite = "Deposite " + n_n
+                        this.dialog_NEST = n_n + " Approve"
+                        this.dialog_text = "Penalty for Quotation Deviation"
+                    } else {
+                        document.cookie = "language=" + "zh"
+                        this.value = '1'
+                        this.$i18n.locale = 'zh'
+                        $('.language_enimg').hide()
+                        $('.language_cnimg').show()
+                        this.dialog_withdraw = "取出 " + n_n
+                        this.dialog_Approve = this.token_name + " 授权"
+                        this.dialog_Deposite = "存入 " + n_n
+                        this.dialog_NEST = n_n + " 授权"
+                        this.dialog_text = "报价偏差"
+                    }
+                    var that = this
+                    web3.eth.getAccounts((error, accounts) => {
+                        var wallet_address = accounts[0]
+                        $('.pp').text(accounts[0])
+                        if (this.token_name == 'USDT') {
+                            var getInfoContract = new web3.eth.Contract(DividendAbi, Dividend_addr)
+                            getInfoContract.methods.getInfo(NEST_addr)
+                                .call({ from: accounts[0] })
+                                .then(function (result) {
+                                    var getInfo = result
+                                    var decimalContract = new web3.eth.Contract(NestPriceAbi, NEST_addr)
+                                    decimalContract.methods.decimals().call().then(function (result) {
+                                        var demical = "1e" + result
+                                        var total = getInfo.tokenValue / demical
+                                        var myJoinNest = getInfo.myJoinNest / demical
+                                        var myper = myJoinNest / total * 100
+                                        var balance = getInfo.leftNum / demical
+                                        var sq_num = getInfo.allowNum / new Decimal(demical * 1)
+                                        var eth_earnings = getInfo.getEth / 1e18
+                                        var eth_allearnings = getInfo.ethNum / 1e18
+                                        $('.total').text(cutZero((total * 1).toFixed(8).slice(0, 14)))
+                                        $('.myJoinNest').text(cutZero((myJoinNest * 1).toFixed(8).slice(0, 14)))
+                                        $('.nest_balance').text(cutZero((balance * 1).toFixed(8).slice(0, 14)))
+                                        $('.myper').text(cutZero((myper * 1).toFixed(8).slice(0, 14)) + "%")
+
+                                        $('.eth_earnings').text(cutZero((eth_earnings * 1).toFixed(8).slice(0, 14)))
+                                        $('.eth_allearnings').text(cutZero((eth_allearnings * 1).toFixed(8).slice(0, 14)))
+                                        if (sq_num > 0) {
+                                            $('.sy_wsq').hide()
+                                            $('.sy_ysq').show()
+                                        } else {
+                                            $('.sy_wsq').show()
+                                            $('.sy_ysq').hide()
+                                        }
+                                    })
+                                })
+                        } else {
+                            USDT_addr = this.token_name_addr
+                            USDT_offer = _offer
+                            var checkTokenMapping = new web3.eth.Contract(mappingabi, mapping_addr)
+                            checkTokenMapping.methods.checkTokenMapping(USDT_addr)
+                                .call({ from: accounts[0] })
+                                .then(function (result) {
+                                    var ntoken_addr = result
+                                    if ($(window).width() <= 500) {
+                                        $('.ntoken_addr').text(hidden_address(ntoken_addr))
+                                    } else {
+                                        $('.ntoken_addr').text(ntoken_addr)
+                                    }
+
+                                    var getInfoContract = new web3.eth.Contract(DividendAbi, Dividend_addr)
+                                    getInfoContract.methods.getInfo(ntoken_addr)
+                                        .call({ from: accounts[0] })
+                                        .then(function (result) {
+                                            var getInfo = result
+                                            var decimalContract = new web3.eth.Contract(NestPriceAbi, ntoken_addr)
+                                            decimalContract.methods.decimals().call().then(function (result) {
+                                                var demical = "1e" + result
+                                                var total = getInfo.tokenValue / demical
+                                                var myJoinNest = getInfo.myJoinNest / demical
+                                                var myper = myJoinNest / total * 100
+                                                var balance = getInfo.leftNum / demical
+                                                var sq_num = getInfo.allowNum / new Decimal(demical * 1)
+                                                var eth_earnings = getInfo.getEth / 1e18
+                                                var eth_allearnings = getInfo.ethNum / 1e18
+                                                $('.total').text(cutZero((total * 1).toFixed(8).slice(0, 14)))
+                                                $('.myJoinNest').text(cutZero((myJoinNest * 1).toFixed(8).slice(0, 14)))
+                                                $('.nest_balance').text(cutZero((balance * 1).toFixed(8).slice(0, 14)))
+                                                $('.myper').text(cutZero((myper * 1).toFixed(8).slice(0, 14)) + "%")
+
+                                                $('.eth_earnings').text(cutZero((eth_earnings * 1).toFixed(8).slice(0, 14)))
+                                                $('.eth_allearnings').text(cutZero((eth_allearnings * 1).toFixed(8).slice(0, 14)))
+                                                if (sq_num > 0) {
+                                                    $('.sy_wsq').hide()
+                                                    $('.sy_ysq').show()
+                                                } else {
+                                                    $('.sy_wsq').show()
+                                                    $('.sy_ysq').hide()
+                                                }
+                                            })
+                                        })
+
+                                })
+                        }
+                        web3.eth.getBalance(accounts[0], (err, balance) => {
+                            var eth_balance = (balance / 1e18).toFixed(DECIMAL_POINT_WIDTH)
+                            $('.eth_balance').text(cutZero((eth_balance * 1).toFixed(8).slice(0, 14)))
+                        })
+                        $('.pp').text(hidden_address(wallet_address))
+                        var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                        listContract.methods.list('0', '50', '0')
+                            .call({ from: accounts[0] })
+                            .then(function (result) {
+                                var strs = new Array(); //定义一数组
+                                var arr = [];
+                                strs = result.split(","); //字符分割
+                                for (i = 0; i < strs.length; i += 9) {
+                                    arr.push(strs.slice(i, i + 9))
+                                }
+
+                                var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                                listContract.methods.list('51', '100', '0')
+                                    .call({ from: accounts[0] })
+                                    .then(function (result) {
+                                        var strs = new Array(); //定义一数组
+
+                                        strs = result.split(","); //字符分割
+                                        for (i = 0; i < strs.length; i += 9) {
+                                            arr.push(strs.slice(i, i + 9))
+                                        }
+
+                                        var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                                        listContract.methods.list('101', '150', '0')
+                                            .call({ from: accounts[0] })
+                                            .then(function (result) {
+                                                var strs = new Array(); //定义一数组
+
+                                                strs = result.split(","); //字符分割
+                                                for (i = 0; i < strs.length; i += 9) {
+                                                    arr.push(strs.slice(i, i + 9))
+                                                }
+
+                                                var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                                                listContract.methods.list('151', '200', '0')
+                                                    .call({ from: accounts[0] })
+                                                    .then(function (result) {
+                                                        var strs = new Array(); //定义一数组
+
+                                                        strs = result.split(","); //字符分割
+                                                        for (i = 0; i < strs.length; i += 9) {
+                                                            arr.push(strs.slice(i, i + 9))
+                                                        }
+
+                                                    })
+                                                var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                                                listContract.methods.list('201', '250', '0')
+                                                    .call({ from: accounts[0] })
+                                                    .then(function (result) {
+                                                        var strs = new Array(); //定义一数组
+
+                                                        strs = result.split(","); //字符分割
+                                                        for (i = 0; i < strs.length; i += 9) {
+                                                            arr.push(strs.slice(i, i + 9))
+                                                        }
+
+                                                        var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                                                        listContract.methods.list('251', '300', '0')
+                                                            .call({ from: accounts[0] })
+                                                            .then(function (result) {
+                                                                var strs = new Array(); //定义一数组
+
+                                                                strs = result.split(","); //字符分割
+                                                                for (i = 0; i < strs.length; i += 9) {
+                                                                    arr.push(strs.slice(i, i + 9))
+                                                                }
+                                                            })
+                                                    })
+                                            })
+                                    })
+                                web3.eth.getBlockNumber().then(function (result) {
+                                    var qk_num = result
+                                    var decimalContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                                    decimalContract.methods.decimals().call().then(function (result) {
+                                        var demical = "1e" + result
+
+                                        var dh = '';
+                                        var dh2 = ''
+                                        if (that.$i18n.locale == 'en') {
+                                            bj_text = 'Quote'
+                                            yzjd = 'Verification progress'
+                                            qh_text = 'RETRIEVE'
+                                            cd_text = "TAKER"
+                                        } else {
+                                            bj_text = '报价'
+                                            yzjd = '验证进度'
+                                            qh_text = '取回'
+                                            cd_text = "吃单"
+                                        }
+                                        for (j = 0; j < arr.length; j++) {
+                                            var addr = "0x" + arr[j][1]
+                                            var bh_addr = '0x' + arr[j][0]
+                                            var t_addr = $('.token').text()
+                                            var hy_taddr = "0x" + arr[j][1]
+
+                                            if (addr.toLowerCase() == (accounts[0]).toLowerCase() && (qk_num * 1 - (arr[j][7] * 1)) > 25 && (arr[j][3] !== '0' || arr[j][4] !== '0')) {
+                                                obj = arr[j][0]
+                                                pri = (cutZero(((arr[j][6] / demical) / (arr[j][5] / 1e18)).toFixed(8).slice(0, 14)))
+                                                dh += '<div class="lists" style="padding-bottom:.5rem">'
+                                                    + '<div class="flex_justcont" style="width: 95%;margin: 0 auto;">'
+                                                    + '<div style="color: rgba(255, 196, 77, 1);width:130px">'
+                                                    + '<p class="lists_p" style="font-size:1rem;margin-top:1.5rem"><span class="el-icon-user-solid"></span ><span class="bj_text">' + bj_text + '</span></p>'
+                                                    + '</div>'
+                                                    + '<div style="width:130px;text-align:center">'
+                                                    + '<p class="lists_p" style="font-size:.925rem">25/25</p>'
+                                                    + '<p style="margin-top: 0rem;font-size: 0.625rem;color: rgba(153, 153, 153, 1);" class="yzjd">' + yzjd + '</p>'
+                                                    + '</div>'
+                                                    + '<p class="bh_addr" style="display:none">' + bh_addr + '</p>'
+                                                    + '<div style="width:150px;text-align:center">'
+                                                    + '<p class="lists_p list_qh" style="margin-top:1.25rem;background-color: rgba(255, 196, 77, 1);color:rgba(0, 0, 0, 1);height:2rem;text-align:center;line-height:2rem;border-radius: 16px;font-size: 14px;cursor:pointer;" class="list_qh">' + qh_text + '</p>'
+                                                    + '</div>'
+                                                    + '</div>'
+                                                    + '</div>'
+                                                    ;
+                                            }
+                                        }
+                                        for (k = 0; k < arr.length; k++) {
+                                            var t_addr = $('.token').text()
+                                            var hy_taddr = "0x" + arr[k][2]
+                                            var t_name_ = $('.u_name').text()
+
+                                            if (that.token_name !== "USDT") {
+
+                                                if (hy_taddr.toLowerCase() == t_addr.toLowerCase()) {
+                                                    if (qk_num * 1 - (arr[k][7] * 1) <= 25 && arr[k][5] !== '0') {
+                                                        obj = arr[k][0]
+                                                        pri = arr[k][6] / arr[k][5]
+                                                        pri = (cutZero(((arr[k][6] / demical) / (arr[k][5] / 1e18)).toFixed(8).slice(0, 14)))
+                                                        qk_now = qk_num * 1 - (arr[k][7] * 1)
+                                                        dh2 += '<div class="lists" style:"padding-bottom:.5rem">'
+                                                            + '<div class="flex_justcont" style="width: 95%;margin: 0 auto;">'
+                                                            + '<div style="color: rgba(229, 229, 229, 1);width:130px">'
+                                                            + '<p class="lists_p" class="bj_text">' + bj_text + '</p>'
+                                                            + '<p style="margin-top: 0rem;font-size: 0.625rem;"><span style="font-size:1.25rem">' + pri + '</span><span> ' + that.token_name + '/ETH</span></p>'
+                                                            + '</div>'
+                                                            + '<div style="width:130px;text-align:center">'
+                                                            + '<p class="lists_p" style="font-size:.925rem;margin-top:1.15rem">' + qk_now + '/25</p>'
+                                                            + '<p style="margin-top: 0rem;font-size: 0.625rem;color: rgba(153, 153, 153, 1);"class="yzjd">' + yzjd + '</p>'
+                                                            + '</div>'
+                                                            + '<div style="width:150px">'
+                                                            + '<p class="lists_p " style="margin-top:1.25rem;background-color: rgba(153, 153, 153, 1);color: rgba(0, 0, 0, 1);padding: 0.4rem 2.9rem;border-radius: 16px;font-size: 14px;cursor: not-allowed;visibility: hidden;" class="list_cd">' + cd_text + '</p>'
+
+                                                            + '</div>'
+                                                            + '</div>'
+                                                            + '</div>'
+                                                            ;
+                                                    }
+                                                }
+
+                                            } else {
+
+                                                if (qk_num * 1 - (arr[k][7] * 1) <= 25 && arr[k][5] !== '0') {
+                                                    obj = arr[k][0]
+                                                    pri = arr[k][6] / arr[k][5]
+                                                    pri = (cutZero(((arr[k][6] / demical) / (arr[k][5] / 1e18)).toFixed(8).slice(0, 14)))
+                                                    qk_now = qk_num * 1 - (arr[k][7] * 1)
+                                                    dh2 += '<div class="lists" style="padding-bottom:.5rem">'
+                                                        + '<div class="flex_justcont" style="width: 95%;margin: 0 auto;">'
+                                                        + '<div style="color: rgba(229, 229, 229, 1);width:130px">'
+                                                        + '<p class="lists_p" class="bj_text">' + bj_text + '</p>'
+                                                        + '<p style="margin-top: 0rem;font-size: 0.625rem;"><span style="font-size:1.25rem">' + pri + '</span><span> ' + that.token_name + '/ETH</span></p>'
+                                                        + '</div>'
+                                                        + '<div style="width:130px;text-align:center">'
+                                                        + '<p class="lists_p" style="font-size:.925rem;margin-top:1.15rem">' + qk_now + '/25</p>'
+                                                        + '<p style="margin-top: 0rem;font-size: 0.625rem;color: rgba(153, 153, 153, 1);"class="yzjd">' + yzjd + '</p>'
+                                                        + '</div>'
+                                                        + '<div style="width:150px">'
+                                                        + '<p class="lists_p " style="margin-top:1.25rem;background-color: rgba(153, 153, 153, 1);color: rgba(0, 0, 0, 1);padding: 0.4rem 2.9rem;border-radius: 16px;font-size: 14px;cursor: not-allowed;visibility: hidden;" class="list_cd">' + cd_text + '</p>'
+
+                                                        + '</div>'
+                                                        + '</div>'
+                                                        + '</div>'
+                                                        ;
+                                                }
+                                            }
+                                        }
+                                        document.getElementById('daohang').innerHTML = dh;
+                                        document.getElementById('daohang2').innerHTML = dh2
+                                        if ($("#daohang:has(div)").length !== 0 || $("#daohang2:has(div)").length !== 0) {
+                                            //含有子元素
+                                            $('.zw').hide()
+                                        } else {
+                                            //不含子元素
+                                            $('.zw').show()
+
+                                        }
+
+                                    })
+
+                                })
+                            })
+                        var a_addr = $('.ntoken_addr').text()
+                        var bonusInfo = new web3.eth.Contract(IntegrationAbi, Integratiotoken)
+                        bonusInfo.methods.bonusInfo(a_addr)
+                            .call({ from: accounts[0] })
+                            .then(function (result) {
+                                var leveingBalance = result.leveingBalance
+                                var decimalContract = new web3.eth.Contract(NestPriceAbi, NEST_addr)
+                                decimalContract.methods.decimals().call({ from: accounts[0] }).then(function (result) {
+                                    var demical = "1e" + result
+                                    $('.leveingBalance').text(cutZero((leveingBalance / demical * 1).toFixed(8).slice(0, 14)))
+                                })
+                            })
+
+                        var updateAndCheckPriceNowContract = new web3.eth.Contract(NestPriceAbi, price_addr)
+                        updateAndCheckPriceNowContract.methods.checkPriceNow(USDT_addr)
+                            .call()
+                            .then(function (result) {
+                                var ethAmount = web3.utils.fromWei(result[0], 'ether')
+                                var erc20Amount = result[1];
+                                var _token_price = (erc20Amount / ethAmount);
+                                var decimalContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                                decimalContract.methods.decimals().call().then(function (result) {
+                                    var demical = "1e" + result
+                                    var token_price = _token_price / demical
+                                    $('.token_price').text(token_price)
+
+                                })
+                            })
+                        var pricingInfo = new web3.eth.Contract(IntegrationAbi, Integratiotoken)
+                        pricingInfo.methods.pricingInfo(USDT_addr)
+                            .call({ from: accounts[0] })
+                            .then(function (result) {
+                                var _res = result
+                                var decimalContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                                decimalContract.methods.decimals().call().then(function (result) {
+                                    var demical = "1e" + result
+                                    var decimalContract = new web3.eth.Contract(NestPriceAbi, NEST_addr)
+                                    decimalContract.methods.decimals().call().then(function (result) {
+                                        var n_demical = "1e" + result
+                                        let eth_balance = (_res.leftETHBalance / 1e18).toFixed(DECIMAL_POINT_WIDTH)
+                                        let offerAddress = _res.offerPrice
+                                        let miningAmount = (_res.miningAmount / n_demical).toFixed(DECIMAL_POINT_WIDTH)
+                                        let leftTokenBalance = (_res.leftTokenBalance / demical).toFixed(DECIMAL_POINT_WIDTH)
+                                        let allowAmount = (_res.allowAmount / demical).toFixed(DECIMAL_POINT_WIDTH)
+                                        let sq_num = (_res.allowAmount / demical).toFixed(DECIMAL_POINT_WIDTH)
+                                        if (sq_num > 0) {
+                                            $('.ysq').hide()
+                                            $('.wsq').show()
+
+                                        } else {
+                                            $('.ysq').show()
+                                            $('.wsq').hide()
+                                        }
+                                        $('.token_balance').text(cutZero((leftTokenBalance * 1).toFixed(8).slice(0, 14)))
+                                        $('.miningAmount').text(cutZero((miningAmount * 1).toFixed(8).slice(0, 14)))
+                                    })
+                                })
+                            })
+                        var updateAndCheckPriceNowContract = new web3.eth.Contract(NestPriceAbi, price_addr)
+                        updateAndCheckPriceNowContract.methods.checkPriceNow(USDT_addr)
+                            .call()
+                            .then(function (result) {
+                                var ethAmount = web3.utils.fromWei(result[0], 'ether')
+                                var erc20Amount = result[1];
+                                var decimalContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                                decimalContract.methods.decimals().call().then(function (result) {
+                                    var demical = "1e" + result
+                                    var token_price = (erc20Amount / ethAmount) / demical;
+                                    $('.token_price').text(token_price)
+                                })
+                            })
+                    })
+
+
+                },
+                warn() {
+                    $('.n_yebu').hide()
+                    $('.cr_nest').hide()
+                    $('.cr_sqnum').hide()
+                    $('.fh_warn').hide()
+                },
+                qx() {
+                    $('.n_yebu').hide()
+                },
+                qx2() {
+                    $('.cr_nest').hide()
+                    $('.cr_sqnum').hide()
+                },
+                bind() {
+                    var val = $('.sr_jg>input').val()
+                    var num = $('.bj_eth_num').text()
+                    $('.sr_token_price').text(cutZero((val * num).toFixed(9).slice(0, 14)))
+
+                    if (val !== '') {
+                        $('.sr_token_price1').text(val)
+                    } else {
+                        $('.sr_token_price1').text('--')
+                    }
+                    var that = this
+                    web3.eth.getAccounts((error, accounts) => {
+                        var offer_price = $('.sr_jg>input').val()
+                        var updateAndCheckPriceNowContract = new web3.eth.Contract(NestPriceAbi, price_addr)
+                        updateAndCheckPriceNowContract.methods.checkPriceNow(USDT_addr)
+                            .call()
+                            .then(function (result) {
+                                var ethAmount = web3.utils.fromWei(result[0], 'ether')
+                                var erc20Amount = result[1];
+                                var token_price = (erc20Amount / ethAmount);
+                                var decimalContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                                decimalContract.methods.decimals().call().then(function (result) {
+                                    var demical = "1e" + result
+                                    var hy_price = token_price / demical
+                                    token_price_up = hy_price * 1.1
+                                    token_price_down = hy_price * 0.9
+                                    if (val == '') {
+                                        $('.pc_warn').hide()
+                                        $('.gas').text('--')
+                                    } else {
+                                        if (that.token_name == 'USDT') {
+                                            if (val * 1 > token_price_up || val < token_price_down) {
+                                                // that.amountStates = true
+                                                $('.gas').text(30 * 0.01)
+                                                $('.pc_warn').show()
+                                            } else {
+                                                $('.gas').text(num * 0.01)
+                                                // that.amountStates = false
+                                                $('.pc_warn').hide()
+                                                // msg_value = $(".offer_bj_").val() + 10 * 0.01 * 1e8
+                                            }
+                                        } else {
+                                            if (val * 1 > token_price_up || val < token_price_down) {
+                                                // that.amountStates = true
+                                                $('.gas').text(10 * 0.01)
+                                                $('.pc_warn').show()
+                                            } else {
+                                                $('.gas').text(num * 0.01)
+                                                // that.amountStates = false
+                                                $('.pc_warn').hide()
+                                                // msg_value = $(".offer_bj_").val() + 10 * 0.01 * 1e8
+                                            }
+                                        }
+
+                                    }
+                                })
+                            })
+                    })
+                },
+                bbj() {
+                    var that = this
+                    let price = $('.sr_jg>input').val();
+                    web3.eth.getAccounts((error, accounts) => {
+                        var offer_price = $('.sr_jg>input').val()
+                        var updateAndCheckPriceNowContract = new web3.eth.Contract(NestPriceAbi, price_addr)
+                        updateAndCheckPriceNowContract.methods.checkPriceNow(USDT_addr)
+                            .call()
+                            .then(function (result) {
+                                var ethAmount = web3.utils.fromWei(result[0], 'ether')
+                                var erc20Amount = result[1];
+                                var token_price = (erc20Amount / ethAmount);
+                                var decimalContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                                decimalContract.methods.decimals().call().then(function (result) {
+                                    var demical = "1e" + result
+                                    var hy_price = token_price / demical
+                                    console.log(hy_price)
+                                    token_price_up = hy_price * 1.1
+                                    token_price_down = hy_price * 0.9
+                                    console.log(offer_price)
+                                    if ((offer_price * 1) > 0) {
+                                        var sqn = $('.bj_sq_num').text()
+                                        var pay_u = $('.sr_token_price').text()
+                                        console.log($('.wsq').css('display'))
+
+                                        if ($('.wsq').css('display') !== 'none') {
+                                            // 偏离
+                                            console.log(1)
+                                            if (offer_price * 1 > token_price_up || offer_price < token_price_down) {
+                                                $('.gas').text(0.1)
+                                                var _num = ($('.bj_eth_num').text()) * 1
+                                                console.log(that.token_name)
+                                                if (that.token_name == "USDT") {
+                                                    if (_num >= 300) {
+                                                        msg_value_num = ($('.bj_eth_num').text()) * 1 + (0.1) * 1
+                                                        msg_value = (msg_value_num * 1e18).toString()
+                                                        var bj_ = 10
+                                                        var num = ($('.bj_eth_num').text()) * 1
+                                                        amount = (new Decimal(num)) * (new Decimal(1000000000000000000))
+                                                        var token_num = ($('.sr_token_price').text()) * 1
+                                                        var decimalContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                                                        decimalContract.methods.decimals().call().then(function (result) {
+                                                            var demical = "1e" + result
+                                                            token_amount = Math.floor((new Decimal(token_num)) * new Decimal(demical))
+                                                            var offerContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                                                            offerContract.methods.offer((amount).toString(), (token_amount).toString(), USDT_addr)
+                                                                .send({ from: accounts[0], value: msg_value })
+                                                                .on('transactionHash', function (hash) {
+                                                                    // 发起交易
+                                                                })
+                                                                .on('receipt', function (receipt) {
+                                                                    //
+                                                                    that.flash()
+                                                                })
+                                                                .on('confirmation', function (confirmationNumber, receipt) {
+                                                                    //
+                                                                    that.flash()
+                                                                    $('.sr_jg>input').val('')
+                                                                })
+                                                                .on('error', function () {
+                                                                    // 拒绝交易
+                                                                    that.flash()
+                                                                });
+                                                        })
+                                                    } else {
+                                                        that.dialogVisible2 = true
+                                                        // that.amount = 100
+                                                        $('.sr_token_price').text(offer_price * that.amount)
+                                                        // that.amountStates = true
+                                                    }
+                                                } else {
+                                                    console.log(_num)
+                                                    var _num = ($('.bj_eth_num').text()) * 1
+                                                    if (_num >= 100) {
+                                                        msg_value_num = ($('.bj_eth_num').text()) * 1 + (0.1) * 1
+                                                        msg_value = (msg_value_num * 1e18).toString()
+                                                        var bj_ = 10
+                                                        var num = ($('.bj_eth_num').text()) * 1
+                                                        amount = (new Decimal(num)) * (new Decimal(1000000000000000000))
+                                                        var token_num = ($('.sr_token_price').text()) * 1
+                                                        var decimalContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                                                        decimalContract.methods.decimals().call().then(function (result) {
+                                                            var demical = "1e" + result
+                                                            token_amount = Math.floor((new Decimal(token_num)) * new Decimal(demical))
+                                                            var offerContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                                                            offerContract.methods.offer((amount).toString(), (token_amount).toString(), USDT_addr)
+                                                                .send({ from: accounts[0], value: msg_value })
+                                                                .on('transactionHash', function (hash) {
+                                                                    // 发起交易
+                                                                })
+                                                                .on('receipt', function (receipt) {
+                                                                    //
+                                                                    that.flash()
+                                                                })
+                                                                .on('confirmation', function (confirmationNumber, receipt) {
+                                                                    //
+                                                                    that.flash()
+                                                                    $('.sr_jg>input').val('')
+                                                                })
+                                                                .on('error', function () {
+                                                                    // 拒绝交易
+                                                                    that.flash()
+                                                                });
+                                                        })
+                                                    } else {
+                                                        that.dialogVisible = true
+                                                        // that.amount = 100
+                                                        $('.sr_token_price').text(offer_price * that.amount)
+                                                        // that.amountStates = true
+                                                    }
+                                                }
+
+
+                                            } else {
+                                                // msg_value = new Decimal($('.gas').text() * 1) * new Decimal(1000000000000000000)
+                                                msg_value_num = ($('.bj_eth_num').text()) * 1 + ($('.gas').text() * 1)
+                                                msg_value = (msg_value_num * 1e18)
+                                                var bj_ = 10
+                                                var num = ($('.bj_eth_num').text()) * 1
+                                                amount = (new Decimal(num) * 1) * (new Decimal(1000000000000000000))
+                                                var token_num = ($('.sr_token_price').text()) * 1
+                                                var decimalContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                                                decimalContract.methods.decimals().call().then(function (result) {
+                                                    var demical = "1e" + result
+                                                    token_amount = Math.floor((new Decimal(token_num)) * new Decimal(demical * 1))
+                                                    var offerContract = new web3.eth.Contract(offerAbi, USDT_offer)
+                                                    offerContract.methods.offer((amount).toString(), (token_amount).toString(), USDT_addr)
+                                                        .send({ from: accounts[0], value: msg_value.toString() })
+                                                        .on('transactionHash', function (hash) {
+                                                            // 发起交易
+                                                        })
+                                                        .on('receipt', function (receipt) {
+                                                            //
+                                                            that.flash()
+                                                        })
+                                                        .on('confirmation', function (confirmationNumber, receipt) {
+                                                            //
+                                                            that.flash()
+                                                            $('.sr_jg>input').val('')
+                                                        })
+                                                        .on('error', function () {
+                                                            // 拒绝交易
+                                                            that.flash()
+                                                        });
+                                                })
+                                                // msg_value = $(".offer_bj_").val() + 10 * 0.01 * 1e8
+                                            }
+                                        } else {
+                                            var sq_usdtContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                                            sq_usdtContract.methods.approve(USDT_offer,
+                                                "999999999999999999999999999999999999").send({ from: accounts[0] }).on('transactionHash', function (hash) {
+                                                })
+                                                .on('receipt', function (receipt) {
+                                                    that.flash()
+                                                })
+                                                .on('confirmation', function (confirmationNumber, receipt) {
+                                                    that.dialogVisibleMAX_bj = false
+                                                    that.flash()
+                                                })
+                                                .on('error', function () {
+                                                    that.dialogVisibleMAX_bj = false
+                                                    that.flash()
+                                                });
+                                        }
+
+                                    } else {
+                                        that.dialogVisible_null = true
+                                    }
+                                })
+                            })
+                    })
+                },
+                actives(datas) {
+                    this.activeStatus = datas
+                },
+                changeSelection(scope) {
+                    if (scope == 0) {
+                        this.value = 'English'
+                        this.$i18n.locale = 'en'
+                        document.cookie = "language=" + "en"
+                        $('.language_enimg').show()
+                        $('.language_cnimg').hide()
+                        $('.list_qh').text('RETRIEVE')
+                        $('.yzjd').text('Verification progress')
+                        $('.bj_text').text('Quote')
+                        $('.cd_text').text('TAKER')
+                        this.dialog_withdraw = "Withdraw " + n_n
+                        this.dialog_Approve = this.token_name + " 授权"
+                        this.dialog_Deposite = "Deposite " + n_n
+                        this.dialog_NEST = n_n + " Approve"
+                        this.dialog_text = "Penalty for Quotation Deviation"
+                    } else {
+                        this.value = 'Chinese'
+                        this.$i18n.locale = 'zh'
+                        document.cookie = "language=" + "zh"
+                        $('.language_enimg').hide()
+                        $('.language_cnimg').show()
+                        $('.list_qh').text('取回')
+                        $('.yzjd').text('验证进度')
+                        $('.bj_text').text('报价')
+                        $('.cd_text').text('吃单')
+                        this.dialog_withdraw = "取出 " + n_n
+                        this.dialog_Approve = this.token_name + " 授权"
+                        this.dialog_Deposite = "存入 " + n_n
+                        this.dialog_NEST = n_n + " 授权"
+                        this.dialog_text = "报价偏差"
+                    }
+                },
+                bj_sq_max() {
+                    var that = this
+                    web3.eth.getAccounts((error, accounts) => {
+
+                        var sq_usdtContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                        sq_usdtContract.methods.approve(USDT_offer,
+                            "999999999999999999999999999999999999").send({ from: accounts[0] }).on('transactionHash', function (hash) {
+                            })
+                            .on('receipt', function (receipt) {
+                                that.flash()
+                            })
+                            .on('confirmation', function (confirmationNumber, receipt) {
+                                that.dialogVisibleMAX_bj = false
+                                that.flash()
+                            })
+                            .on('error', function () {
+                                that.dialogVisibleMAX_bj = false
+                                that.flash()
+                            });
+
+
+                    })
+                },
+                delamount() {
+                    var offer_price = $('.sr_jg>input').val()
+                    var that = this
+                    if (this.token_name == 'USDT') {
+                        if (that.amount == 30) {
+                            that.amountStates = true
+                        } else {
+                            that.amount = that.amount - 30
+                        }
+                    } else {
+                        if (that.amount == 10) {
+                            that.amountStates = true
+                        } else {
+                            that.amount = that.amount - 10
+                        }
+                    }
+                    function accMul(arg1, arg2) {
+                        var m = 0,
+                            s1 = arg1.toString(),
+                            s2 = arg2.toString();
+                        try {
+                            m += s1.split(".")[1].length
+                        } catch (e) { }
+                        try {
+                            m += s2.split(".")[1].length
+                        } catch (e) { }
+                        return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m)
+                    }
+                    web3.eth.getAccounts((error, accounts) => {
+                        var offer_price = $('.sr_jg>input').val()
+                        var updateAndCheckPriceNowContract = new web3.eth.Contract(NestPriceAbi, price_addr)
+                        updateAndCheckPriceNowContract.methods.checkPriceNow(USDT_addr)
+                            .call()
+                            .then(function (result) {
+                                var ethAmount = web3.utils.fromWei(result[0], 'ether')
+                                var erc20Amount = result[1];
+                                var token_price = (erc20Amount / ethAmount);
+                                var decimalContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                                decimalContract.methods.decimals().call().then(function (result) {
+                                    var demical = "1e" + result
+                                    var hy_price = token_price / demical
+                                    token_price_up = hy_price * 1.1
+                                    token_price_down = hy_price * 0.9
+                                    if (that.token_name == "USDT") {
+                                        if (offer_price * 1 >= token_price_up || offer_price <= token_price_down) {
+                                            if (offer_price !== '') {
+                                                $('.sr_token_price').text(accMul(that.input, that.amount))
+                                                $('.gas').text(30 * 0.01)
+                                            }
+                                        } else {
+                                            $('.sr_token_price').text(accMul(that.input, that.amount))
+                                            $('.gas').text(cutZero((that.amount * 0.01).toFixed(8).slice(0, 14)))
+                                            // msg_value = $(".offer_bj_").val() + 10 * 0.01 * 1e8
+                                        }
+                                    } else {
+                                        if (offer_price * 1 >= token_price_up || offer_price <= token_price_down) {
+                                            if (offer_price !== '') {
+                                                $('.sr_token_price').text(accMul(that.input, that.amount))
+                                                $('.gas').text(10 * 0.01)
+                                            }
+                                        } else {
+                                            $('.sr_token_price').text(accMul(that.input, that.amount))
+                                            $('.gas').text(cutZero((that.amount * 0.01).toFixed(8).slice(0, 14)))
+                                            // msg_value = $(".offer_bj_").val() + 10 * 0.01 * 1e8
+                                        }
+                                    }
+                                })
+                            })
+                    })
+                },
+                addamount() {
+                    var offer_price = $('.sr_jg>input').val()
+                    var that = this
+                    that.amountStates = false
+                    if (this.token_name == "USDT") {
+                        that.amount = that.amount + 30
+                    } else {
+                        that.amount = that.amount + 10
+                    }
+                    that.price = $('.ptext>.token_price').text()
+                    function accMul(arg1, arg2) {
+                        var m = 0,
+                            s1 = (arg1 * 1).toString(),
+                            s2 = (arg2 * 1).toString();
+                        try {
+                            m += s1.split(".")[1].length
+                        } catch (e) { }
+                        try {
+                            m += s2.split(".")[1].length
+                        } catch (e) { }
+                        return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m)
+                    }
+                    web3.eth.getAccounts((error, accounts) => {
+                        var offer_price = $('.sr_jg>input').val()
+                        var updateAndCheckPriceNowContract = new web3.eth.Contract(NestPriceAbi, price_addr)
+                        updateAndCheckPriceNowContract.methods.checkPriceNow(USDT_addr)
+                            .call()
+                            .then(function (result) {
+                                var ethAmount = web3.utils.fromWei(result[0], 'ether')
+                                var erc20Amount = result[1];
+                                var token_price = (erc20Amount / ethAmount);
+                                var decimalContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                                decimalContract.methods.decimals().call().then(function (result) {
+                                    var demical = "1e" + result
+                                    var hy_price = token_price / demical
+                                    token_price_up = hy_price * 1.1
+                                    token_price_down = hy_price * 0.9
+                                    if (that.token_name == "USDT") {
+                                        if (offer_price * 1 >= token_price_up || offer_price <= token_price_down) {
+                                            if (offer_price !== '') {
+                                                $('.sr_token_price').text(accMul(that.input, that.amount))
+                                                $('.gas').text(30 * 0.01)
+                                            }
+                                        } else {
+                                            $('.sr_token_price').text(accMul(that.input, that.amount))
+                                            $('.gas').text(cutZero((that.amount * 0.01).toFixed(8).slice(0, 14)))
+                                        }
+                                    } else {
+                                        if (offer_price * 1 >= token_price_up || offer_price <= token_price_down) {
+                                            if (offer_price !== '') {
+                                                $('.sr_token_price').text(accMul(that.input, that.amount))
+                                                $('.gas').text(10 * 0.01)
+                                            }
+                                        } else {
+                                            $('.sr_token_price').text(accMul(that.input, that.amount))
+                                            $('.gas').text(cutZero((that.amount * 0.01).toFixed(8).slice(0, 14)))
+                                        }
+                                    }
+                                })
+                            })
+                    })
+
+                },
+                // drawLine() {
+                // 	var myChart = echarts.init(document.getElementById('pushed'));
+                // 	option = {
+                // 		xAxis: {
+                // 			type: 'category',
+                // 			data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                // 		},
+                // 		yAxis: {
+                // 			type: 'value'
+                // 		},
+                // 		series: [{
+                // 			data: [820, 932, 901, 934, 1290, 1330, 1320],
+                // 			type: 'line',
+                // 			smooth: true
+                // 		}]
+                // 	};
+                // 	myChart.setOption(option);
+                // },
+                // dianji() {
+                // 	alert("这是一个点击按钮")
+                // },
+                // 获取cookie
+                getCookie(name) {
+                    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+                    if (arr = document.cookie.match(reg))
+                        return unescape(arr[2]);
+                    else
+                        return null;
+                },
+
+                radios() {
+                    if (this.radio == 1) {
+                        this.radioHide = true
+                    } else {
+                        this.radioHide = false
+                    }
+                },
+                reback() {
+                    window.location.href = "index.html"
+                },
+                times() {
+                    var dates = new Date()
+                    var week = dates.getDay()
+                    this.week = week
+                    var hour = dates.getHours()
+                    var fenzhong = dates.getMinutes()
+                    this.min = 60 - fenzhong
+                    console.log(week, this.days, this.h)
+                    if (week == 5 & hour <= 12) {
+                        this.days = 0
+                        this.h = 11 - hour
+                    } else {
+                        if (week == 5) {
+                            this.days = 2
+                            this.h = 23 - hour
+                        } else if (week == 6) {
+
+                            this.days = 1
+                            this.h = 23 - hour
+                        } else if (week == 0) {
+
+                            this.days = 0
+                            this.h = 23 - hour
+                        } else {
+                            var nums = week - 1
+                            var nums1 = 108 - (nums * 24) - hour
+                            this.days = parseInt(nums1 / 24)
+                            this.h = 23 - hour
+                            if (this.h > 24) {
+                                this.h = this.h - 12
+                            }
+                        }
+                    }
+                    if (week == 5 & hour >= 12) {
+                        this.days = 2
+                        this.h = 23 - hour
+                    }
+                    if (week <= 5 && this.days == 1) {
+
+                        $('.syend').hide()
+                        $('.systart').show()
+                    }
+
+                    if ((week == 5 && this.days == 2) || week == 6 || week == 0) {
+                        $('.syend').show()
+                        $('.systart').hide()
+                    }
+                },
+
+                getQueryVariable(variable) {
+                    var query = window.location.search.substring(1);
+                    var vars = query.split("&");
+                    for (var i = 0; i < vars.length; i++) {
+                        var pair = vars[i].split("=");
+                        if (pair[0] == variable) { return pair[1]; }
+                    }
+                    return (false);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
