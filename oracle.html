@@ -2641,10 +2641,7 @@
                                                         // that.amountStates = true
                                                     }
                                                 }
-
-
                                             } else {
-                                                // msg_value = new Decimal($('.gas').text() * 1) * new Decimal(1000000000000000000)
                                                 msg_value_num = ($('.bj_eth_num').text()) * 1 + ($('.gas').text() * 1)
                                                 msg_value = (msg_value_num * 1e18)
                                                 var bj_ = 10
@@ -2675,7 +2672,6 @@
                                                             that.flash()
                                                         });
                                                 })
-                                                // msg_value = $(".offer_bj_").val() + 10 * 0.01 * 1e8
                                             }
                                         } else {
                                             var sq_usdtContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
@@ -2894,28 +2890,6 @@
                     })
 
                 },
-                // drawLine() {
-                // 	var myChart = echarts.init(document.getElementById('pushed'));
-                // 	option = {
-                // 		xAxis: {
-                // 			type: 'category',
-                // 			data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-                // 		},
-                // 		yAxis: {
-                // 			type: 'value'
-                // 		},
-                // 		series: [{
-                // 			data: [820, 932, 901, 934, 1290, 1330, 1320],
-                // 			type: 'line',
-                // 			smooth: true
-                // 		}]
-                // 	};
-                // 	myChart.setOption(option);
-                // },
-                // dianji() {
-                // 	alert("这是一个点击按钮")
-                // },
-                // 获取cookie
                 getCookie(name) {
                     var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
                     if (arr = document.cookie.match(reg))
@@ -2941,8 +2915,8 @@
                     var hour = dates.getHours()
                     var fenzhong = dates.getMinutes()
                     this.min = 60 - fenzhong
-                    console.log(week, this.days, this.h)
-                    if (week == 5 & hour <= 12) {
+                    console.log(week, this.days, this.h, hour)
+                    if (week == 5 & hour < 12) {
                         this.days = 0
                         this.h = 11 - hour
                     } else {
@@ -2962,7 +2936,8 @@
                             var nums1 = 108 - (nums * 24) - hour
                             this.days = parseInt(nums1 / 24)
                             this.h = 23 - hour
-                            if (this.h > 24) {
+                            console.log(this.h)
+                            if (this.h >= 12) {
                                 this.h = this.h - 12
                             }
                         }
