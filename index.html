@@ -10,6 +10,14 @@
     <meta name="google" content="notranslate" />
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" />
     <!-- <script src="js/echarts.min.js"></script> -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y626GG2BB8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Y626GG2BB8');
+    </script>
     <style>
         [v-cloak] {
             display: none;
@@ -420,7 +428,7 @@
                     ">
                                     <span @click="Favorites(item.address)" :class="{iconActives:1==item.spans}"
                                         style="padding: 0px 0.625rem; font-size: 1.5rem" class="el-icon-star-on"></span>
-                                    <img :src="item.url" alt="" class="icon">
+                                    <img :src="item.url" alt="" class="icon" onerror="this.src='./svg/icon/MR.png'">
                                     <span>ETH/<span>{{item.symbol}}</span></span>
                                 </div>
                                 <div class="mouse_btn" style="    display: flex;
@@ -540,13 +548,6 @@
     <script src="js/zh.js"></script>
     <script src="./assets/js/jquery.min.js"></script>
     <script src="./assets/js/contractAdress.js"></script>
-    <!-- <script src="./assets/js/web3.min.js"></script> -->
-    <!-- <script src="./assets/abi/offerAbi.js"></script> -->
-    <!-- <script src="./assets/abi/NestPriceAbi.js"></script> -->
-    <!-- <script src="./assets/abi/DividendAbi.js"></script> -->
-    <!-- <script src="./assets/abi/integrationAbi.js"></script> -->
-    <!-- <script src="./assets/js/decimal.min.js"></script> -->
-    <!-- <script src="./assets/js/cutZero.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/web3@1.2.11/dist/web3.min.js"></script>
     <script>
         const messages = {
@@ -846,11 +847,13 @@
                                 that.shuju.forEach((item) => {
                                     item.spans = 0
                                     item.url = "./svg/icon/" + item.symbol + ".png"
+
                                 })
                             } else {
                                 that.shuju.forEach((item) => {
                                     item.spans = 0
                                     item.url = "./svg/icon/" + item.symbol + ".png"
+
                                 })
                                 if (true == isMount)
                                     that.spanActive = that.getCookie('icoActive').split(',')

@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/x-icon" href="./svg/nest.ico" />
+    <title>Nest Oracle Dapp - Nest Protocol Interface</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="google" content="notranslate">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y626GG2BB8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Y626GG2BB8');
+    </script>
+    <!-- <script src="js/echarts.min.js"></script> -->
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        html,
+        body {
+            font-family: '微软雅黑';
+        }
+
+        #app,
+        html {
+            background: url(./svg/bj.jpg) repeat;
+            background-position: 0 0;
+        }
+
+        body {
+            margin: 0rem;
+            padding: 0rem;
+        }
+
+        .head {
+            width: 100%;
+            height: 3.125rem;
+            background-image: linear-gradient(#232323, #2C2C2C);
+        }
+
+        .flex_justcont {
+            display: flex;
+            justify-content: space-between;
+            font-size: .75rem;
+        }
+
+        .head_line {
+            line-height: 3.125rem;
+        }
+
+        .boxs {
+            width: 100%;
+            /* height: 62.5rem; */
+            min-height: 100vh;
+            /* background-color: #1A1A1A; */
+        }
+
+        .btn {
+            color: #FFFFFF;
+            background-color: #666666;
+            border: none;
+        }
+
+        .hides {
+            width: 100%;
+            opacity: 0;
+        }
+
+        .address {
+            border: solid 0.0625rem #2C2C2C;
+            border-radius: 0.25rem;
+            background-color: rgb(44, 44, 44);
+        }
+
+        .addressHeader {
+            width: 100%;
+            background-color: rgb(35, 35, 35);
+            height: 1.875rem;
+            line-height: 1.875rem;
+        }
+
+        .addressHeader_top {
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        .addressHeader_top div:nth-child(1) {
+            color: #E6E6E6
+        }
+
+        .addressHeader_top div:nth-child(2) {
+            color: #4DC3FF;
+        }
+
+        .mains {
+            /* display: flex; */
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .inputs {
+            width: 100%;
+            border-radius: 1.25rem;
+            border: solid 0.0625rem rgba(154, 154, 154, 1);
+            background-color: rgb(31, 31, 31);
+            color: rgb(230, 230, 230);
+        }
+
+        .ptext {
+            text-align: right;
+            color: rgb(153, 153, 153);
+            font-size: 0.625rem;
+        }
+
+        .staking_assets {
+            width: 45%;
+            display: flex;
+            background-color: rgb(66, 66, 66);
+            text-align: center;
+        }
+
+        .fee {
+            width: 90%;
+            margin: 0 auto;
+            font-size: 1rem;
+        }
+
+        .ax {
+            width: 100%;
+            background-color: rgb(31, 31, 31);
+            color: #FFFFFF;
+            padding: 0.9375rem 0rem;
+            border-radius: 0.3125rem;
+        }
+
+        .btnss {
+            display: block;
+            margin: 1.25rem auto;
+            background-color: #FFC44D;
+            width: 12.5rem;
+            border: none;
+        }
+
+        .lists {
+            width: 100%;
+            border-radius: 0.25rem;
+            background-color: #2C2C2C;
+            margin-bottom: 1.25rem;
+            color: rgba(229, 229, 229, 1);
+        }
+
+        .lists_p {
+            margin-bottom: 0rem;
+        }
+
+        .switchover {
+            width: 100%;
+            background-color: rgb(21, 21, 21);
+            color: rgba(153, 153, 153, 1);
+            display: flex;
+            justify-content: space-between;
+            border-radius: 10rem;
+            margin: 0.625rem 0rem;
+        }
+
+        .switchover div {
+            width: 50%;
+            text-align: center;
+            border-radius: 10rem;
+            padding: 0.3125rem 0rem;
+            cursor: pointer;
+        }
+
+        .active {
+            background-color: rgb(43, 43, 43);
+            color: #FFFFFF;
+        }
+
+        .map {
+            /* width: 50%; */
+            height: 14.5rem;
+        }
+
+        .tops {
+            background-color: rgb(34, 34, 34);
+            border-radius: 0.3125rem 0.3125rem 0rem 0rem;
+            color: rgba(230, 230, 230, 1);
+            font-size: 0.75rem;
+        }
+
+        .tops p {
+            margin: 0.3125rem 0rem;
+        }
+
+        .image_text {
+            width: 47.5%;
+            background-color: rgb(66, 66, 66);
+            display: flex;
+            justify-content: space-around;
+            padding: 0.75rem 0rem;
+            border-radius: 0.3125rem;
+            align-items: center;
+        }
+
+        .image_text p {
+            text-align: center;
+            margin: 0rem;
+        }
+
+        .el-dialog {
+            background-color: rgb(44, 44, 44);
+            color: rgba(154, 154, 154, 1);
+            width: 30%;
+        }
+
+        .el-dialog__title {
+            color: #FFFFFF !important;
+        }
+
+        @media only screen and (max-width: 767px) {
+            .el-col-xs-24 {
+                width: 100%;
+                padding: .625rem !important;
+            }
+
+            .list_box {
+                padding: 0 !important;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .el-dialog {
+                width: 90%;
+            }
+
+            .el-button {
+                width: 45% !important;
+            }
+
+            .n_hover {
+                width: 100% !important
+            }
+        }
+
+        .inpus {
+            color: rgba(229, 229, 229, 1);
+        }
+
+        .inpus .el-input__inner {
+            border: none;
+            border-radius: 6.25rem 0rem 0rem 6.25rem;
+            background-color: rgb(31, 31, 31);
+        }
+
+        .inpus .el-input-group__append {
+            background-color: rgb(31, 31, 31);
+            border: none;
+            border-radius: 0rem 6.25rem 6.25rem 0rem;
+        }
+
+        .loginin {
+            display: none;
+        }
+
+        .wallet_address {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .pp {
+            width: 165px;
+            color: #fff;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-style: oblique;
+            text-align: right;
+            margin-right: 10px;
+            font-size: .825rem;
+            margin: 0;
+            padding-right: 0.3rem;
+
+        }
+
+        .n_yebu,
+        .cr_nest,
+        .cr_sqnum,
+        .el-input__inner {
+            color: #fff;
+        }
+
+        .el-dialog__body {
+            color: #fff;
+        }
+
+        .el-icon-edit {
+            cursor: pointer;
+        }
+
+        .bj_null .el-dialog__body {
+            text-align: center;
+        }
+
+        .language {
+            width: 1.5rem;
+            position: absolute;
+            right: 0;
+            top: 1.2rem;
+        }
+
+        .language_cnimg {
+            display: none;
+        }
+
+        .language_img {
+            width: 1.5rem;
+            position: absolute;
+            right: 0;
+            top: 1.2rem;
+        }
+
+        .el-button {
+            color: #000;
+            border: none;
+            width: 22%;
+        }
+
+        .lists:hover {
+            background-color: #333333 !important;
+        }
+
+        .switchover div:hover {
+            color: #fff;
+        }
+
+        .el-button:active,
+        .el-button:focus,
+        .el-button:hover {
+            /* background: #ffd480 !important; */
+            color: #000;
+            border-color: unset !important;
+        }
+
+        .WITHDRAW {
+            width: 45%;
+            background-color: rgb(66, 66, 66);
+            border: none;
+            color: rgb(255, 196, 78);
+        }
+
+        .WITHDRAW:hover {
+            background: #5c5c5c !important;
+            color: rgb(255, 196, 78);
+            border-color: unset !important;
+        }
+
+        .gray:hover {
+            background: #5c5c5c !important;
+            color: rgb(255, 196, 78);
+            border-color: unset ccc;
+        }
+
+        .xt_addr,
+        .ntoken_addr,
+        .token {
+            cursor: pointer;
+        }
+
+
+        .token:hover {
+            color: #80d4ff !important;
+        }
+
+        .xt_addr:hover {
+            color: #80d4ff !important;
+        }
+
+        .ntoken_addr:hover {
+            color: #80d4ff !important;
+        }
+
+        .cancel {
+            color: rgb(255, 196, 78);
+            background-color: rgb(66, 66, 66);
+        }
+
+        .cancel:hover {
+            background: #5c5c5c !important;
+            color: rgb(255, 196, 78);
+            border-color: unset !important;
+        }
+
+        .n_hover:hover,
+        .n_hover:active,
+        .n_hover:focus {
+            background: unset !important;
+            color: unset;
+            border-color: unset !important;
+            border: none;
+        }
+
+        .n_yebu {
+            display: none;
+        }
+
+        .sr_jg {
+            font-size: 1rem;
+        }
+
+        .syend {
+            display: none;
+        }
+
+        .sq_style {
+            margin-left: 10px;
+            cursor: pointer;
+            background: rgba(0, 174, 255, .2);
+            padding: 2px 5px;
+            padding-bottom: 4px;
+            border-radius: 5px;
+            border: 1px solid (178, 229, 255);
+            color: rgba(0, 174, 255, 1);
+            box-sizing: border-box;
+            width: 4.5rem;
+        }
+
+        .sq_style:hover {
+            background: rgba(51, 51, 51, .3) !important;
+        }
+
+        .bj_sq_text {
+            text-align: center;
+            margin: 0rem;
+            height: 32px;
+            line-height: 32px;
+        }
+
+        .cr_nest,
+        .cr_sqnum {
+            display: none;
+        }
+
+        .ysq,
+        .sy_wsq {
+            display: none;
+            width: 100% !important;
+            margin-left: 0 !important;
+        }
+
+        .ax .wsq:active,
+        .ax .wsq:focus,
+        .ax .wsq:hover {
+            background: #00aeff !important;
+        }
+
+        .ax .sy_ysq:active,
+        .ax .sy_ysq:focus,
+        .ax .sy_ysq:hover {
+            background: #00aeff !important;
+        }
+
+        .ax .ysq:active,
+        .ax .ysq:focus,
+        .ax .ysq:hover {
+            background: rgba(51, 51, 51, .3) !important;
+        }
+
+        .price_box {
+            border-radius: 8px;
+            background: rgba(255, 255, 255, .1);
+            padding: 0 .6rem;
+            font-size: 14px;
+            color: rgba(255, 196, 77, 1);
+        }
+
+        .price_box p {
+            margin: .5rem 0;
+        }
+
+        .list_box {
+            padding: 0 1rem;
+        }
+
+        .list_box p {
+            margin: .5rem 0;
+        }
+
+        .image_text {
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        .img_active {
+            border: 1px solid rgba(255, 196, 77, 1);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="head">
+            <el-row>
+                <el-col :xs="1" :sm="3" :md="3" :lg="3" :xl="3">
+                    <div class="hides">1</div>
+                </el-col>
+                <el-col :xs="22" :sm="18" :md="18" :lg="18" :xl="18">
+                    <div class="flex_justcont head_line" style="position: relative;">
+                        <div style="display: flex;">
+                            <img src="./svg/logo.svg" style="width: 4.75rem;cursor: pointer;" alt="" class="img_reback">
+                        </div>
+                        <div class="flex_justcont head_line">
+                            <div class="wallet_address">
+                                <span class="pp">{{$t('message1.connect')}}</span>
+                                <div class="loginin">
+                                    <img src="svg/metamask_icon_高亮.svg"
+                                        style="width: 1.5625rem;height: 0.725rem;margin-top: 1.25rem;" />
+                                </div>
+                                <div class="loginout">
+                                    <img src="svg/metamask_icon_置灰.svg"
+                                        style="width: 1.5625rem;height: 0.725rem;margin-top: 1.25rem;" />
+                                </div>
+                            </div>
+                            <el-select v-model="value" @change="changeSelection(value)" size="small" :value="0"
+                                style="width: 3.25rem;opacity: 0;z-index: 99;">
+                                <el-option v-for="item in directionOption" :key="item.value" :label="item.label"
+                                    :value="item.value">
+                                    <img :src="item.src" style="
+							                        width: 1.5625rem;
+							                        height: 0.725rem;" />
+                                </el-option>
+                            </el-select>
+                            <img src="./svg/语言切换_美国icon.svg" alt="" class="language_enimg language_img">
+                            <img src="./svg/语言切换_中国icon.svg" alt="" class="language_cnimg language_img">
+                        </div>
+                    </div>
+                </el-col>
+                <el-col :xs="1" :sm="3" :md="3" :lg="3" :xl="3">
+                    <div class="hides">1</div>
+                </el-col>
+            </el-row>
+        </div>
+        <div class="boxs" style="clear: both;">
+            <el-row>
+                <el-col :xs="1" :sm="3" :md="3" :lg="3" :xl="3">
+                    <div class="hides">1</div>
+                </el-col>
+                <el-col :xs="22" :sm="18" :md="18" :lg="18" :xl="18">
+                    <div style="margin: 0.925rem 0rem;" class="flex_justcont">
+                        <div>
+                            <el-button icon="el-icon-arrow-left" round class="btn n_hover" size="small" @click="reback"
+                                style="   
+    box-shadow: 0px 4px 4px 0px #000000;
+    background: unset;
+    color: #fff; width: 100%;">
+                            </el-button>
+                        </div>
+                        <div>
+                            <el-button class="btn n_hover" round size="small" style="
+    box-shadow: 0px 4px 4px 0px #000000;
+    background: unset;
+    color: #fff;width: 100%;cursor: text;">ETH/<span class="u_name"></span>
+                                {{ $t("message1.cd_title") }}</el-button>
+                        </div>
+                        <div style="opacity: 0;">3</div>
+                    </div>
+                    <div v-show="activeStatus==1">
+                        <div class="address">
+                            <el-row class="mains">
+                                <el-col :xs='24' :sm="12" :md="12" :lg="12" :xl="12"
+                                    style="padding: 1.625rem 1.625rem;color: #E5E5E5;">
+                                    <div class="flex_justcont">
+                                        <div style="margin-top: 0.2rem;">
+                                            <span style="font-size: .925rem;">{{ $t("message1.cd_select") }}</span>
+                                            <!-- <span class="price-invalid-label"></span> -->
+                                        </div>
+                                    </div>
+                                    <div class="inpus price_box flex_justcont" style="margin-top: 1.4rem;">
+                                        <P><span>{{$t("message2.Quoteprice")}}</span></P>
+                                        <P><span class="token_price"></span> <span class="u_name"></span>/ETH</P>
+                                    </div>
+                                    <div class="flex_justcont" style="margin-top: 1.8rem;">
+                                        <div class="image_text image_texta img_t">
+                                            <div>
+                                                <img src="svg/icon/MR.png" class="token_img"
+                                                    onerror="this.src='./svg/icon/MR.png'"
+                                                    style="width: 2.75rem;height: 2.75rem;" />
+                                            </div>
+                                            <div>
+                                                <p style="margin-top: 0.75rem;font-size: 1rem;font-weight: bold;margin: 0;"
+                                                    class="sr_token_price">--</p>
+                                                <p class="u_name"></p>
+                                            </div>
+                                        </div>
+                                        <div class="image_text image_texta img_e img_active">
+                                            <div>
+                                                <img src="svg/icon/ETH.png" style="width: 2.75rem;height: 2.75rem;" />
+                                            </div>
+                                            <div>
+                                                <p style="margin-top: 0.75rem;font-size: 1rem;font-weight: bold;margin: 0;"
+                                                    class="bj_eth_num bj_eth_num1">--</p>
+                                                <p>ETH</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <el-button-group style="margin: 0 auto;display: table;margin-top: 2.1rem;">
+                                        <el-button class="gray"
+                                            style="background-color: rgb(66,66,66);color: rgba(153, 153, 153, 1);border: none;padding-left: 4rem;padding-right: 4rem;"
+                                            size="small" round type="primary" icon="el-icon-minus" @click="delamount">
+                                        </el-button>
+                                        <el-button :disabled="amountStates"
+                                            style="background-color: rgba(255, 196, 77, 1);color: rgba(0, 0, 0, 1);border: none;padding-left: 4rem;padding-right: 4rem;"
+                                            size="small" round type="primary" @click="addamount"><i
+                                                class="el-icon-plus el-icon--right"></i></el-button>
+                                    </el-button-group>
+                                    <div class="list_box">
+                                        <div class="flex_justcont" style="margin-top: 1rem;">
+                                            <P>{{ $t("message2.In") }}</P>
+                                            <p><span class="t_num"></span> <span class="u_name uu_name"></span></p>
+                                        </div>
+                                        <div class="flex_justcont">
+                                            <P>{{ $t("message2.Pay") }}</P>
+                                            <p><span class="e_num"></span> <span class="e_name">ETH</span></p>
+                                        </div>
+                                        <div class="flex_justcont">
+                                            <P>{{ $t("message1.Fee") }}</P>
+                                            <p><span>0</span> ETH</p>
+                                        </div>
+                                    </div>
+                                </el-col>
+                                <el-col :xs='24' :sm="12" :md="12" :lg="12" :xl="12"
+                                    style="padding: 1.625rem 1.625rem;color: #E5E5E5;">
+                                    <div class="flex_justcont">
+                                        <div style="margin-top: 0.2rem;">
+                                            <span style="font-size: .925rem;">{{ $t("message1.cd_inputPrice") }}</span>
+                                            <!-- <span class="price-invalid-label"></span> -->
+                                        </div>
+                                    </div>
+                                    <div class="inpus" style="margin-top: 1.4rem;">
+                                        <el-input placeholder="" size="small" v-model="input" class="sr_jg"
+                                            oninput="value=value.replace(/^\D*(\d*(?:\.\d{0,8})?).*$/g, '$1')"
+                                            maxlength="13">
+                                            <el-button slot="append" class="u_name n_hover"></el-button>
+                                        </el-input>
+                                    </div>
+                                    <p class="pc_warn"
+                                        style="color: red;font-size: 0.625rem;padding: 0;margin-bottom: 0;display: none; cursor: pointer;">
+                                        {{$t('message1.pc_warn')}}</p>
+                                    <p class="ptext">1 ETH = <span class="sr_token_price1">--</span> <span
+                                            class="u_name"></span></p>
+                                    <div class="flex_justcont">
+                                        <div class="image_text">
+                                            <div>
+                                                <img src="svg/icon/MR.png" class="token_img"
+                                                    onerror="this.src='./svg/icon/MR.png'"
+                                                    style="width: 2.75rem;height: 2.75rem;" />
+                                            </div>
+                                            <div>
+                                                <p style="margin-top: 0.75rem;font-size: 1rem;font-weight: bold;margin: 0;"
+                                                    class="sr_token_price2">--</p>
+                                                <p class="u_name"></p>
+                                            </div>
+                                        </div>
+                                        <div class="image_text">
+                                            <div>
+                                                <img src="svg/icon/ETH.png" style="width: 2.75rem;height: 2.75rem;" />
+                                            </div>
+                                            <div>
+                                                <p style="margin-top: 0.75rem;font-size: 1rem;font-weight: bold;margin: 0;"
+                                                    class="bj_eth_num bj_eth_num2">--</p>
+                                                <p>ETH</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p style="margin: 1rem auto 1.1rem;font-size: 12px;color:rgba(153, 153, 153, 1)">
+                                        {{$t("message1.cd_require")}}
+                                    </p>
+                                    <div class="list_box">
+                                        <div class="flex_justcont"
+                                            style="color: rgba(191, 147, 57, 1);margin: 1.25rem auto;width: 95%;">
+                                            <div>{{ $t("message1.balanceETH") }}</div>
+                                            <div><span class="eth_balance" style="font-size: .825rem;"></span> ETH
+                                            </div>
+                                        </div>
+                                        <div class="ax">
+                                            <div class="flex_justcont"
+                                                style="color: rgba(191, 147, 57, 1);padding: 0.625rem 0rem;margin: 0 auto;width: 95%;">
+                                                <div><span class="u_name"></span> {{ $t("message1.balanceUSDT") }}</div>
+                                                <div><span class="token_balance" style="font-size: .825rem;"></span>
+                                                    <span class="u_name"></span>
+                                                </div>
+                                            </div>
+                                            <div class="flex_justcont"
+                                                style="color: rgb(153,153,153);margin: 0 auto;width: 95%;">
+                                                <div>{{ $t("message1.Approvedamount") }}</div>
+                                                <div style="padding-bottom: 0.625rem;">
+                                                    <el-tooltip class="item sq_style wsq" effect="dark">
+                                                        <div slot="content">{{$t("message1.qp_ysq")}}</div>
+                                                        <el-button class="" @click="qxsq">
+                                                            {{$t("message1.sq")}}</el-button>
+                                                    </el-tooltip>
+
+                                                    <el-tooltip class="item sq_style ysq" effect="dark"
+                                                        placement="top-start">
+                                                        <div slot="content">{{$t("message1.qp_wsq")}}</div>
+                                                        <el-button class="" style="background:#333333;color:#7E7E7E"
+                                                            @click="bj_sq_max">
+                                                            {{$t("message1.ysq")}}</el-button>
+                                                    </el-tooltip>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </el-col>
+                            </el-row>
+                        </div>
+                    </div>
+                </el-col>
+                <el-col :xs="1" :sm="3" :md="3" :lg="3" :xl="3">
+                    <div class="hides">1</div>
+                </el-col>
+            </el-row>
+            <el-button class="btnss" round size="small" @click="cd" style="margin-top:2rem">
+                {{ $t("message1.TAKER") }}</el-button>
+        </div>
+        <el-dialog :title="dialog_text" :visible.sync="dialogVisible" center class="bj" :close-on-click-modal="false">
+            <span style="text-align: center;">{{ $t("message1.Penaltybottoms2") }}</span>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible = false" round size=small class='btnss'>{{ $t("message1.CONFIRMbtn") }}
+                </el-button>
+            </span>
+        </el-dialog>
+        <el-dialog :title="dialog_text" :visible.sync="dialogVisible2" center class="bj" :close-on-click-modal="false">
+            <span style="text-align: center;">{{ $t("message1.Penaltybottoms2") }}</span>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible2 = false" round size=small class='btnss'>
+                    {{ $t("message1.CONFIRMbtn") }}
+                </el-button>
+            </span>
+        </el-dialog>
+    </div>
+    <script src="//unpkg.com/vue"></script>
+    <script src="//unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
+    <script src="//unpkg.com/element-ui"></script>
+    <script src="./js/en.js"></script>
+    <script src="./js/zh.js"></script>
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/contractAdress.js"></script>
+    <script src="./assets/abi/offerAbi.js"></script>
+    <script src="./assets/abi/NestPriceAbi.js"></script>
+    <script src="./assets/abi/DividendAbi.js"></script>
+    <script src="./assets/abi/integrationAbi.js"></script>
+    <script src="./assets/abi/NTokenAbi.js"></script>
+    <script src="./assets/js/decimal.min.js"></script>
+    <!-- <script src="./js/main.js"></script> -->
+    <script src="./assets/js/num.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.2.11/dist/web3.min.js"></script>
+    <script src="./js/Constants.js"></script>
+    <script>
+        const messages = {
+            zh: languageChinese,
+            en: languageEnglish
+        }
+        const i18n = new VueI18n({
+            locale: 'en', // 语言标识
+            messages
+        })
+        new Vue({
+            el: "#app",
+            i18n,
+            data() {
+                return {
+                    // 切换弹窗title上的语言
+                    dialog_withdraw: null,
+                    dialog_Approve: null,
+                    dialog_Deposite: null,
+                    dialog_NEST: null,
+                    dialog_text: null,
+                    dialogVisible: false,
+                    dialogVisible2: false,
+                    Income_Deposite: false,
+                    Income_Withdraw: false,
+                    dialogVisibleMAX: false,
+                    dialogVisible_bj_sq: false,
+                    dialogVisibleMAX_bj: false,
+                    dialogVisible_null: false,
+                    dialogVisible_crsj: false,
+                    dialogVisible_sysj: false,
+                    dialogVisible_fh_warn: false,
+                    radio: '1',
+                    radioHide: true,
+                    val1: '',
+                    val2: '',
+                    val3: '',
+                    val4: '',
+                    amount: '',
+                    price: '',
+                    amountStates: true,
+                    num4: 1,
+                    input: '',
+                    value: 'null',
+                    activeStatus: 1,
+                    dj: '',
+                    directionOption: [{
+                        label: 'English',
+                        value: '0',
+                        src: 'svg/语言切换_美国icon.svg'
+                    },
+                    {
+                        label: 'Chinese',
+                        value: '1',
+                        src: 'svg/语言切换_中国icon.svg'
+                    },
+                    ],
+                    week: "",
+                    days: null,
+                    h: null,
+                    min: null,
+                    token_name: '',
+                    token_name_addr: '',
+                    n_addr: ''
+                }
+            },
+            created() {
+            },
+            mounted() {
+                // this.drawLine();
+                // 测试网合约地址
+                if (web3.version.network == 3) {
+                    USDT_addr = "0xf17D721369F540f7485E1033194eBf92e3f88079",
+                        // USDT报价合约地址
+                        USDT_offer = "0xFf6ad075D75FA51cdB231da54E6dF007E60C7122",
+                        // 其他报价合约地址
+                        _offer = "0x49665947b3Ac4a75DaD7B8E59701752bEc28Ff66",
+                        // 测试网价格合约地址
+                        price_addr = "0x96E1374383bAC8c03878274d5870346D0d874C30",
+                        // 分红合约地址
+                        Dividend_addr = "0xDE83944619005d5EE4AAB951199748D599fCff44",
+                        //分红NEST地址
+                        NEST_addr = "0xf565422eBd4A8976e1e447a849b8B483C68EFD0C",
+                        // 信息整合合约地址
+                        Integratiotoken = "0x2D5990d95Ca8a53F329b7F5B1E89C53D916C7D82",
+                        // NEST锁仓合约地址,
+                        NEST_lock = "0xdC912578B5e8f24b13E79ab072a1E9C86e659694",
+                        // 测试网NToken映射合约地址
+                        mapping_addr = "0x511fe13ca247ceF81332eE27f743E051991008Cb"
+                } else if (web3.version.network == 1) {
+                    // 主网合约地址
+                    USDT_addr = "0xdac17f958d2ee523a2206206994597c13d831ec7",
+                        // USDT报价合约地址
+                        USDT_offer = "0xc83E009c7794e8f6d1954dc13c23A35Fc4D039F6",
+                        // 其他报价合约地址
+                        _offer = "0x1542E790a742333EA6A2F171c5d07A2E7794EEf4",
+                        // 价格合约地址
+                        price_addr = "0x94F36FAa6bB4f74009637292b09C355CcD3e80Eb",
+                        // 分红合约地址
+                        Dividend_addr = "0x19E1d193A448bD13097EFC2aea867468726e67c5",
+                        //分红NEST地址
+                        NEST_addr = "0x04abEdA201850aC0124161F037Efd70c74ddC74C",
+                        // 信息整合合约地址
+                        Integratiotoken = "0xBE6Aa1f0Fe8F19a8f7CC40C8916B0C0361197D77",
+                        // NEST锁仓合约地址,
+                        NEST_lock = "0x03904F4B9Fb54c61AAf96d0aCDD2e42a46c99102",
+                        // NToken映射合约地址
+                        mapping_addr = "0xF9Dc75762fC000f3fb1cF88E7fcc32f9969BA003"
+                }
+                $('.wallet_address').click(function () {
+                    if (window.ethereum) {
+                        // 请求用户授权
+                        window.ethereum.enable().then(function (res) {
+                            $('.loginout').hide()
+                            $('.loginin').show()
+                            setInterval(function () {
+                                if (ethereum.selectedAddress !== "") {
+                                    location.reload()
+                                }
+                            }, 2000)
+                        }).catch(function (reason) {
+                        })
+                    }
+                })
+
+                if (typeof web3 !== 'undefined') {
+                    web3 = new Web3(web3.currentProvider);
+                    var coinbase = web3.eth.coinbase;
+                    var accounts = web3.eth.accounts;
+                } else {
+                    web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/8098bf03fac34cd0a29c359cdf9e5db2"));
+                }
+                // 获取报价页面传的值
+                if (this.getQueryVariable("data_addr")) {
+                    this.data_addr = this.getQueryVariable("data_addr")
+                    this._token = this.getQueryVariable("_token")
+                    this.data_residue_eth = this.getQueryVariable("data_residue_eth")
+                    this.data_residue_token = this.getQueryVariable("data_residue_token")
+                    var img_src = "./svg/icon/" + this._token + ".png"
+                    this._token_addr = this.getQueryVariable("token_addr")
+                    $('.token_img').attr('src', img_src)
+                    $('.bj_eth_num1').text(cutZero(formatDecimal(toNonExponential(this.data_residue_eth / 1e18), 8)))
+                    // $('.bj_eth_num2').text(2 * this.data_residue_eth / 1e18)
+                    $('.e_num').text(cutZero(formatDecimal(toNonExponential(this.data_residue_eth / 1e18), 8)))
+                    this.amount = this.data_residue_eth / 1e18
+
+                }
+
+                var that = this
+                // 获取erc20价格
+                var updateAndCheckPriceNowContract = new web3.eth.Contract(NestPriceAbi, price_addr)
+                updateAndCheckPriceNowContract.methods.checkPriceNow(that._token_addr)
+                    .call()
+                    .then(function (result) {
+                        var ethAmount = web3.utils.fromWei(result[0], 'ether')
+                        var erc20Amount = result[1];
+                        var _token_price = (erc20Amount / ethAmount);
+                        var decimalContract = new web3.eth.Contract(NestPriceAbi, that._token_addr)
+                        decimalContract.methods.decimals().call().then(function (result) {
+                            var demical = "1e" + result
+                            var token_price = _token_price / demical
+                            $('.token_price').text(token_price)
+                            $('.sr_token_price').text(that.data_residue_token / demical)
+                            $('.t_num').text(that.data_residue_token / demical)
+                            $('.img_t').click(function () {
+                                var ttnum = $('.sr_token_price').text()
+                                var eenum = $('.bj_eth_num1').text()
+                                $(this).addClass('img_active').siblings().removeClass('img_active')
+                                $('.e_num').text(ttnum)
+                                $('.t_num').text(eenum)
+                                $('.uu_name').text('ETH')
+                                $('.e_name').text(that._token)
+                            })
+                            $('.img_e').click(function () {
+                                var ttnum = $('.sr_token_price').text()
+                                var eenum = $('.bj_eth_num1').text()
+                                $(this).addClass('img_active').siblings().removeClass('img_active')
+                                $('.t_num').text(ttnum)
+                                $('.e_num').text(eenum)
+                                $('.e_name').text('ETH')
+                                $('.uu_name').text(that._token)
+                            })
+                            var a = $('.sr_token_price').text()
+                            var b = $('.bj_eth_num1').text()
+                            that.bj = a / b
+                            console.log(a, b, this.bj)
+                        })
+                    })
+                $('.u_name').text(this._token)
+                // 输入框输入
+                $('.sr_jg>input').bind("input propertychange", function () {
+                    that.bind()
+                })
+                // 偏离提示
+                $('.pc_warn').click(function () {
+                    if (that.token_name == 'USDT') {
+                        that.dialogVisible2 = true
+                    } else {
+                        that.dialogVisible = true
+                    }
+                })
+                $('.img_reback').click(function () {
+                    window.location.href = "index.html"
+                })
+                // erc20不为USDT获取相应地址
+                if (this._token == 'USDT') {
+                    $('.nname').text('NEST')
+                    n_n = 'NEST'
+                    $('.t_name').text('NEST')
+                } else {
+                    USDT_addr = this._token_addr
+                    USDT_offer = _offer
+                    $('.nname').text('N' + this._token)
+                    n_n = 'N' + this._token
+                    $('.t_name').text(this._token)
+                }
+                if (this.getCookie("language") == null || this.getCookie("language") == "en") {
+                    document.cookie = "language=" + "en"
+                    this.value = '0'
+                    this.$i18n.locale = 'en'
+                    $('.language_enimg').show()
+                    $('.language_cnimg').hide()
+                    this.dialog_text = "Penalty for Quotation Deviation"
+                } else {
+                    document.cookie = "language=" + "zh"
+                    this.value = '1'
+                    this.$i18n.locale = 'zh'
+                    $('.language_enimg').hide()
+                    $('.language_cnimg').show()
+                }
+                setInterval(function () {
+                    that.flash()
+                }, 15000)
+                var that = this
+                web3.eth.getAccounts((error, accounts) => {
+                    var wallet_address = accounts[0]
+                    // 钱包地址
+                    $('.pp').text(hidden_address(wallet_address))
+                    if (accounts.length == 0) {
+                        $('.loginout').show()
+                        $('.loginin').hide()
+                    } else {
+                        $('.loginout').hide()
+                        $('.loginin').show()
+                    }
+                    // ETH余额
+                    web3.eth.getBalance(accounts[0], (err, balance) => {
+                        var eth_balance = (balance / 1e18).toFixed(DECIMAL_POINT_WIDTH)
+                        $('.eth_balance').text(cutZero((eth_balance * 1).toFixed(8).slice(0, 14)))
+                    })
+                    // USDT余额
+                    var myContract5 = new web3.eth.Contract(NestPriceAbi, USDT_addr);
+                    myContract5.methods.balanceOf(accounts[0]).call().then(function (result) {
+                        var balance = result
+                        var decimalContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                        decimalContract.methods.decimals().call().then(function (result) {
+                            var demical = "1e" + result
+                            $('.token_balance').text(balance / demical)
+                        })
+                    })
+                })
+            },
+            methods: {
+                actives(datas) {
+                    this.activeStatus = datas
+                },
+                // 取消授权
+                qxsq() {
+                    var that = this
+                    web3.eth.getAccounts((error, accounts) => {
+                        var n_addr = $('.token').text()
+                        var lock_sqContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                        lock_sqContract.methods.approve(USDT_offer,
+                            '0'
+                        ).send({ from: accounts[0] }).on('transactionHash', function (hash) {
+                        })
+                            .on('receipt', function (receipt) {
+                                that.flash()
+                            })
+                            .on('confirmation', function (confirmationNumber, receipt) {
+                                that.flash()
+                                that.dialogVisibleMAX = false
+                            })
+                            .on('error', function () {
+                                that.flash()
+
+                            });
+                    })
+                },
+                // 吃单
+                cd() {
+                    var that = this
+                    web3.eth.getAccounts((error, accounts) => {
+                        var decimalContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                        decimalContract.methods.decimals().call().then(function (result) {
+                            var demical = "1e" + result
+                            if ($(".img_t").hasClass('img_active')) {
+                                // 支付token
+                                var ethAmount = ($('.bj_eth_num2').text() * 1e18).toFixed(0)
+                                var tokenAmount = ($('.sr_token_price2').text() * demical).toFixed(0)
+                                var contractAddress = ("0x" + that.data_addr)
+                                var tranEthAmount = ($('.bj_eth_num1').text() * 1e18).toFixed(0)
+                                var tranTokenAmount = ($('.sr_token_price').text() * demical).toFixed(0)
+                                var tranTokenAddress = USDT_addr
+                                var msg_value = ($('.bj_eth_num2').text() * 1e18 - $('.bj_eth_num1').text() * 1e18).toFixed(0)
+                                var sendErcBuyEth = new web3.eth.Contract(offerAbi, USDT_offer)
+                                sendErcBuyEth.methods.sendErcBuyEth(
+                                    ethAmount,
+                                    tokenAmount,
+                                    contractAddress,
+                                    tranEthAmount,
+                                    tranTokenAmount,
+                                    tranTokenAddress
+                                ).send({ from: accounts[0], value: msg_value }).on('transactionHash', function (hash) {
+                                })
+                                    .on('receipt', function (receipt) {
+                                        that.flash()
+                                    })
+                                    .on('confirmation', function (confirmationNumber, receipt) {
+                                        that.flash()
+                                        that.dialogVisibleMAX = false
+                                    })
+                                    .on('error', function () {
+                                        that.flash()
+
+                                    });
+                            } else {
+                                // 支付ETH
+                                var ethAmount = ($('.bj_eth_num2').text() * 1e18).toFixed(0)
+                                var tokenAmount = ($('.sr_token_price2').text() * demical).toFixed(0)
+                                var contractAddress = ("0x" + that.data_addr)
+                                var tranEthAmount = ($('.bj_eth_num1').text() * 1e18).toFixed(0)
+                                var tranTokenAmount = ($('.sr_token_price').text() * demical).toFixed(0)
+                                var tranTokenAddress = USDT_addr
+                                var msg_value = ($('.bj_eth_num2').text() * 1e18 + $('.bj_eth_num1').text() * 1e18).toFixed(0)
+                                var sendEthBuyErc = new web3.eth.Contract(offerAbi, USDT_offer)
+                                sendEthBuyErc.methods.sendEthBuyErc(
+                                    ethAmount,
+                                    tokenAmount,
+                                    contractAddress,
+                                    tranEthAmount,
+                                    tranTokenAmount,
+                                    tranTokenAddress
+                                ).send({ from: accounts[0], value: msg_value }).on('transactionHash', function (hash) {
+                                })
+                                    .on('receipt', function (receipt) {
+                                        that.flash()
+                                    })
+                                    .on('confirmation', function (confirmationNumber, receipt) {
+                                        that.flash()
+                                        that.dialogVisibleMAX = false
+                                    })
+                                    .on('error', function () {
+                                        that.flash()
+                                    });
+                            }
+                        })
+                    })
+                },
+                // 输入框事件
+                bind() {
+                    var val = $('.sr_jg>input').val()
+                    var num = $('.bj_eth_num').text()
+                    if (val !== '') {
+                        $('.sr_token_price1').text(val)
+                    } else {
+                        $('.sr_token_price1').text('--')
+                    }
+                    var that = this
+                    web3.eth.getAccounts((error, accounts) => {
+                        var offer_price = $('.sr_jg>input').val()
+                        var updateAndCheckPriceNowContract = new web3.eth.Contract(NestPriceAbi, price_addr)
+                        updateAndCheckPriceNowContract.methods.checkPriceNow(USDT_addr)
+                            .call()
+                            .then(function (result) {
+                                var ethAmount = web3.utils.fromWei(result[0], 'ether')
+                                var erc20Amount = result[1];
+                                var token_price = (erc20Amount / ethAmount);
+                                var decimalContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                                decimalContract.methods.decimals().call().then(function (result) {
+                                    var demical = "1e" + result
+                                    var hy_price = token_price / demical
+                                    token_price_up = hy_price * 1.1
+                                    token_price_down = hy_price * 0.9
+                                    if (val == '') {
+                                        $('.pc_warn').hide()
+                                        $('.gas').text('--')
+                                    } else {
+                                        if (that.token_name == 'USDT') {
+                                            if (val * 1 > token_price_up || val < token_price_down) {
+                                                var _num = $('.e_num').text()
+                                                var sr_num = $('.sr_jg>input').val()
+                                                $('.gas').text(30 * 0.01)
+                                                $('.pc_warn').show()
+                                                $('.bj_eth_num2').text(10 * _num)
+                                                $('.sr_token_price2').text(cutZero(formatDecimal(toNonExponential(floatTool.multiply(sr_num, _num) * 10), 8)))
+                                            } else {
+                                                $('.gas').text(num * 0.01)
+                                                $('.pc_warn').hide()
+                                                var _num = $('.sr_jg>input').val()
+                                                var e_num = $('.bj_eth_num2').text()
+                                                var bj_e = $('.e_num').text
+                                                $('.bj_eth_num2').text(2 * bj_e)
+                                                $('.sr_token_price2').text(cutZero(formatDecimal(toNonExponential(2 * floatTool.multiply(_num, bj_e)), 8)))
+                                                $('.sr_token_price1').text(_num)
+                                            }
+                                        } else {
+                                            if (val * 1 > token_price_up || val < token_price_down) {
+                                                var _num = $('.bj_eth_num1').text()
+                                                var sr_num = $('.sr_jg>input').val()
+                                                $('.gas').text(10 * 0.01)
+                                                $('.pc_warn').show()
+                                                $('.bj_eth_num2').text(10 * _num)
+                                                $('.sr_token_price2').text(cutZero(formatDecimal(toNonExponential(floatTool.multiply(sr_num, _num) * 10), 8)))
+                                            } else {
+                                                $('.pc_warn').hide()
+                                                var _num = $('.sr_jg>input').val()
+                                                var e_num = $('.bj_eth_num2').text()
+                                                var bj_e = $('.bj_eth_num1').text()
+                                                $('.bj_eth_num2').text(2 * bj_e)
+                                                $('.sr_token_price2').text(cutZero(formatDecimal(toNonExponential(2 * floatTool.multiply(_num, bj_e)), 8)))
+                                                $('.sr_token_price1').text(_num)
+                                            }
+                                        }
+                                    }
+                                })
+                            })
+                    })
+                },
+                changeSelection(scope) {
+                    if (scope == 0) {
+                        this.value = 'English'
+                        this.$i18n.locale = 'en'
+                        document.cookie = "language=" + "en"
+                        $('.language_enimg').show()
+                        $('.language_cnimg').hide()
+                        $('.list_qh').text('RETRIEVE')
+                        $('.yzjd').text('Verification progress')
+                        $('.bj_text').text('Quote')
+                        $('.cd_text').text('TAKER')
+                        this.dialog_withdraw = "Withdraw " + n_n
+                        this.dialog_Approve = this.token_name + " 授权"
+                        this.dialog_Deposite = "Deposite " + n_n
+                        this.dialog_NEST = n_n + " Approve"
+                        this.dialog_text = "Penalty for Quotation Deviation"
+                    } else {
+                        this.value = 'Chinese'
+                        this.$i18n.locale = 'zh'
+                        document.cookie = "language=" + "zh"
+                        $('.language_enimg').hide()
+                        $('.language_cnimg').show()
+                        $('.list_qh').text('取回')
+                        $('.yzjd').text('验证进度')
+                        $('.bj_text').text('报价')
+                        $('.cd_text').text('吃单')
+                        this.dialog_withdraw = "取出 " + n_n
+                        this.dialog_Approve = this.token_name + " 授权"
+                        this.dialog_Deposite = "存入 " + n_n
+                        this.dialog_NEST = n_n + " 授权"
+                        this.dialog_text = "报价偏差"
+                    }
+                },
+                // erc20授权
+                bj_sq_max() {
+                    var that = this
+                    web3.eth.getAccounts((error, accounts) => {
+                        var sq_usdtContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                        sq_usdtContract.methods.approve(USDT_offer,
+                            "999999999999999999999999999999999999").send({ from: accounts[0] }).on('transactionHash', function (hash) {
+                            })
+                            .on('receipt', function (receipt) {
+                                that.flash()
+                            })
+                            .on('confirmation', function (confirmationNumber, receipt) {
+                                that.dialogVisibleMAX_bj = false
+                                that.flash()
+                            })
+                            .on('error', function () {
+                                that.dialogVisibleMAX_bj = false
+                                that.flash()
+                            });
+                    })
+                },
+                delamount() {
+                    function accMul(arg1, arg2) {
+                        var m = 0,
+                            s1 = arg1.toString(),
+                            s2 = arg2.toString();
+                        try {
+                            m += s1.split(".")[1].length
+                        } catch (e) { }
+                        try {
+                            m += s2.split(".")[1].length
+                        } catch (e) { }
+                        return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m)
+                    }
+                    var offer_price = $('.sr_jg>input').val()
+                    var that = this
+                    if ($(".img_t").hasClass('img_active')) {
+                        // 支付token
+                        console.log(that.amount)
+                        if (this._token == 'USDT') {
+                            if (that.amount == 30) {
+                                // that.amountStates = true
+                            } else {
+                                that.amount = that.amount - 30
+                                $('.bj_eth_num1').text(that.amount)
+                                $('.t_num').text(that.amount)
+                                that.amountStates = false
+                            }
+                        } else {
+                            console.log(1)
+                            that.amountStates = false
+                            if (that.amount == 10) {
+                                // that.amountStates = true
+                            } else {
+                                that.amount = that.amount - 10
+                                $('.bj_eth_num1').text(that.amount)
+                                $('.t_num').text(that.amount)
+                                // that.amountStates = false
+                            }
+                        }
+                        console.log(that.bj)
+                        $('.sr_token_price').text(accMul((that.bj).toFixed(0), that.amount))
+                        $('.e_num').text(accMul((that.bj).toFixed(0), that.amount))
+                    } else {
+                        console.log(that.amount)
+                        if (this._token == 'USDT') {
+                            if (that.amount == 30) {
+                                // that.amountStates = true
+                            } else {
+                                that.amount = that.amount - 30
+                                $('.bj_eth_num1').text(that.amount)
+                                that.amountStates = false
+                            }
+                        } else {
+                            console.log(1)
+                            that.amountStates = false
+                            if (that.amount == 10) {
+                                // that.amountStates = true
+                            } else {
+                                that.amount = that.amount - 10
+                                $('.bj_eth_num1').text(that.amount)
+                                $('.e_num').text(that.amount)
+                                // that.amountStates = false
+                            }
+                        }
+                        $('.sr_token_price').text(accMul((that.bj).toFixed(0), that.amount))
+                        $('.t_num').text(accMul((that.bj).toFixed(0), that.amount))
+                    }
+                    if (offer_price != '') {
+                        web3.eth.getAccounts((error, accounts) => {
+                            var offer_price = $('.sr_jg>input').val()
+                            var updateAndCheckPriceNowContract = new web3.eth.Contract(NestPriceAbi, price_addr)
+                            updateAndCheckPriceNowContract.methods.checkPriceNow(USDT_addr)
+                                .call()
+                                .then(function (result) {
+                                    var ethAmount = web3.utils.fromWei(result[0], 'ether')
+                                    var erc20Amount = result[1];
+                                    var token_price = (erc20Amount / ethAmount);
+                                    var decimalContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                                    decimalContract.methods.decimals().call().then(function (result) {
+                                        var demical = "1e" + result
+                                        var hy_price = token_price / demical
+                                        token_price_up = hy_price * 1.1
+                                        token_price_down = hy_price * 0.9
+                                        if (offer_price * 1 >= token_price_up || offer_price <= token_price_down) {
+                                            $('.bj_eth_num2').text(10 * $('.bj_eth_num1').text())
+                                            $('.sr_token_price2').text(floatTool.multiply($('.bj_eth_num2').text(), $('.sr_token_price1').text()))
+                                        } else {
+                                            $('.bj_eth_num2').text(2 * $('.bj_eth_num1').text())
+                                            $('.sr_token_price2').text(floatTool.multiply($('.bj_eth_num2').text(), $('.sr_token_price1').text()))
+                                        }
+                                    })
+                                })
+                        })
+                    }
+                },
+                addamount() {
+                    function accMul(arg1, arg2) {
+                        var m = 0,
+                            s1 = (arg1 * 1).toString(),
+                            s2 = (arg2 * 1).toString();
+                        try {
+                            m += s1.split(".")[1].length
+                        } catch (e) { }
+                        try {
+                            m += s2.split(".")[1].length
+                        } catch (e) { }
+                        return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m)
+                    }
+                    var offer_price = $('.sr_jg>input').val()
+                    var that = this
+                    if ($(".img_t").hasClass('img_active')) {
+                        that.amountStates = false
+                        if (this._token == "USDT") {
+                            // that.amount = that.amount + 30
+                            if (that.amount == that.data_residue_eth / 1e18) {
+                                that.amountStates = true
+                            } else {
+                                that.amount = that.amount + 30
+                                $('.bj_eth_num1').text(that.amount)
+                                $('.t_num').text(that.amount)
+                                that.amountStates = false
+                            }
+                        } else {
+                            if (that.amount == that.data_residue_eth / 1e18) {
+                                that.amountStates = true
+                            } else {
+                                that.amount = that.amount + 10
+                                $('.bj_eth_num1').text(that.amount)
+                                $('.t_num').text(that.amount)
+                                that.amountStates = false
+                            }
+                        }
+                        that.price = $('.ptext>.token_price').text()
+
+                        $('.sr_token_price').text(accMul((that.bj).toFixed(0), that.amount))
+                        $('.e_num').text(accMul((that.bj).toFixed(0), that.amount))
+                    } else {
+                        that.amountStates = false
+                        if (this._token == "USDT") {
+                            // that.amount = that.amount + 30
+                            if (that.amount == that.data_residue_eth / 1e18) {
+                                that.amountStates = true
+                            } else {
+                                that.amount = that.amount + 30
+                                $('.bj_eth_num1').text(that.amount)
+                                $('.e_num').text(that.amount)
+                                that.amountStates = false
+                            }
+                        } else {
+                            if (that.amount == that.data_residue_eth / 1e18) {
+                                that.amountStates = true
+                            } else {
+                                that.amount = that.amount + 10
+                                $('.bj_eth_num1').text(that.amount)
+                                $('.e_num').text(that.amount)
+                                that.amountStates = false
+                            }
+                        }
+                        that.price = $('.ptext>.token_price').text()
+                        $('.sr_token_price').text(accMul((that.bj).toFixed(0), that.amount))
+                        $('.t_num').text(accMul((that.bj).toFixed(0), that.amount))
+                    }
+                    if (offer_price != '') {
+                        web3.eth.getAccounts((error, accounts) => {
+                            var offer_price = $('.sr_jg>input').val()
+                            var updateAndCheckPriceNowContract = new web3.eth.Contract(NestPriceAbi, price_addr)
+                            updateAndCheckPriceNowContract.methods.checkPriceNow(USDT_addr)
+                                .call()
+                                .then(function (result) {
+                                    var ethAmount = web3.utils.fromWei(result[0], 'ether')
+                                    var erc20Amount = result[1];
+                                    var token_price = (erc20Amount / ethAmount);
+                                    var decimalContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                                    decimalContract.methods.decimals().call().then(function (result) {
+                                        var demical = "1e" + result
+                                        var hy_price = token_price / demical
+                                        token_price_up = hy_price * 1.1
+                                        token_price_down = hy_price * 0.9
+                                        if (offer_price * 1 >= token_price_up || offer_price <= token_price_down) {
+                                            $('.bj_eth_num2').text(10 * $('.bj_eth_num1').text())
+                                            $('.sr_token_price2').text(floatTool.multiply($('.bj_eth_num2').text(), $('.sr_token_price1').text()))
+                                        } else {
+                                            $('.bj_eth_num2').text(2 * $('.bj_eth_num1').text())
+                                            $('.sr_token_price2').text(floatTool.multiply($('.bj_eth_num2').text(), $('.sr_token_price1').text()))
+                                        }
+                                    })
+                                })
+                        })
+                    }
+                },
+                // 刷新
+                flash() {
+                    var that = this
+                    // 价格
+                    var updateAndCheckPriceNowContract = new web3.eth.Contract(NestPriceAbi, price_addr)
+                    updateAndCheckPriceNowContract.methods.checkPriceNow(that._token_addr)
+                        .call()
+                        .then(function (result) {
+                            var ethAmount = web3.utils.fromWei(result[0], 'ether')
+                            var erc20Amount = result[1];
+                            var _token_price = (erc20Amount / ethAmount);
+                            var decimalContract = new web3.eth.Contract(NestPriceAbi, that._token_addr)
+                            decimalContract.methods.decimals().call().then(function (result) {
+                                var demical = "1e" + result
+                                var token_price = _token_price / demical
+                                $('.token_price').text(token_price)
+                            })
+                        })
+                    web3.eth.getAccounts((error, accounts) => {
+                        var wallet_address = accounts[0]
+                        $('.pp').text(hidden_address(wallet_address))
+                        if (accounts.length == 0) {
+                            $('.loginout').show()
+                            $('.loginin').hide()
+                        } else {
+                            $('.loginout').hide()
+                            $('.loginin').show()
+                        }
+                        // ETH余额
+                        web3.eth.getBalance(accounts[0], (err, balance) => {
+                            var eth_balance = (balance / 1e18).toFixed(DECIMAL_POINT_WIDTH)
+                            $('.eth_balance').text(cutZero((eth_balance * 1).toFixed(8).slice(0, 14)))
+                        })
+                        // USDT余额
+                        var myContract5 = new web3.eth.Contract(NestPriceAbi, USDT_addr);
+                        myContract5.methods.balanceOf(accounts[0]).call().then(function (result) {
+                            var balance = result
+                            var decimalContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
+                            decimalContract.methods.decimals().call().then(function (result) {
+                                var demical = "1e" + result
+                                $('.token_balance').text(balance / demical)
+                            })
+                        })
+                    })
+                },
+                getCookie(name) {
+                    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+                    if (arr = document.cookie.match(reg))
+                        return unescape(arr[2]);
+                    else
+                        return null;
+                },
+                radios() {
+                    if (this.radio == 1) {
+                        this.radioHide = true
+                    } else {
+                        this.radioHide = false
+                    }
+                },
+                // 返回上个页面
+                reback() {
+                    window.location.href = "javascript:history.go(-1)"
+                },
+                getQueryVariable(variable) {
+                    var query = window.location.search.substring(1);
+                    var vars = query.split("&");
+                    for (var i = 0; i < vars.length; i++) {
+                        var pair = vars[i].split("=");
+                        if (pair[0] == variable) { return pair[1]; }
+                    }
+                    return (false);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

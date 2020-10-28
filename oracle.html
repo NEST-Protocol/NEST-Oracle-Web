@@ -9,6 +9,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="google" content="notranslate">
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y626GG2BB8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Y626GG2BB8');
+    </script>
     <!-- <script src="js/echarts.min.js"></script> -->
     <style>
         [v-cloak] {
@@ -23,6 +31,7 @@
         #app {
             background: url(./svg/bj.jpg) repeat;
             background-position: 0 0;
+            padding-bottom: 30px;
         }
 
         body {
@@ -561,12 +570,13 @@
                                         <div class="image_text">
                                             <div>
                                                 <img src="svg/icon/MR.png" class="token_img"
+                                                    onerror="this.src='./svg/icon/MR.png'"
                                                     style="width: 2.75rem;height: 2.75rem;" />
                                             </div>
                                             <div>
                                                 <p style="margin-top: 0.75rem;font-size: 1rem;font-weight: bold;margin: 0;"
                                                     class="sr_token_price">--</p>
-                                                <p class="u_name"></p>
+                                                <p class="u_name u_namea"></p>
                                             </div>
                                         </div>
                                         <div class="image_text">
@@ -945,7 +955,7 @@
     <script src="./assets/abi/NTokenAbi.js"></script>
     <script src="./assets/js/decimal.min.js"></script>
     <!-- <script src="./js/main.js"></script> -->
-    <script src="./assets/js/cutZero.js"></script>
+    <script src="./assets/js/num.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/web3@1.2.11/dist/web3.min.js"></script>
     <script src="./js/Constants.js"></script>
     <script>
@@ -1030,7 +1040,7 @@
                         // 其他报价合约地址
                         _offer = "0x49665947b3Ac4a75DaD7B8E59701752bEc28Ff66",
                         // 测试网价格合约地址
-                        price_addr = "0x2600D6ef3B02bBbc14783926bB76b14EBd38f6A6",
+                        price_addr = "0x96E1374383bAC8c03878274d5870346D0d874C30",
 
                         // 分红合约地址
                         Dividend_addr = "0xDE83944619005d5EE4AAB951199748D599fCff44",
@@ -1108,19 +1118,19 @@
                     this.token_name = this.getQueryVariable("symbol")
                     this.token_name_addr = this.getQueryVariable("address")
                     var img_src = "./svg/icon/" + this.token_name + ".png"
-                    if (this.token_name == 'SUSHI' || this.token_name == 'CoFi' || this.token_name == 'sUSD' || this.token_name == 'REPv2' || this.token_name == 'BAND' || this.token_name == 'CRV' || this.token_name == 'HBCH' || this.token_name == 'RSR' || this.token_name == 'wNXM' || this.token_name == 'UNI' || this.token_name == 'AMPL' || this.token_name == 'ANT' || this.token_name == 'BAL' || this.token_name == 'BAT' || this.token_name == 'BIX' || this.token_name == 'BNB' || this.token_name == 'COMP' || this.token_name == 'DAI' || this.token_name == 'DGD' || this.token_name == 'ELF' || this.token_name == 'ENJ' || this.token_name == 'GNO' || this.token_name == 'GNT' || this.token_name == 'GUSD' || this.token_name == 'HBTC' || this.token_name == 'HPT' || this.token_name == 'HT' || this.token_name == 'HUSD' || this.token_name == 'imBTC' || this.token_name == 'KCS' || this.token_name == 'KEY' || this.token_name == 'KNC' || this.token_name == 'LEND' || this.token_name == 'LEO' || this.token_name == 'LINK' || this.token_name == 'LRC' || this.token_name == 'MANA' || this.token_name == 'MATIC' || this.token_name == 'MCO' || this.token_name == 'MKR' || this.token_name == 'MX' || this.token_name == 'NEXO' || this.token_name == 'OKB' || this.token_name == 'OMG' || this.token_name == 'PAX' || this.token_name == 'REN' || this.token_name == 'renBTC' || this.token_name == 'REP' || this.token_name == 'SNT' || this.token_name == 'SNX' || this.token_name == 'TUSD' || this.token_name == 'USDC' || this.token_name == 'USDT' || this.token_name == 'WBTC' || this.token_name == 'YFI' || this.token_name == 'YFII' || this.token_name == 'ZB' || this.token_name == 'ZRX')
-                        $('.token_img').attr('src', img_src)
-                } else {
-                    $('.token_img').attr('src', "./svg/icon/MR.png")
+                    $('.token_img').attr('src', img_src)
                 }
 
                 $('.u_name').text(this.token_name)
                 if ($(window).width() <= 500) {
                     $('.token').text(hidden_address(this.token_name_addr))
                     $('.xt_addr').text(hidden_address('0xc83E009c7794e8f6d1954dc13c23A35Fc4D039F6'))
+                    $('.xt_addr').attr('data_addr', '0xc83E009c7794e8f6d1954dc13c23A35Fc4D039F6')
+
                 } else {
                     $('.token').text(this.token_name_addr)
                     $('.xt_addr').text('0xc83E009c7794e8f6d1954dc13c23A35Fc4D039F6')
+                    $('.xt_addr').attr('data_addr', '0xc83E009c7794e8f6d1954dc13c23A35Fc4D039F6')
                 }
 
 
@@ -1129,17 +1139,19 @@
                 })
 
                 $('.xt_addr').click(function () {
-                    var addr = $(this).text()
+                    var addr = $(this).attr('data_addr')
                     var _herf = "https://cn.etherscan.com/address/" + addr
                     window.open(_herf)
                 })
                 $('.ntoken_addr').click(function () {
-                    var addr = $(this).text()
+                    var addr = $(this).attr('data_addr')
                     var _herf = "https://cn.etherscan.com/token/" + addr
                     window.open(_herf)
                 })
+                console.log(this.token_name_addr)
+                var that = this
                 $('.token').click(function () {
-                    var addr = $(this).text()
+                    var addr = that.token_name_addr
                     var _herf = "https://cn.etherscan.com/address/" + addr
                     window.open(_herf)
                 })
@@ -1200,14 +1212,22 @@
                 var that = this
                 web3.eth.getAccounts((error, accounts) => {
                     var wallet_address = accounts[0]
-
+                    if (accounts.length == 0) {
+                        $('.loginout').show()
+                        $('.loginin').hide()
+                    } else {
+                        $('.loginout').hide()
+                        $('.loginin').show()
+                    }
                     // 映射合约地址查询
 
                     if (this.token_name == 'USDT') {
                         if ($(window).width() <= 500) {
                             $('.ntoken_addr').text(hidden_address(NEST_addr))
+                            $('.ntoken_addr').attr('data_addr', NEST_addr)
                         } else {
                             $('.ntoken_addr').text(NEST_addr)
+                            $('.ntoken_addr').attr('data_addr', NEST_addr)
                         }
                         // 	var a_addr = $('.ntoken_addr').text()
                         // console.log(a_addr)
@@ -1276,8 +1296,11 @@
                                     })
                                 if ($(window).width() <= 500) {
                                     $('.ntoken_addr').text(hidden_address(ntoken_addr))
+                                    $('.ntoken_addr').attr('data_addr', NEST_addr)
+
                                 } else {
                                     $('.ntoken_addr').text(ntoken_addr)
+                                    $('.ntoken_addr').attr('data_addr', NEST_addr)
                                 }
                                 var getInfoContract = new web3.eth.Contract(DividendAbi, Dividend_addr)
                                 getInfoContract.methods.getInfo(ntoken_addr)
@@ -1319,6 +1342,7 @@
                         $('.eth_balance').text(cutZero((eth_balance * 1).toFixed(8).slice(0, 14)))
                     })
                     $('.pp').text(hidden_address(wallet_address))
+                    var that = this
                     var listContract = new web3.eth.Contract(offerAbi, USDT_offer)
                     listContract.methods.list('0', '50', '0')
                         .call({ from: accounts[0] })
@@ -1507,7 +1531,6 @@
                                     for (i = 0; i < strs.length; i += 9) {
                                         arr.push(strs.slice(i, i + 9))
                                     }
-                                    console.log(arr)
                                     web3.eth.getBlockNumber().then(function (result) {
                                         var qk_num = result
                                         USDT_addr = that.token_name_addr
@@ -1530,7 +1553,7 @@
                                             for (j = 0; j < arr.length; j++) {
                                                 var addr = "0x" + arr[j][1]
                                                 var bh_addr = '0x' + arr[j][0]
-                                                var t_addr = $('.token').text()
+                                                var t_addr = that.token_name_addr
                                                 var hy_taddr = "0x" + arr[j]
                                                 if (addr.toLowerCase() == (accounts[0]).toLowerCase() && (qk_num * 1 - (arr[j][7] * 1)) > 25 && (arr[j][3] !== '0' || arr[j][4] !== '0')) {
 
@@ -1549,7 +1572,6 @@
                                                         + '<p class="bh_addr" style="display:none">' + bh_addr + '</p>'
                                                         + '<div style="width:150px;text-align:center">'
                                                         + '<p class="lists_p list_qh" style="margin-top:1.25rem;background-color: rgba(255, 196, 77, 1);color:rgba(0, 0, 0, 1);height:2rem;text-align:center;line-height:2rem;border-radius: 16px;font-size: 14px;cursor:pointer;" class="list_qh">' + qh_text + '</p>'
-
                                                         + '</div>'
                                                         + '</div>'
                                                         + '</div>'
@@ -1559,22 +1581,23 @@
                                             }
 
                                             for (k = 0; k < arr.length; k++) {
-                                                var t_addr = $('.token').text()
+                                                var t_addr = that.token_name_addr
                                                 var hy_taddr = "0x" + arr[k][2]
                                                 var t_name_ = $('.u_name').text()
-
                                                 if (that.token_name != "USDT") {
 
                                                     if (hy_taddr.toLowerCase() == t_addr.toLowerCase()) {
                                                         if (qk_num * 1 - (arr[k][7] * 1) <= 25 && arr[k][5] !== '0') {
                                                             obj = arr[k][0]
+                                                            residue_eth = arr[k][5]
+                                                            residue_token = arr[k][6]
                                                             pri = arr[k][6] / arr[k][5]
                                                             pri = (cutZero(((arr[k][6] / demical) / (arr[k][5] / 1e18)).toFixed(8).slice(0, 14)))
                                                             qk_now = qk_num * 1 - (arr[k][7] * 1)
                                                             dh2 += '<div class="lists" style="padding-bottom:.5rem">'
                                                                 + '<div class="flex_justcont" style="width: 95%;margin: 0 auto;">'
                                                                 + '<div style="color: rgba(229, 229, 229, 1);width:130px">'
-                                                                + '<p class="lists_p" class="bj_text">' + bj_text + '</p>'
+                                                                + '<p class="lists_p bj_text">' + bj_text + '</p>'
                                                                 + '<p style="margin-top: 0rem;font-size: 0.625rem;"><span style="font-size:1.25rem">' + pri + '</span><span> ' + that.token_name + '/ETH</span></p>'
                                                                 + '</div>'
                                                                 + '<div style="width:130px;text-align:center">'
@@ -1582,25 +1605,25 @@
                                                                 + '<p style="margin-top: 0rem;font-size: 0.625rem;color: rgba(153, 153, 153, 1);"class="yzjd">' + yzjd + '</p>'
                                                                 + '</div>'
                                                                 + '<div style="width:150px">'
-                                                                + '<p class="lists_p " style="margin-top:1.25rem;background-color: rgba(153, 153, 153, 1);color: rgba(0, 0, 0, 1);padding: 0.4rem 2.9rem;border-radius: 16px;font-size: 14px;cursor: not-allowed;visibility: hidden;" class="list_cd">' + cd_text + '</p>'
-
+                                                                + '<p class="lists_cd cd_text" data_addr="' + obj + '" data_residue_eth="' + residue_eth + '" data_residue_token="' + residue_token + '" style="margin-top:1.25rem;background-color: rgba(153, 153, 153, 1);color: rgba(0, 0, 0, 1);padding: 0.4rem 2.9rem;border-radius: 16px;font-size: 14px;text-align:center;cursor:pointer" class="list_cd cd_text">' + cd_text + '</p>'
                                                                 + '</div>'
                                                                 + '</div>'
                                                                 + '</div>'
                                                                 ;
                                                         }
                                                     }
-
                                                 } else {
                                                     if (qk_num * 1 - (arr[k][7] * 1) <= 25 && arr[k][5] !== '0') {
                                                         obj = arr[k][0]
+                                                        residue_eth = arr[k][5]
+                                                        residue_token = arr[k][6]
                                                         pri = arr[k][6] / arr[k][5]
                                                         pri = (cutZero(((arr[k][6] / demical) / (arr[k][5] / 1e18)).toFixed(8).slice(0, 14)))
                                                         qk_now = qk_num * 1 - (arr[k][7] * 1)
                                                         dh2 += '<div class="lists" style="padding-bottom:.5rem">'
                                                             + '<div class="flex_justcont" style="width: 95%;margin: 0 auto;">'
                                                             + '<div style="color: rgba(229, 229, 229, 1);width:130px">'
-                                                            + '<p class="lists_p" class="bj_text">' + bj_text + '</p>'
+                                                            + '<p class="lists_p bj_text">' + bj_text + '</p>'
                                                             + '<p style="margin-top: 0rem;font-size: 0.625rem;"><span style="font-size:1.25rem">' + pri + '</span><span> ' + that.token_name + '/ETH</span></p>'
                                                             + '</div>'
                                                             + '<div style="width:130px;text-align:center">'
@@ -1608,15 +1631,13 @@
                                                             + '<p style="margin-top: 0rem;font-size: 0.625rem;color: rgba(153, 153, 153, 1);"class="yzjd">' + yzjd + '</p>'
                                                             + '</div>'
                                                             + '<div style="width:150px">'
-                                                            + '<p class="lists_p " style="margin-top:1.25rem;background-color: rgba(153, 153, 153, 1);color: rgba(0, 0, 0, 1);padding: 0.4rem 2.9rem;border-radius: 16px;font-size: 14px;cursor: not-allowed;visibility: hidden;" class="list_cd">' + cd_text + '</p>'
-
+                                                            + '<p class="lists_cd cd_text" data_addr="' + obj + '" data_residue_eth="' + residue_eth + '" data_residue_token="' + residue_token + '" style="margin-top:1.25rem;background-color: rgba(153, 153, 153, 1);color: rgba(0, 0, 0, 1);padding: 0.4rem 2.9rem;border-radius: 16px;font-size: 14px;text-align:center;cursor:pointer" class="list_cd cd_text">' + cd_text + '</p>'
                                                             + '</div>'
                                                             + '</div>'
                                                             + '</div>'
                                                             ;
                                                     }
                                                 }
-
                                             }
                                             document.getElementById('daohang').innerHTML = dh;
                                             document.getElementById('daohang2').innerHTML = dh2
@@ -1626,18 +1647,11 @@
                                             } else {
                                                 //不含子元素
                                                 $('.zw').show()
-
                                             }
-
                                         })
-
                                     })
                                 })
-
                         })
-
-
-
 
                     var updateAndCheckPriceNowContract = new web3.eth.Contract(NestPriceAbi, price_addr)
                     updateAndCheckPriceNowContract.methods.checkPriceNow(USDT_addr)
@@ -1704,7 +1718,7 @@
                         }
                     })
                     $('.WITHDRAW').click(function () {
-                        var n_addr = $('.ntoken_addr').text()
+                        var n_addr = $('.ntoken_addr').attr('data_addr')
                         var getInfoContract = new web3.eth.Contract(DividendAbi, Dividend_addr)
                         getInfoContract.methods.getInfo(n_addr)
                             .call({ from: accounts[0] })
@@ -1724,7 +1738,7 @@
                         console.log(that.week, that.days)
                         if ((that.week <= 5 && that.days == 1) || (that.week > 0 && that.week <= 4) || (that.week == 5 && that.days == 0)) {
                             that.Income_Deposite = true
-                            var n_addr = $('.ntoken_addr').text()
+                            var n_addr = $('.ntoken_addr').attr('data_addr')
                             var getInfoContract = new web3.eth.Contract(DividendAbi, Dividend_addr)
                             getInfoContract.methods.getInfo(n_addr)
                                 .call({ from: accounts[0] })
@@ -1775,7 +1789,7 @@
                     var that = this
                     $('.Income_Withdraw2').click(function () {
                         // n_addr = NEST_addr
-                        var n_addr = $('.ntoken_addr').text()
+                        var n_addr = $('.ntoken_addr').attr('data_addr')
                         var num = new Decimal($('.qc>input').val() * 1)
                         var getInfoContract = new web3.eth.Contract(DividendAbi, Dividend_addr)
                         getInfoContract.methods.getInfo(n_addr)
@@ -1834,7 +1848,7 @@
                     // 存入
                     $('.cq2').click(function () {
                         // n_addr = NEST_addr
-                        var n_addr = $('.ntoken_addr').text()
+                        var n_addr = $('.ntoken_addr').attr('data_addr')
                         var num = new Decimal($('.val2>input').val())
                         var getInfoContract = new web3.eth.Contract(DividendAbi, Dividend_addr)
                         getInfoContract.methods.getInfo(n_addr)
@@ -1917,7 +1931,7 @@
                             that.dialogVisible_sysj = true
                         }
                         if ((that.week == 5 && that.days == 2 || that.week == 6 || that.week == 0)) {
-                            var n_addr = $('.ntoken_addr').text()
+                            var n_addr = $('.ntoken_addr').attr('data_addr')
                             var getInfoContract = new web3.eth.Contract(DividendAbi, Dividend_addr)
                             getInfoContract.methods.getInfo(n_addr)
                                 .call({ from: accounts[0] })
@@ -1968,7 +1982,7 @@
                     var that = this
                     $('.cqq').click(function () {
                         // n_addr = NEST_addr
-                        var n_addr = $('.ntoken_addr').text()
+                        var n_addr = $('.ntoken_addr').attr('data_addr')
                         var lock_sqContract = new web3.eth.Contract(NestPriceAbi, n_addr)
                         lock_sqContract.methods.approve(NEST_lock,
                             '999999999999999999999999999999999999'
@@ -1990,7 +2004,6 @@
                     })
                     // 取回
                     $('#daohang').on('click', ".list_qh", function () {
-
                         var _addr = $(this).parent().siblings('.bh_addr').text()
                         var turnOutContract = new web3.eth.Contract(offerAbi, USDT_offer)
                         turnOutContract.methods.turnOut(_addr)
@@ -2011,6 +2024,31 @@
                                 that.flash()
                             });
                     })
+                    $('div').on('click', ".lists_cd", function () {
+                        var data_addr = $(this).attr('data_addr')
+                        var data_residue_eth = $(this).attr('data_residue_eth')
+                        var data_residue_token = $(this).attr('data_residue_token')
+                        var _token = $('.u_namea').text()
+                        var token_addr = that.token_name_addr
+                        console.log(data_addr, data_residue_eth, data_residue_token, _token)
+                        window.location.href =
+                            'taker.html' +
+                            '?' +
+                            'data_addr=' +
+                            data_addr +
+                            '&' +
+                            'data_residue_eth=' +
+                            data_residue_eth +
+                            '&' +
+                            'data_residue_token=' +
+                            data_residue_token +
+                            '&' +
+                            '_token=' +
+                            _token +
+                            '&' +
+                            'token_addr=' +
+                            token_addr
+                    })
                 })
 
             },
@@ -2019,7 +2057,7 @@
 
                     var that = this
                     web3.eth.getAccounts((error, accounts) => {
-                        var n_addr = $('.token').text()
+                        var n_addr = that.token_name_addr
 
                         var lock_sqContract = new web3.eth.Contract(NestPriceAbi, USDT_addr)
                         lock_sqContract.methods.approve(USDT_offer,
@@ -2043,7 +2081,7 @@
                 sy_wsq() {
                     web3.eth.getAccounts((error, accounts) => {
                         var that = this
-                        var n_addr = $('.ntoken_addr').text()
+                        var n_addr = $('.ntoken_addr').attr('data_addr')
                         var lock_sqContract = new web3.eth.Contract(NestPriceAbi, n_addr)
                         lock_sqContract.methods.approve(NEST_lock,
                             '0'
@@ -2107,7 +2145,7 @@
                     web3.eth.getAccounts((error, accounts) => {
                         var wallet_address = accounts[0]
                         $('.pp').text(accounts[0])
-                        if (this.token_name == 'USDT') {
+                        if (that.token_name == 'USDT') {
                             var getInfoContract = new web3.eth.Contract(DividendAbi, Dividend_addr)
                             getInfoContract.methods.getInfo(NEST_addr)
                                 .call({ from: accounts[0] })
@@ -2140,7 +2178,7 @@
                                     })
                                 })
                         } else {
-                            USDT_addr = this.token_name_addr
+                            USDT_addr = that.token_name_addr
                             USDT_offer = _offer
                             var checkTokenMapping = new web3.eth.Contract(mappingabi, mapping_addr)
                             checkTokenMapping.methods.checkTokenMapping(USDT_addr)
@@ -2284,7 +2322,7 @@
                                         for (j = 0; j < arr.length; j++) {
                                             var addr = "0x" + arr[j][1]
                                             var bh_addr = '0x' + arr[j][0]
-                                            var t_addr = $('.token').text()
+                                            var t_addr = that.token_name_addr
                                             var hy_taddr = "0x" + arr[j][1]
 
                                             if (addr.toLowerCase() == (accounts[0]).toLowerCase() && (qk_num * 1 - (arr[j][7] * 1)) > 25 && (arr[j][3] !== '0' || arr[j][4] !== '0')) {
@@ -2309,7 +2347,7 @@
                                             }
                                         }
                                         for (k = 0; k < arr.length; k++) {
-                                            var t_addr = $('.token').text()
+                                            var t_addr = that.token_name_addr
                                             var hy_taddr = "0x" + arr[k][2]
                                             var t_name_ = $('.u_name').text()
 
@@ -2318,13 +2356,15 @@
                                                 if (hy_taddr.toLowerCase() == t_addr.toLowerCase()) {
                                                     if (qk_num * 1 - (arr[k][7] * 1) <= 25 && arr[k][5] !== '0') {
                                                         obj = arr[k][0]
+                                                        residue_eth = arr[k][5]
+                                                        residue_token = arr[k][6]
                                                         pri = arr[k][6] / arr[k][5]
                                                         pri = (cutZero(((arr[k][6] / demical) / (arr[k][5] / 1e18)).toFixed(8).slice(0, 14)))
                                                         qk_now = qk_num * 1 - (arr[k][7] * 1)
                                                         dh2 += '<div class="lists" style:"padding-bottom:.5rem">'
                                                             + '<div class="flex_justcont" style="width: 95%;margin: 0 auto;">'
                                                             + '<div style="color: rgba(229, 229, 229, 1);width:130px">'
-                                                            + '<p class="lists_p" class="bj_text">' + bj_text + '</p>'
+                                                            + '<p class="lists_p bj_text">' + bj_text + '</p>'
                                                             + '<p style="margin-top: 0rem;font-size: 0.625rem;"><span style="font-size:1.25rem">' + pri + '</span><span> ' + that.token_name + '/ETH</span></p>'
                                                             + '</div>'
                                                             + '<div style="width:130px;text-align:center">'
@@ -2332,7 +2372,7 @@
                                                             + '<p style="margin-top: 0rem;font-size: 0.625rem;color: rgba(153, 153, 153, 1);"class="yzjd">' + yzjd + '</p>'
                                                             + '</div>'
                                                             + '<div style="width:150px">'
-                                                            + '<p class="lists_p " style="margin-top:1.25rem;background-color: rgba(153, 153, 153, 1);color: rgba(0, 0, 0, 1);padding: 0.4rem 2.9rem;border-radius: 16px;font-size: 14px;cursor: not-allowed;visibility: hidden;" class="list_cd">' + cd_text + '</p>'
+                                                            + '<p class="lists_cd cd_text" data_addr="' + obj + '" data_residue_eth="' + residue_eth + '"data_residue_token="' + residue_token + '" style="margin-top:1.25rem;background-color: rgba(153, 153, 153, 1);color: rgba(0, 0, 0, 1);padding: 0.4rem 2.9rem;border-radius: 16px;font-size: 14px;text-align:center;cursor:pointer" class="list_cd cd_text">' + cd_text + '</p>'
 
                                                             + '</div>'
                                                             + '</div>'
@@ -2345,13 +2385,15 @@
 
                                                 if (qk_num * 1 - (arr[k][7] * 1) <= 25 && arr[k][5] !== '0') {
                                                     obj = arr[k][0]
+                                                    residue_eth = arr[k][5]
+                                                    residue_token = arr[k][6]
                                                     pri = arr[k][6] / arr[k][5]
                                                     pri = (cutZero(((arr[k][6] / demical) / (arr[k][5] / 1e18)).toFixed(8).slice(0, 14)))
                                                     qk_now = qk_num * 1 - (arr[k][7] * 1)
                                                     dh2 += '<div class="lists" style="padding-bottom:.5rem">'
                                                         + '<div class="flex_justcont" style="width: 95%;margin: 0 auto;">'
                                                         + '<div style="color: rgba(229, 229, 229, 1);width:130px">'
-                                                        + '<p class="lists_p" class="bj_text">' + bj_text + '</p>'
+                                                        + '<p class="lists_p bj_text">' + bj_text + '</p>'
                                                         + '<p style="margin-top: 0rem;font-size: 0.625rem;"><span style="font-size:1.25rem">' + pri + '</span><span> ' + that.token_name + '/ETH</span></p>'
                                                         + '</div>'
                                                         + '<div style="width:130px;text-align:center">'
@@ -2359,7 +2401,7 @@
                                                         + '<p style="margin-top: 0rem;font-size: 0.625rem;color: rgba(153, 153, 153, 1);"class="yzjd">' + yzjd + '</p>'
                                                         + '</div>'
                                                         + '<div style="width:150px">'
-                                                        + '<p class="lists_p " style="margin-top:1.25rem;background-color: rgba(153, 153, 153, 1);color: rgba(0, 0, 0, 1);padding: 0.4rem 2.9rem;border-radius: 16px;font-size: 14px;cursor: not-allowed;visibility: hidden;" class="list_cd">' + cd_text + '</p>'
+                                                        + '<p class="lists_cd cd_text" data_addr="' + obj + '" data_residue_eth="' + residue_eth + '"data_residue_token="' + residue_token + '" style="margin-top:1.25rem;background-color: rgba(153, 153, 153, 1);color: rgba(0, 0, 0, 1);padding: 0.4rem 2.9rem;border-radius: 16px;font-size: 14px;text-align:center;cursor:pointer">' + cd_text + '</p>'
 
                                                         + '</div>'
                                                         + '</div>'
@@ -2383,11 +2425,13 @@
 
                                 })
                             })
-                        var a_addr = $('.ntoken_addr').text()
+                        var a_addr = $('.ntoken_addr').attr('data_addr')
+                        console.log(a_addr)
                         var bonusInfo = new web3.eth.Contract(IntegrationAbi, Integratiotoken)
                         bonusInfo.methods.bonusInfo(a_addr)
                             .call({ from: accounts[0] })
                             .then(function (result) {
+                                console.log(1)
                                 var leveingBalance = result.leveingBalance
                                 var decimalContract = new web3.eth.Contract(NestPriceAbi, NEST_addr)
                                 decimalContract.methods.decimals().call({ from: accounts[0] }).then(function (result) {
@@ -2652,6 +2696,7 @@
                                                 decimalContract.methods.decimals().call().then(function (result) {
                                                     var demical = "1e" + result
                                                     token_amount = Math.floor((new Decimal(token_num)) * new Decimal(demical * 1))
+                                                    console.log(amount, token_amount)
                                                     var offerContract = new web3.eth.Contract(offerAbi, USDT_offer)
                                                     offerContract.methods.offer((amount).toString(), (token_amount).toString(), USDT_addr)
                                                         .send({ from: accounts[0], value: msg_value.toString() })
@@ -2712,6 +2757,7 @@
                         $('.yzjd').text('Verification progress')
                         $('.bj_text').text('Quote')
                         $('.cd_text').text('TAKER')
+                        $('.bj_fir').text('Quote')
                         this.dialog_withdraw = "Withdraw " + n_n
                         this.dialog_Approve = this.token_name + " 授权"
                         this.dialog_Deposite = "Deposite " + n_n
@@ -2727,6 +2773,7 @@
                         $('.yzjd').text('验证进度')
                         $('.bj_text').text('报价')
                         $('.cd_text').text('吃单')
+                        $('.bj_fir').text('报价')
                         this.dialog_withdraw = "取出 " + n_n
                         this.dialog_Approve = this.token_name + " 授权"
                         this.dialog_Deposite = "存入 " + n_n
@@ -2933,12 +2980,12 @@
                             this.h = 23 - hour
                         } else {
                             var nums = week - 1
-                            var nums1 = 108 - (nums * 24) - hour
+                            var nums1 = 108 - (nums * 24) - this.h
                             this.days = parseInt(nums1 / 24)
-                            this.h = 23 - hour
+                            this.h = 23 - hour + 12
                             console.log(this.h)
-                            if (this.h >= 12) {
-                                this.h = this.h - 12
+                            if (this.h >= 24) {
+                                this.h = this.h - 24
                             }
                         }
                     }
