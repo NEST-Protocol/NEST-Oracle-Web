@@ -11,6 +11,25 @@ var NestPriceAbi = [{ "constant": false, "inputs": [{ "name": "tokenAddress", "t
     payable: false,
     stateMutability: "view",
     type: "function",
+},
+{
+    constant: true,
+    inputs: [
+        {
+            name: "owner",
+            type: "address",
+        },
+    ],
+    name: "balanceOf",
+    outputs: [
+        {
+            name: "",
+            type: "uint256",
+        },
+    ],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
 }, {
     constant: false,
     inputs: [
