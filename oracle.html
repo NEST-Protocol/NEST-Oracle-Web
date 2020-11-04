@@ -1044,6 +1044,7 @@
 
                         // 分红合约地址
                         Dividend_addr = "0xDE83944619005d5EE4AAB951199748D599fCff44",
+
                         //分红NEST地址
                         NEST_addr = "0xf565422eBd4A8976e1e447a849b8B483C68EFD0C",
                         // 信息整合合约地址
@@ -1148,7 +1149,6 @@
                     var _herf = "https://cn.etherscan.com/token/" + addr
                     window.open(_herf)
                 })
-                console.log(this.token_name_addr)
                 var that = this
                 $('.token').click(function () {
                     var addr = that.token_name_addr
@@ -1233,7 +1233,7 @@
                         // console.log(a_addr)
                         var bonusInfo = new web3.eth.Contract(IntegrationAbi, Integratiotoken)
                         bonusInfo.methods.bonusInfo(NEST_addr)
-                            .call({ from: accounts[0] })
+                            .call({})
                             .then(function (result) {
                                 var leveingBalance = result.leveingBalance
                                 var decimalContract = new web3.eth.Contract(NestPriceAbi, NEST_addr)
@@ -1242,13 +1242,17 @@
                                     $('.leveingBalance').text(cutZero((leveingBalance / demical * 1).toFixed(8).slice(0, 14)))
                                 })
                             })
+
                         var getInfoContract = new web3.eth.Contract(DividendAbi, Dividend_addr)
                         getInfoContract.methods.getInfo(NEST_addr)
                             .call({ from: accounts[0] })
                             .then(function (result) {
+                                console.log(Dividend_addr, NEST_addr)
                                 var getInfo = result
+                                console.log(result)
                                 var decimalContract = new web3.eth.Contract(NestPriceAbi, NEST_addr)
                                 decimalContract.methods.decimals().call().then(function (result) {
+                                    console.log(result)
                                     var demical = "1e" + result
                                     var total = getInfo.tokenValue / demical
                                     var myJoinNest = getInfo.myJoinNest / demical
@@ -1284,9 +1288,8 @@
                                 var ntoken_addr = result
                                 var bonusInfo = new web3.eth.Contract(IntegrationAbi, Integratiotoken)
                                 bonusInfo.methods.bonusInfo(ntoken_addr)
-                                    .call({ from: accounts[0] })
+                                    .call({})
                                     .then(function (result) {
-                                        console.log(result)
                                         var leveingBalance = result.leveingBalance
                                         var decimalContract = new web3.eth.Contract(NestPriceAbi, NEST_addr)
                                         decimalContract.methods.decimals().call({ from: accounts[0] }).then(function (result) {
@@ -1300,7 +1303,7 @@
 
                                 } else {
                                     $('.ntoken_addr').text(ntoken_addr)
-                                    $('.ntoken_addr').attr('data_addr', NEST_addr)
+                                    $('.ntoken_addr').attr('data_addr', ntoken_addr)
                                 }
                                 var getInfoContract = new web3.eth.Contract(DividendAbi, Dividend_addr)
                                 getInfoContract.methods.getInfo(ntoken_addr)
@@ -1324,7 +1327,6 @@
 
                                             $('.eth_earnings').text(cutZero((eth_earnings * 1).toFixed(8).slice(0, 14)))
                                             $('.eth_allearnings').text(cutZero((eth_allearnings * 1).toFixed(8).slice(0, 14)))
-                                            console.log(sq_num)
                                             if (sq_num > 0) {
                                                 $('.sy_wsq').hide()
                                                 $('.sy_ysq').show()
@@ -1605,7 +1607,7 @@
                                                                 + '<p style="margin-top: 0rem;font-size: 0.625rem;color: rgba(153, 153, 153, 1);"class="yzjd">' + yzjd + '</p>'
                                                                 + '</div>'
                                                                 + '<div style="width:150px">'
-                                                                + '<p class="lists_cd cd_text" data_addr="' + obj + '" data_residue_eth="' + residue_eth + '" data_residue_token="' + residue_token + '" style="margin-top:1.25rem;background-color: rgba(153, 153, 153, 1);color: rgba(0, 0, 0, 1);padding: 0.4rem 2.9rem;border-radius: 16px;font-size: 14px;text-align:center;cursor:pointer" class="list_cd cd_text">' + cd_text + '</p>'
+                                                                + '<p class="lists_cd cd_text" data_addr="' + obj + '" data_residue_eth="' + residue_eth + '" data_residue_token="' + residue_token + '" style="margin-top:1.25rem;background-color:  rgba(255, 196, 77, 1);color: rgba(0, 0, 0, 1);padding: 0.4rem 2.9rem;border-radius: 16px;font-size: 14px;text-align:center;cursor:pointer" class="list_cd cd_text">' + cd_text + '</p>'
                                                                 + '</div>'
                                                                 + '</div>'
                                                                 + '</div>'
@@ -1631,7 +1633,7 @@
                                                             + '<p style="margin-top: 0rem;font-size: 0.625rem;color: rgba(153, 153, 153, 1);"class="yzjd">' + yzjd + '</p>'
                                                             + '</div>'
                                                             + '<div style="width:150px">'
-                                                            + '<p class="lists_cd cd_text" data_addr="' + obj + '" data_residue_eth="' + residue_eth + '" data_residue_token="' + residue_token + '" style="margin-top:1.25rem;background-color: rgba(153, 153, 153, 1);color: rgba(0, 0, 0, 1);padding: 0.4rem 2.9rem;border-radius: 16px;font-size: 14px;text-align:center;cursor:pointer" class="list_cd cd_text">' + cd_text + '</p>'
+                                                            + '<p class="lists_cd cd_text" data_addr="' + obj + '" data_residue_eth="' + residue_eth + '" data_residue_token="' + residue_token + '" style="margin-top:1.25rem;background-color:  rgba(255, 196, 77, 1);color: rgba(0, 0, 0, 1);padding: 0.4rem 2.9rem;border-radius: 16px;font-size: 14px;text-align:center;cursor:pointer" class="list_cd cd_text">' + cd_text + '</p>'
                                                             + '</div>'
                                                             + '</div>'
                                                             + '</div>'
@@ -1735,7 +1737,6 @@
                             })
                     })
                     $('.DEPOSITE').click(function () {
-                        console.log(that.week, that.days)
                         if ((that.week <= 5 && that.days == 1) || (that.week > 0 && that.week <= 4) || (that.week == 5 && that.days == 0)) {
                             that.Income_Deposite = true
                             var n_addr = $('.ntoken_addr').attr('data_addr')
@@ -1964,7 +1965,6 @@
                                                         .on('confirmation', function (confirmationNumber, receipt) {
                                                             //
                                                             that.flash()
-                                                            console.log(1)
                                                         })
                                                         .on('error', function () {
                                                             // 拒绝交易
@@ -1983,6 +1983,8 @@
                     $('.cqq').click(function () {
                         // n_addr = NEST_addr
                         var n_addr = $('.ntoken_addr').attr('data_addr')
+                        console.log(n_addr)
+
                         var lock_sqContract = new web3.eth.Contract(NestPriceAbi, n_addr)
                         lock_sqContract.methods.approve(NEST_lock,
                             '999999999999999999999999999999999999'
@@ -2030,7 +2032,6 @@
                         var data_residue_token = $(this).attr('data_residue_token')
                         var _token = $('.u_namea').text()
                         var token_addr = that.token_name_addr
-                        console.log(data_addr, data_residue_eth, data_residue_token, _token)
                         window.location.href =
                             'taker.html' +
                             '?' +
@@ -2372,7 +2373,7 @@
                                                             + '<p style="margin-top: 0rem;font-size: 0.625rem;color: rgba(153, 153, 153, 1);"class="yzjd">' + yzjd + '</p>'
                                                             + '</div>'
                                                             + '<div style="width:150px">'
-                                                            + '<p class="lists_cd cd_text" data_addr="' + obj + '" data_residue_eth="' + residue_eth + '"data_residue_token="' + residue_token + '" style="margin-top:1.25rem;background-color: rgba(153, 153, 153, 1);color: rgba(0, 0, 0, 1);padding: 0.4rem 2.9rem;border-radius: 16px;font-size: 14px;text-align:center;cursor:pointer" class="list_cd cd_text">' + cd_text + '</p>'
+                                                            + '<p class="lists_cd cd_text" data_addr="' + obj + '" data_residue_eth="' + residue_eth + '"data_residue_token="' + residue_token + '" style="margin-top:1.25rem;background-color:  rgba(255, 196, 77, 1);color: rgba(0, 0, 0, 1);padding: 0.4rem 2.9rem;border-radius: 16px;font-size: 14px;text-align:center;cursor:pointer" class="list_cd cd_text">' + cd_text + '</p>'
 
                                                             + '</div>'
                                                             + '</div>'
@@ -2401,7 +2402,7 @@
                                                         + '<p style="margin-top: 0rem;font-size: 0.625rem;color: rgba(153, 153, 153, 1);"class="yzjd">' + yzjd + '</p>'
                                                         + '</div>'
                                                         + '<div style="width:150px">'
-                                                        + '<p class="lists_cd cd_text" data_addr="' + obj + '" data_residue_eth="' + residue_eth + '"data_residue_token="' + residue_token + '" style="margin-top:1.25rem;background-color: rgba(153, 153, 153, 1);color: rgba(0, 0, 0, 1);padding: 0.4rem 2.9rem;border-radius: 16px;font-size: 14px;text-align:center;cursor:pointer">' + cd_text + '</p>'
+                                                        + '<p class="lists_cd cd_text" data_addr="' + obj + '" data_residue_eth="' + residue_eth + '"data_residue_token="' + residue_token + '" style="margin-top:1.25rem;background-color:  rgba(255, 196, 77, 1);color: rgba(0, 0, 0, 1);padding: 0.4rem 2.9rem;border-radius: 16px;font-size: 14px;text-align:center;cursor:pointer">' + cd_text + '</p>'
 
                                                         + '</div>'
                                                         + '</div>'
@@ -2426,12 +2427,10 @@
                                 })
                             })
                         var a_addr = $('.ntoken_addr').attr('data_addr')
-                        console.log(a_addr)
                         var bonusInfo = new web3.eth.Contract(IntegrationAbi, Integratiotoken)
                         bonusInfo.methods.bonusInfo(a_addr)
                             .call({ from: accounts[0] })
                             .then(function (result) {
-                                console.log(1)
                                 var leveingBalance = result.leveingBalance
                                 var decimalContract = new web3.eth.Contract(NestPriceAbi, NEST_addr)
                                 decimalContract.methods.decimals().call({ from: accounts[0] }).then(function (result) {
@@ -2590,22 +2589,16 @@
                                 decimalContract.methods.decimals().call().then(function (result) {
                                     var demical = "1e" + result
                                     var hy_price = token_price / demical
-                                    console.log(hy_price)
                                     token_price_up = hy_price * 1.1
                                     token_price_down = hy_price * 0.9
-                                    console.log(offer_price)
                                     if ((offer_price * 1) > 0) {
                                         var sqn = $('.bj_sq_num').text()
                                         var pay_u = $('.sr_token_price').text()
-                                        console.log($('.wsq').css('display'))
-
                                         if ($('.wsq').css('display') !== 'none') {
                                             // 偏离
-                                            console.log(1)
                                             if (offer_price * 1 > token_price_up || offer_price < token_price_down) {
                                                 $('.gas').text(0.1)
                                                 var _num = ($('.bj_eth_num').text()) * 1
-                                                console.log(that.token_name)
                                                 if (that.token_name == "USDT") {
                                                     if (_num >= 300) {
                                                         msg_value_num = ($('.bj_eth_num').text()) * 1 + (0.1) * 1
@@ -2645,7 +2638,6 @@
                                                         // that.amountStates = true
                                                     }
                                                 } else {
-                                                    console.log(_num)
                                                     var _num = ($('.bj_eth_num').text()) * 1
                                                     if (_num >= 100) {
                                                         msg_value_num = ($('.bj_eth_num').text()) * 1 + (0.1) * 1
@@ -2696,7 +2688,6 @@
                                                 decimalContract.methods.decimals().call().then(function (result) {
                                                     var demical = "1e" + result
                                                     token_amount = Math.floor((new Decimal(token_num)) * new Decimal(demical * 1))
-                                                    console.log(amount, token_amount)
                                                     var offerContract = new web3.eth.Contract(offerAbi, USDT_offer)
                                                     offerContract.methods.offer((amount).toString(), (token_amount).toString(), USDT_addr)
                                                         .send({ from: accounts[0], value: msg_value.toString() })
@@ -2962,7 +2953,7 @@
                     var hour = dates.getHours()
                     var fenzhong = dates.getMinutes()
                     this.min = 60 - fenzhong
-                    console.log(week, this.days, this.h, hour)
+                    // console.log(week, this.days, this.h, hour)
                     if (week == 5 & hour < 12) {
                         this.days = 0
                         this.h = 11 - hour
@@ -2983,7 +2974,7 @@
                             var nums1 = 108 - (nums * 24) - this.h
                             this.days = parseInt(nums1 / 24)
                             this.h = 23 - hour + 12
-                            console.log(this.h)
+                            // console.log(this.h)
                             if (this.h >= 24) {
                                 this.h = this.h - 24
                             }
