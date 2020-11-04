@@ -759,14 +759,24 @@
                     let isInFavorites = false
 
                     // 遍历3个列表查看有收藏的去掉收藏
-                    for (let i = 0; i < this.spanActive.length; i++) {
-                        if (indexs == this.spanActive[i]) {
-                            // console.log('remove spanActive ' + i + ' ' + indexs)
-                            this.spanActive.splice(i, 1)
-                            isInFavorites = true
-                            break
+                    if (this.spanActive.includes(indexs)) {
+                        for (let i = 0; i < this.spanActive.length; i++) {
+                            if (indexs == this.spanActive[i]) {
+                                console.log('remove spanActive ' + i + ' ' + indexs)
+                                this.spanActive.splice(i, 1)
+                                isInFavorites = true
+
+                                document.cookie = 'icoActive=' + this.spanActive
+                                this.getaxios()
+                                break
+                            }
                         }
+                    } else {
+                        this.spanActive.push(indexs)
+                        document.cookie = 'icoActive=' + this.spanActive
+                        this.getaxios()
                     }
+
                     for (let i = 0; i < this.collectData.length; i++) {
                         if (indexs == this.collectData[i].address) {
                             // console.log('remove collectData ' + i + ' ' + indexs)
@@ -789,9 +799,7 @@
                     if (true == isInFavorites) return
 
                     // 下面是添加到收藏列表
-                    this.spanActive.push(indexs)
-                    document.cookie = 'icoActive=' + this.spanActive
-                    this.getaxios()
+
                 },
                 FavoritesRight(index) {
                     var indexs = index.toString()
