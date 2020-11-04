@@ -946,7 +946,6 @@
                             var a = $('.sr_token_price').text()
                             var b = $('.bj_eth_num1').text()
                             that.bj = a / b
-                            console.log(a, b, this.bj)
                         })
                     })
                 $('.u_name').text(this._token)
@@ -1261,7 +1260,6 @@
                     var that = this
                     if ($(".img_t").hasClass('img_active')) {
                         // 支付token
-                        console.log(that.amount)
                         if (this._token == 'USDT') {
                             if (that.amount == 30) {
                                 // that.amountStates = true
@@ -1272,7 +1270,6 @@
                                 that.amountStates = false
                             }
                         } else {
-                            console.log(1)
                             that.amountStates = false
                             if (that.amount == 10) {
                                 // that.amountStates = true
@@ -1283,11 +1280,9 @@
                                 // that.amountStates = false
                             }
                         }
-                        console.log(that.bj)
-                        $('.sr_token_price').text(accMul((that.bj).toFixed(0), that.amount))
-                        $('.e_num').text(accMul((that.bj).toFixed(0), that.amount))
+                        $('.sr_token_price').text(accMul((that.bj), that.amount))
+                        $('.e_num').text(accMul((that.bj), that.amount))
                     } else {
-                        console.log(that.amount)
                         if (this._token == 'USDT') {
                             if (that.amount == 30) {
                                 // that.amountStates = true
@@ -1308,8 +1303,8 @@
                                 // that.amountStates = false
                             }
                         }
-                        $('.sr_token_price').text(accMul((that.bj).toFixed(0), that.amount))
-                        $('.t_num').text(accMul((that.bj).toFixed(0), that.amount))
+                        $('.sr_token_price').text(accMul((that.bj), that.amount))
+                        $('.t_num').text(accMul((that.bj), that.amount))
                     }
                     if (offer_price != '') {
                         web3.eth.getAccounts((error, accounts) => {
@@ -1378,8 +1373,8 @@
                         }
                         that.price = $('.ptext>.token_price').text()
 
-                        $('.sr_token_price').text(accMul((that.bj).toFixed(0), that.amount))
-                        $('.e_num').text(accMul((that.bj).toFixed(0), that.amount))
+                        $('.sr_token_price').text(accMul((that.bj), that.amount))
+                        $('.e_num').text(accMul((that.bj), that.amount))
                     } else {
                         that.amountStates = false
                         if (this._token == "USDT") {
@@ -1403,8 +1398,8 @@
                             }
                         }
                         that.price = $('.ptext>.token_price').text()
-                        $('.sr_token_price').text(accMul((that.bj).toFixed(0), that.amount))
-                        $('.t_num').text(accMul((that.bj).toFixed(0), that.amount))
+                        $('.sr_token_price').text(accMul((that.bj), that.amount))
+                        $('.t_num').text(accMul((that.bj), that.amount))
                     }
                     if (offer_price != '') {
                         web3.eth.getAccounts((error, accounts) => {
