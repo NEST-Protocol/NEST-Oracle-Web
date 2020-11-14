@@ -2547,10 +2547,10 @@
                                         if (that.token_name == 'USDT') {
                                             if (val * 1 > token_price_up || val < token_price_down) {
                                                 // that.amountStates = true
-                                                $('.gas').text(30 * 0.01)
+                                                $('.gas').text(30 * 0.003)
                                                 $('.pc_warn').show()
                                             } else {
-                                                $('.gas').text(num * 0.01)
+                                                $('.gas').text(num * 0.003)
                                                 // that.amountStates = false
                                                 $('.pc_warn').hide()
                                                 // msg_value = $(".offer_bj_").val() + 10 * 0.01 * 1e8
@@ -2842,11 +2842,11 @@
                                         if (offer_price * 1 >= token_price_up || offer_price <= token_price_down) {
                                             if (offer_price !== '') {
                                                 $('.sr_token_price').text(accMul(that.input, that.amount))
-                                                $('.gas').text(30 * 0.01)
+                                                $('.gas').text(30 * 0.003)
                                             }
                                         } else {
                                             $('.sr_token_price').text(accMul(that.input, that.amount))
-                                            $('.gas').text(cutZero((that.amount * 0.01).toFixed(8).slice(0, 14)))
+                                            $('.gas').text(cutZero((that.amount * 0.003).toFixed(8).slice(0, 14)))
                                             // msg_value = $(".offer_bj_").val() + 10 * 0.01 * 1e8
                                         }
                                     } else {
@@ -2906,11 +2906,11 @@
                                         if (offer_price * 1 >= token_price_up || offer_price <= token_price_down) {
                                             if (offer_price !== '') {
                                                 $('.sr_token_price').text(accMul(that.input, that.amount))
-                                                $('.gas').text(30 * 0.01)
+                                                $('.gas').text(30 * 0.003)
                                             }
                                         } else {
                                             $('.sr_token_price').text(accMul(that.input, that.amount))
-                                            $('.gas').text(cutZero((that.amount * 0.01).toFixed(8).slice(0, 14)))
+                                            $('.gas').text(cutZero((that.amount * 0.003).toFixed(8).slice(0, 14)))
                                         }
                                     } else {
                                         if (offer_price * 1 >= token_price_up || offer_price <= token_price_down) {
